@@ -28,6 +28,8 @@ Partial Class Menu
         Me.btninventario = New System.Windows.Forms.Label()
         Me.btnDescuento = New System.Windows.Forms.Label()
         Me.btnAyuda = New System.Windows.Forms.Label()
+        Me.opciones = New System.Windows.Forms.Panel()
+        Me.opciones.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnHome
@@ -38,7 +40,7 @@ Partial Class Menu
         Me.btnHome.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnHome.ForeColor = System.Drawing.Color.White
         Me.btnHome.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnHome.Location = New System.Drawing.Point(324, 9)
+        Me.btnHome.Location = New System.Drawing.Point(9, 5)
         Me.btnHome.Name = "btnHome"
         Me.btnHome.Size = New System.Drawing.Size(58, 26)
         Me.btnHome.TabIndex = 0
@@ -52,7 +54,7 @@ Partial Class Menu
         Me.btnVenta.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnVenta.ForeColor = System.Drawing.Color.White
         Me.btnVenta.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnVenta.Location = New System.Drawing.Point(388, 9)
+        Me.btnVenta.Location = New System.Drawing.Point(73, 5)
         Me.btnVenta.Name = "btnVenta"
         Me.btnVenta.Size = New System.Drawing.Size(61, 26)
         Me.btnVenta.TabIndex = 1
@@ -66,7 +68,7 @@ Partial Class Menu
         Me.btnInformes.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnInformes.ForeColor = System.Drawing.Color.White
         Me.btnInformes.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnInformes.Location = New System.Drawing.Point(559, 9)
+        Me.btnInformes.Location = New System.Drawing.Point(244, 5)
         Me.btnInformes.Name = "btnInformes"
         Me.btnInformes.Size = New System.Drawing.Size(87, 26)
         Me.btnInformes.TabIndex = 3
@@ -80,7 +82,7 @@ Partial Class Menu
         Me.btninventario.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btninventario.ForeColor = System.Drawing.Color.White
         Me.btninventario.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btninventario.Location = New System.Drawing.Point(455, 9)
+        Me.btninventario.Location = New System.Drawing.Point(140, 5)
         Me.btninventario.Name = "btninventario"
         Me.btninventario.Size = New System.Drawing.Size(98, 26)
         Me.btninventario.TabIndex = 2
@@ -94,7 +96,7 @@ Partial Class Menu
         Me.btnDescuento.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnDescuento.ForeColor = System.Drawing.Color.White
         Me.btnDescuento.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnDescuento.Location = New System.Drawing.Point(652, 9)
+        Me.btnDescuento.Location = New System.Drawing.Point(337, 5)
         Me.btnDescuento.Name = "btnDescuento"
         Me.btnDescuento.Size = New System.Drawing.Size(110, 26)
         Me.btnDescuento.TabIndex = 5
@@ -108,11 +110,25 @@ Partial Class Menu
         Me.btnAyuda.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAyuda.ForeColor = System.Drawing.Color.White
         Me.btnAyuda.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnAyuda.Location = New System.Drawing.Point(766, 9)
+        Me.btnAyuda.Location = New System.Drawing.Point(451, 5)
         Me.btnAyuda.Name = "btnAyuda"
         Me.btnAyuda.Size = New System.Drawing.Size(66, 26)
         Me.btnAyuda.TabIndex = 4
         Me.btnAyuda.Text = "Ayuda"
+        '
+        'opciones
+        '
+        Me.opciones.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(17, Byte), Integer))
+        Me.opciones.Controls.Add(Me.btnAyuda)
+        Me.opciones.Controls.Add(Me.btnDescuento)
+        Me.opciones.Controls.Add(Me.btnHome)
+        Me.opciones.Controls.Add(Me.btnVenta)
+        Me.opciones.Controls.Add(Me.btnInformes)
+        Me.opciones.Controls.Add(Me.btninventario)
+        Me.opciones.Location = New System.Drawing.Point(310, 12)
+        Me.opciones.Name = "opciones"
+        Me.opciones.Size = New System.Drawing.Size(529, 39)
+        Me.opciones.TabIndex = 6
         '
         'Menu
         '
@@ -121,17 +137,14 @@ Partial Class Menu
         Me.BackColor = System.Drawing.Color.White
         Me.BackgroundImage = Global.cafeteria.My.Resources.Resources.Diapositiva1
         Me.ClientSize = New System.Drawing.Size(839, 501)
-        Me.Controls.Add(Me.btnDescuento)
-        Me.Controls.Add(Me.btnAyuda)
-        Me.Controls.Add(Me.btnInformes)
-        Me.Controls.Add(Me.btninventario)
-        Me.Controls.Add(Me.btnVenta)
-        Me.Controls.Add(Me.btnHome)
+        Me.Controls.Add(Me.opciones)
+        Me.MaximizeBox = False
         Me.Name = "Menu"
         Me.Text = "Cafeteria"
         Me.TransparencyKey = System.Drawing.Color.Transparent
+        Me.opciones.ResumeLayout(False)
+        Me.opciones.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
@@ -141,4 +154,5 @@ Partial Class Menu
     Friend WithEvents btninventario As Label
     Friend WithEvents btnDescuento As Label
     Friend WithEvents btnAyuda As Label
+    Friend WithEvents opciones As Panel
 End Class

@@ -1,23 +1,50 @@
-﻿Public Class Menu
-    Dim session As Sesion = New Sesion
-    Dim venta As Venta = New Venta
-    Dim inventa As Inventario = New Inventario
+﻿Imports BOCafeteria
+
+Public Class Menu
+    Dim session As Sesion
+    Dim inventa As Inventario
+    Dim venta As Venta
+    Dim usuario As BOUsuario = New BOUsuario()
+    'Dim carga As Cargando = New Cargando()
+    Dim tamaño As Size
     Public Sub New()
 
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
+        opciones.Visible = False
         Me.IsMdiContainer = True
         Me.BackgroundImage = Image.FromFile("..\\..\\Resources\\Presentación1\\Diapositiva1.png")
-        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        session = New Sesion()
 
         session.MdiParent = Me
-        venta.MdiParent = Me
-        inventa.MdiParent = Me
+        btnHome.Enabled = True
+        session.Dock = DockStyle.Fill
+        session.Show()
+
+
+
+        'carga.Show()
+
     End Sub
 
     Private Sub Menu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        cerrar()
-        session.Show()
+        tamaño = New Drawing.Size((Me.Size.Width - 20), (Me.Size.Height - 80))
+        'session.Size = tamaño
+        'opciones.Location = New Point(tamaño.Width - 540, 7)
+
+        'venta = New Venta()
+        'cargando.ProgressBarCargando.Value += 10
+        'inventa = New Inventario()
+        'cargando.ProgressBarCargando.Value += 10
+
+        'venta.MdiParent = Me
+        'inventa.MdiParent = Me
+        'cargando.ProgressBarCargando.Value = 100
+        'cargando.Close()
+        'carga.ProgressBarCargando.Value = 100
+        'carga.Hide()
+
+
     End Sub
 
     Private Sub Label2_Click(sender As Object, e As EventArgs) Handles btnVenta.Click
@@ -59,6 +86,14 @@
     End Sub
 
     Private Sub Label7_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub Menu_VisibleChanged(sender As Object, e As EventArgs) Handles MyBase.VisibleChanged
+
+    End Sub
+
+    Private Sub btnHome_Click(sender As Object, e As EventArgs) Handles btnHome.Click
 
     End Sub
 End Class

@@ -22,39 +22,56 @@ Partial Class Cargando
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.picLogo = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.ProgressBarCargando = New System.Windows.Forms.ProgressBar()
+        Me.picLogo = New System.Windows.Forms.PictureBox()
         CType(Me.picLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'picLogo
-        '
-        Me.picLogo.Location = New System.Drawing.Point(12, 12)
-        Me.picLogo.Name = "picLogo"
-        Me.picLogo.Size = New System.Drawing.Size(194, 243)
-        Me.picLogo.TabIndex = 0
-        Me.picLogo.TabStop = False
         '
         'Label1
         '
         Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Segoe Script", 27.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(261, 96)
+        Me.Label1.Location = New System.Drawing.Point(207, 96)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(239, 61)
+        Me.Label1.Size = New System.Drawing.Size(354, 61)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "FIME Coffe"
+        Me.Label1.Text = "Sweet Coffee Box"
+        '
+        'ProgressBarCargando
+        '
+        Me.ProgressBarCargando.ForeColor = System.Drawing.Color.DarkSlateGray
+        Me.ProgressBarCargando.Location = New System.Drawing.Point(-2, 260)
+        Me.ProgressBarCargando.Name = "ProgressBarCargando"
+        Me.ProgressBarCargando.Size = New System.Drawing.Size(563, 4)
+        Me.ProgressBarCargando.Style = System.Windows.Forms.ProgressBarStyle.Continuous
+        Me.ProgressBarCargando.TabIndex = 1
+        Me.ProgressBarCargando.Visible = False
+        '
+        'picLogo
+        '
+        Me.picLogo.BackColor = System.Drawing.Color.Transparent
+        Me.picLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.picLogo.Location = New System.Drawing.Point(12, 12)
+        Me.picLogo.Name = "picLogo"
+        Me.picLogo.Size = New System.Drawing.Size(197, 242)
+        Me.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.picLogo.TabIndex = 0
+        Me.picLogo.TabStop = False
         '
         'Cargando
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(562, 267)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.ProgressBarCargando)
         Me.Controls.Add(Me.picLogo)
+        Me.Controls.Add(Me.Label1)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "Cargando"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Cargando"
         CType(Me.picLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -64,4 +81,5 @@ Partial Class Cargando
 
     Friend WithEvents picLogo As PictureBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents ProgressBarCargando As ProgressBar
 End Class

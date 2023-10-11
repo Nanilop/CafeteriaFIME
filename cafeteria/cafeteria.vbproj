@@ -14,6 +14,7 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -79,6 +80,13 @@
     <Compile Include="AddUsuario.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Applica.Designer.vb">
+      <DependentUpon>Applica.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Applica.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ApplicationEvents.vb" />
     <Compile Include="bitacoraInventario.Designer.vb">
       <DependentUpon>bitacoraInventario.vb</DependentUpon>
     </Compile>
@@ -200,6 +208,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Applica.resx">
+      <DependentUpon>Applica.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cargando.resx">
       <DependentUpon>Cargando.vb</DependentUpon>
     </EmbeddedResource>
@@ -233,6 +244,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Diapositiva1.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BOCafeteria\BOCafeteria.vbproj">
+      <Project>{AC467B4F-BFF4-43EB-B169-A4B8AA3EEAD8}</Project>
+      <Name>BOCafeteria</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
