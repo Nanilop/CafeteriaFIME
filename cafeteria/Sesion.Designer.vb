@@ -29,6 +29,8 @@ Partial Class Sesion
         Me.Label2 = New System.Windows.Forms.Label()
         Me.look = New System.Windows.Forms.PictureBox()
         Me.btnAcceder = New System.Windows.Forms.Button()
+        Me.advcontra = New System.Windows.Forms.Label()
+        Me.advusuario = New System.Windows.Forms.Label()
         CType(Me.picLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.look, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -87,10 +89,10 @@ Partial Class Sesion
         '
         'look
         '
-        Me.look.BackColor = System.Drawing.Color.Transparent
-        Me.look.Location = New System.Drawing.Point(790, 247)
+        Me.look.BackColor = System.Drawing.SystemColors.Window
+        Me.look.Location = New System.Drawing.Point(759, 252)
         Me.look.Name = "look"
-        Me.look.Size = New System.Drawing.Size(31, 32)
+        Me.look.Size = New System.Drawing.Size(24, 21)
         Me.look.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.look.TabIndex = 5
         Me.look.TabStop = False
@@ -111,11 +113,33 @@ Partial Class Sesion
         Me.btnAcceder.Text = "Acceder"
         Me.btnAcceder.UseVisualStyleBackColor = False
         '
+        'advcontra
+        '
+        Me.advcontra.AutoSize = True
+        Me.advcontra.Font = New System.Drawing.Font("Calibri", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.advcontra.Location = New System.Drawing.Point(664, 231)
+        Me.advcontra.Name = "advcontra"
+        Me.advcontra.Size = New System.Drawing.Size(123, 13)
+        Me.advcontra.TabIndex = 7
+        Me.advcontra.Text = "*Ingrese una contraseña"
+        '
+        'advusuario
+        '
+        Me.advusuario.AutoSize = True
+        Me.advusuario.Font = New System.Drawing.Font("Calibri", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.advusuario.Location = New System.Drawing.Point(684, 162)
+        Me.advusuario.Name = "advusuario"
+        Me.advusuario.Size = New System.Drawing.Size(99, 13)
+        Me.advusuario.TabIndex = 8
+        Me.advusuario.Text = "*Ingrese un usuario"
+        '
         'Sesion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(834, 460)
+        Me.Controls.Add(Me.advusuario)
+        Me.Controls.Add(Me.advcontra)
         Me.Controls.Add(Me.btnAcceder)
         Me.Controls.Add(Me.look)
         Me.Controls.Add(Me.Label2)
@@ -142,4 +166,6 @@ Partial Class Sesion
     Friend WithEvents Label2 As Label
     Friend WithEvents look As PictureBox
     Friend WithEvents btnAcceder As Button
+    Friend WithEvents advcontra As Label
+    Friend WithEvents advusuario As Label
 End Class

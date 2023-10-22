@@ -1,4 +1,6 @@
-﻿Public Class BOUsuario
+﻿Imports System.Data.SqlClient
+
+Public Class BOUsuario
     Private _id_Usuario As String
     Private _nombre As String
     Private _telefono As String
@@ -6,7 +8,7 @@
     Private _nombreU As String
     Private _contrasena As String
     Private _vista As Integer
-
+    Private conexion As String = "Server=DESKTOP-CUOAPA9\\SQLEXPRESS;Database=Proyecto;User Id=Admin;Password=AdminTCE123;"
     Public Sub New()
         _id_Usuario = ""
         _nombre = ""
@@ -92,6 +94,19 @@
             _vista = value
         End Set
     End Property
-    
+    Function Acceder(user As String, contrasena As String) As Boolean
+        Dim response As Boolean
+        Dim conn As SqlConnection = New SqlConnection(conexion)
+        conn.Open()
+        Dim cmd As New SqlCommand("GetValidUserPassword", conn)
+        cmd.Parameters.AddWithValue("@", user)
+        cmd.Parameters.AddWithValue("@", contrasena)
+        Using rdr As SqlDataReader = cmd.ExecuteReader()
+            While rdr.Read
+                response = rdr("response")
+            End While
+        End Using
+        Return response
+    End Function
 
 End Class

@@ -20,30 +20,16 @@ Public Class Menu
         btnHome.Enabled = True
         session.Dock = DockStyle.Fill
         session.Show()
-
-
-
-        'carga.Show()
-
     End Sub
 
     Private Sub Menu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         tamaño = New Drawing.Size((Me.Size.Width - 20), (Me.Size.Height - 80))
-        'session.Size = tamaño
-        'opciones.Location = New Point(tamaño.Width - 540, 7)
-
         'venta = New Venta()
-        'cargando.ProgressBarCargando.Value += 10
+
         'inventa = New Inventario()
-        'cargando.ProgressBarCargando.Value += 10
 
         'venta.MdiParent = Me
         'inventa.MdiParent = Me
-        'cargando.ProgressBarCargando.Value = 100
-        'cargando.Close()
-        'carga.ProgressBarCargando.Value = 100
-        'carga.Hide()
-
 
     End Sub
 
