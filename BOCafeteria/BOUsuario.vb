@@ -8,7 +8,7 @@ Public Class BOUsuario
     Private _nombreU As String
     Private _contrasena As String
     Private _vista As Integer
-    Private conexion As String = "Server=DESKTOP-CUOAPA9\\SQLEXPRESS;Database=Proyecto;User Id=Admin;Password=AdminTCE123;"
+    Private conexion As String = "Server=DESKTOP-CUOAPA9\SQLEXPRESS;Database=Proyecto;User Id=Admin;Password=AdminTCE123;"
     Public Sub New()
         _id_Usuario = ""
         _nombre = ""
@@ -78,7 +78,7 @@ Public Class BOUsuario
             _nombreU = value
         End Set
     End Property
-    Property Contrasena As String
+    Property Contraseña As String
         Get
             Return _contrasena
         End Get
@@ -95,17 +95,22 @@ Public Class BOUsuario
         End Set
     End Property
     Function Acceder(user As String, contrasena As String) As Boolean
-        Dim response As Boolean
+        Dim response As Boolean = False
         Dim conn As SqlConnection = New SqlConnection(conexion)
         conn.Open()
         Dim cmd As New SqlCommand("GetValidUserPassword", conn)
-        cmd.Parameters.AddWithValue("@", user)
-        cmd.Parameters.AddWithValue("@", contrasena)
+        cmd.CommandType = CommandType.StoredProcedure
+        cmd.Parameters.Add(New SqlParameter("@usuario", user))
+        cmd.Parameters.Add(New SqlParameter("@contraseña", contrasena))
         Using rdr As SqlDataReader = cmd.ExecuteReader()
             While rdr.Read
                 response = rdr("response")
             End While
         End Using
+        If response = 1 Then
+            Usuario = user
+            Contraseña = contrasena
+        End If
         Return response
     End Function
 

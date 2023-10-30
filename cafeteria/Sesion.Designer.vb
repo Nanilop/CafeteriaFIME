@@ -122,6 +122,7 @@ Partial Class Sesion
         Me.advcontra.Size = New System.Drawing.Size(123, 13)
         Me.advcontra.TabIndex = 7
         Me.advcontra.Text = "*Ingrese una contraseña"
+        Me.advcontra.Visible = False
         '
         'advusuario
         '
@@ -132,9 +133,11 @@ Partial Class Sesion
         Me.advusuario.Size = New System.Drawing.Size(99, 13)
         Me.advusuario.TabIndex = 8
         Me.advusuario.Text = "*Ingrese un usuario"
+        Me.advusuario.Visible = False
         '
         'Sesion
         '
+        Me.AcceptButton = Me.btnAcceder
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(834, 460)

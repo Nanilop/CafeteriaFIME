@@ -74,16 +74,16 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddUsuario.Designer.vb">
-      <DependentUpon>AddUsuario.vb</DependentUpon>
+    <Compile Include="Ayuda.Designer.vb">
+      <DependentUpon>Ayuda.vb</DependentUpon>
     </Compile>
-    <Compile Include="AddUsuario.vb">
+    <Compile Include="Ayuda.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Applica.Designer.vb">
-      <DependentUpon>Applica.vb</DependentUpon>
+    <Compile Include="Inicio.Designer.vb">
+      <DependentUpon>Inicio.vb</DependentUpon>
     </Compile>
-    <Compile Include="Applica.vb">
+    <Compile Include="Inicio.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ApplicationEvents.vb" />
@@ -123,10 +123,10 @@
     <Compile Include="Descuentos.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InfoInventario.Designer.vb">
-      <DependentUpon>InfoInventario.vb</DependentUpon>
+    <Compile Include="Informes.Designer.vb">
+      <DependentUpon>Informes.vb</DependentUpon>
     </Compile>
-    <Compile Include="InfoInventario.vb">
+    <Compile Include="Informes.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="InfoVeenta.Designer.vb">
@@ -208,8 +208,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Applica.resx">
-      <DependentUpon>Applica.vb</DependentUpon>
+    <EmbeddedResource Include="Ayuda.resx">
+      <DependentUpon>Ayuda.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inicio.resx">
+      <DependentUpon>Inicio.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cargando.resx">
       <DependentUpon>Cargando.vb</DependentUpon>
@@ -250,6 +253,21 @@
       <Project>{AC467B4F-BFF4-43EB-B169-A4B8AA3EEAD8}</Project>
       <Name>BOCafeteria</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notificacion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aceptaOrden.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancelaOrden.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\verOrden.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notificacion1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
