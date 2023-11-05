@@ -232,6 +232,9 @@
     <EmbeddedResource Include="Sesion.resx">
       <DependentUpon>Sesion.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Venta.resx">
+      <DependentUpon>Venta.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
