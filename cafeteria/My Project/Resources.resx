@@ -121,19 +121,22 @@
   <data name="notificacion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\notificacion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cancelaOrden" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancelaOrden.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Diapositiva1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Diapositiva1.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="aceptaOrden" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\aceptaOrden.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cancelaOrden" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cancelaOrden.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="notificacion1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\notificacion1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="verOrden" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\verOrden.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="notificacion1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\notificacion1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="panelnotif" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\panelnotif.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

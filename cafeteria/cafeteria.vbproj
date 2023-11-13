@@ -269,5 +269,8 @@
   <ItemGroup>
     <None Include="Resources\notificacion1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\panelnotif.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

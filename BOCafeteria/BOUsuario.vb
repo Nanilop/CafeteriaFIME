@@ -1,4 +1,5 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.Data.Common
+Imports System.Data.SqlClient
 
 Public Class BOUsuario
     Private _id_Usuario As String
@@ -7,7 +8,14 @@ Public Class BOUsuario
     Private _email As String
     Private _nombreU As String
     Private _contrasena As String
-    Private _vista As Integer
+    Private _vista As Boolean
+    Private _inventario As Boolean
+    Private _Usuario As Boolean
+    Private _Venta As Boolean
+    Private _Informes As Boolean
+    Private _Descuentos As Boolean
+
+
     Private conexion As String = "Server=DESKTOP-CUOAPA9\SQLEXPRESS;Database=Proyecto;User Id=Admin;Password=AdminTCE123;"
     Public Sub New()
         _id_Usuario = ""
@@ -16,10 +24,16 @@ Public Class BOUsuario
         _email = ""
         _nombreU = ""
         _contrasena = ""
-        _vista = 0
+        _vista = False
+        _inventario = False
+        _Usuario = False
+        _Venta = False
+        _Informes = False
+        _Descuentos = false
     End Sub
     Public Sub New(id As String, nombre As String, telefono As String, email As String,
-                   usuario As String, contrasena As String, vista As Integer)
+                   usuario As String, contrasena As String, vista As Boolean, inventario As Boolean,
+                   usuarios As Boolean, venta As Boolean, informes As Boolean, descuentos As Boolean)
         _id_Usuario = id
         _nombre = nombre
         _telefono = telefono
@@ -27,6 +41,11 @@ Public Class BOUsuario
         _nombreU = usuario
         _contrasena = contrasena
         _vista = vista
+        _inventario = inventario
+        _Usuario = usuarios
+        _Venta = venta
+        _Informes = informes
+        _Descuentos = descuentos
     End Sub
     Public Sub New(row As DataRow)
         _id_Usuario = row.Field(Of String)("id_Usuario")
@@ -35,7 +54,12 @@ Public Class BOUsuario
         _email = row.Field(Of String)("email")
         _nombreU = row.Field(Of String)("NombreU")
         _contrasena = row.Field(Of String)("Contrasena")
-        _vista = row.Field(Of Integer)("Vista")
+        _vista = row.Field(Of Boolean)("Vista")
+        _inventario = row.Field(Of Boolean)("Inventario")
+        _Usuario = row.Field(Of Boolean)("Usuario")
+        _Venta = row.Field(Of Boolean)("Venta")
+        _Informes = row.Field(Of Boolean)("Informes")
+        _Descuentos = row.Field(Of Boolean)("Descuentos")
     End Sub
 
     Property Id As String
@@ -86,15 +110,58 @@ Public Class BOUsuario
             _contrasena = value
         End Set
     End Property
-    Property Vista As String
+    Property Vista As Boolean
         Get
             Return _vista
         End Get
-        Set(value As String)
+        Set(value As Boolean)
             _vista = value
         End Set
     End Property
+    Property Inventario As Boolean
+        Get
+            Return _inventario
+        End Get
+        Set(value As Boolean)
+            _inventario = value
+        End Set
+    End Property
+    Property Venta As Boolean
+        Get
+            Return _Venta
+        End Get
+        Set(value As Boolean)
+            _Venta = value
+        End Set
+    End Property
+    Property Informes As Boolean
+        Get
+            Return _Informes
+        End Get
+        Set(value As Boolean)
+            _Informes = value
+        End Set
+    End Property
+    Property Usuarios As Boolean
+        Get
+            Return _Usuario
+        End Get
+        Set(value As Boolean)
+            _Usuario = value
+        End Set
+    End Property
+    Property Descuentos As Boolean
+        Get
+            Return _Descuentos
+        End Get
+        Set(value As Boolean)
+            _Descuentos = value
+        End Set
+    End Property
+
     Function Acceder(user As String, contrasena As String) As Boolean
+        Dim dt As New DataTable()
+
         Dim response As Boolean = False
         Dim conn As SqlConnection = New SqlConnection(conexion)
         conn.Open()
@@ -102,15 +169,26 @@ Public Class BOUsuario
         cmd.CommandType = CommandType.StoredProcedure
         cmd.Parameters.Add(New SqlParameter("@usuario", user))
         cmd.Parameters.Add(New SqlParameter("@contraseña", contrasena))
-        Using rdr As SqlDataReader = cmd.ExecuteReader()
-            While rdr.Read
-                response = rdr("response")
-            End While
-        End Using
-        If response = 1 Then
-            Usuario = user
-            Contraseña = contrasena
-        End If
+        Dim da As New SqlDataAdapter(cmd)
+        da.Fill(dt)
+        For Each row As DataRow In dt.Rows
+            response = row(12)
+            If response Then
+                Usuario = user
+                Contraseña = contrasena
+                Id = row(0)
+                Nombre = row(1)
+                Telefono = row(2)
+                Email = row(3)
+                Vista = row(6)
+                Inventario = row(7)
+                Venta = row(9)
+                Informes = row(10)
+                Usuarios = row(8)
+                Descuentos = row(11)
+            End If
+        Next
+        conn.Close()
         Return response
     End Function
 

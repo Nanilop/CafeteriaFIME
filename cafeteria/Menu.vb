@@ -72,7 +72,6 @@ Public Class Menu
         cerrar()
         venta.Show()
     End Sub
-
     Private Sub btninventario_Click(sender As Object, e As EventArgs) Handles btninventario.Click
         cerrar()
         inventa.Show()
@@ -106,15 +105,6 @@ Public Class Menu
     Private Sub btnHome_MouseLeave(sender As Object, e As EventArgs) Handles btnHome.MouseLeave, btnAyuda.MouseLeave, btnDescuento.MouseLeave, btnInformes.MouseLeave, btninventario.MouseLeave, btnVenta.MouseLeave
         parpadeo(sender, False)
     End Sub
-
-    Private Sub Label7_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Menu_VisibleChanged(sender As Object, e As EventArgs) Handles MyBase.VisibleChanged
-
-    End Sub
-
     Private Sub btnHome_Click(sender As Object, e As EventArgs) Handles btnHome.Click
         cerrar()
         inicio.Show()
@@ -129,16 +119,16 @@ Public Class Menu
         cerrar()
         ayuda.Show()
     End Sub
-
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-
+    Private Sub notif_Click(sender As Object, e As EventArgs) Handles notif.Click
+        If PNotificaciones.Visible Then
+            PNotificaciones.Visible = False
+        Else
+            recargaNotif()
+            PNotificaciones.Visible = True
+        End If
     End Sub
 
-    Private Sub opciones_Paint(sender As Object, e As PaintEventArgs) Handles opciones.Paint
-
-    End Sub
-
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+    Private Sub recargaNotif()
 
     End Sub
 End Class
