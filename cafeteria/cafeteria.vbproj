@@ -141,6 +141,18 @@
     <Compile Include="Inventario.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="InventarioComida.Designer.vb">
+      <DependentUpon>InventarioComida.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InventarioComida.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventarioProducto.Designer.vb">
+      <DependentUpon>InventarioProducto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InventarioProducto.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Notificaciones.Designer.vb">
       <DependentUpon>Notificaciones.vb</DependentUpon>
     </Compile>
@@ -220,6 +232,12 @@
     <EmbeddedResource Include="Inventario.resx">
       <DependentUpon>Inventario.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InventarioComida.resx">
+      <DependentUpon>InventarioComida.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventarioProducto.resx">
+      <DependentUpon>InventarioProducto.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.vb</DependentUpon>
     </EmbeddedResource>
@@ -231,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sesion.resx">
       <DependentUpon>Sesion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Venta.resx">
+      <DependentUpon>Venta.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
