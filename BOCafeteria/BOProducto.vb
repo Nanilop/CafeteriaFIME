@@ -109,7 +109,6 @@ Public Class BOProducto
         cmd.Parameters.Add(New SqlParameter("@MaximoEx", maxex))
         cmd.Parameters.Add(New SqlParameter("@id_TipoVal", idtval))
         cmd.Parameters.Add(New SqlParameter("@VistaP", vp))
-        cmd.ExecuteReader()
         Using rdr As SqlDataReader = cmd.ExecuteReader()
             While rdr.Read
                 response = rdr("response")
@@ -141,7 +140,6 @@ Public Class BOProducto
         cmd.Parameters.Add(New SqlParameter("@MaximoEx", maxex))
         cmd.Parameters.Add(New SqlParameter("@id_TipoVal", idtval))
         cmd.Parameters.Add(New SqlParameter("@VistaP", vp))
-        cmd.ExecuteReader()
         Using rdr As SqlDataReader = cmd.ExecuteReader()
             While rdr.Read
                 response = rdr("response")
@@ -165,7 +163,6 @@ Public Class BOProducto
         Dim cmd As New SqlCommand("EliminarProducto", conn)
         cmd.CommandType = CommandType.StoredProcedure
         cmd.Parameters.Add(New SqlParameter("@id_Producto", id))
-        cmd.ExecuteReader()
         Using rdr As SqlDataReader = cmd.ExecuteReader()
             While rdr.Read
                 response = rdr("response")

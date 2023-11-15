@@ -291,7 +291,28 @@
     <None Include="Resources\notificacion1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\panelnotif.png" />
+    <None Include="Resources\actualizar.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\anadir.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boton-agregar.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buscar.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editar.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eliminar.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\limpiar.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\salir.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

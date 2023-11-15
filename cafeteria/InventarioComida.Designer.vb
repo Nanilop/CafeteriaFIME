@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class InventarioComida
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,244 +20,281 @@ Partial Class InventarioComida
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.txtMinFin = New System.Windows.Forms.TextBox()
-        Me.txtMinInicio = New System.Windows.Forms.TextBox()
+        Me.btnLimpiar = New System.Windows.Forms.Button()
+        Me.btnBuscar = New System.Windows.Forms.Button()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtIDtipoval = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtIdComida = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtNombreC = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.txtHoraInicio = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.txtHoraFin = New System.Windows.Forms.TextBox()
+        Me.txtVistaC = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.btnEliminarC = New System.Windows.Forms.Button()
         Me.btnModificarC = New System.Windows.Forms.Button()
         Me.btnRegresarC = New System.Windows.Forms.Button()
         Me.btnRegistrarC = New System.Windows.Forms.Button()
-        Me.txtVistaC = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.txtIDtipoval = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.txtHoraFin = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.txtHoraInicio = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.txtNombreC = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.txtIdComida = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
-        'Label8
+        'btnLimpiar
         '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(174, 197)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(10, 13)
-        Me.Label8.TabIndex = 92
-        Me.Label8.Text = ":"
+        Me.btnLimpiar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLimpiar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnLimpiar.Location = New System.Drawing.Point(558, 97)
+        Me.btnLimpiar.Name = "btnLimpiar"
+        Me.btnLimpiar.Size = New System.Drawing.Size(115, 43)
+        Me.btnLimpiar.TabIndex = 82
+        Me.btnLimpiar.Text = "Limpiar"
+        Me.btnLimpiar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnLimpiar.UseVisualStyleBackColor = True
         '
-        'Label3
+        'btnBuscar
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(174, 161)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(10, 13)
-        Me.Label3.TabIndex = 91
-        Me.Label3.Text = ":"
+        Me.btnBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBuscar.Image = Global.cafeteria.My.Resources.Resources.buscar
+        Me.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnBuscar.Location = New System.Drawing.Point(558, 45)
+        Me.btnBuscar.Name = "btnBuscar"
+        Me.btnBuscar.Size = New System.Drawing.Size(115, 43)
+        Me.btnBuscar.TabIndex = 81
+        Me.btnBuscar.Text = "Buscar"
+        Me.btnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnBuscar.UseVisualStyleBackColor = True
         '
-        'txtMinFin
+        'GroupBox1
         '
-        Me.txtMinFin.Location = New System.Drawing.Point(186, 195)
-        Me.txtMinFin.Name = "txtMinFin"
-        Me.txtMinFin.Size = New System.Drawing.Size(42, 20)
-        Me.txtMinFin.TabIndex = 90
-        '
-        'txtMinInicio
-        '
-        Me.txtMinInicio.Location = New System.Drawing.Point(186, 158)
-        Me.txtMinInicio.Name = "txtMinInicio"
-        Me.txtMinInicio.Size = New System.Drawing.Size(42, 20)
-        Me.txtMinInicio.TabIndex = 89
-        '
-        'btnEliminarC
-        '
-        Me.btnEliminarC.Location = New System.Drawing.Point(301, 140)
-        Me.btnEliminarC.Name = "btnEliminarC"
-        Me.btnEliminarC.Size = New System.Drawing.Size(102, 26)
-        Me.btnEliminarC.TabIndex = 88
-        Me.btnEliminarC.Text = "Eliminar"
-        Me.btnEliminarC.UseVisualStyleBackColor = True
-        '
-        'btnModificarC
-        '
-        Me.btnModificarC.Location = New System.Drawing.Point(301, 93)
-        Me.btnModificarC.Name = "btnModificarC"
-        Me.btnModificarC.Size = New System.Drawing.Size(102, 26)
-        Me.btnModificarC.TabIndex = 87
-        Me.btnModificarC.Text = "Modificar"
-        Me.btnModificarC.UseVisualStyleBackColor = True
-        '
-        'btnRegresarC
-        '
-        Me.btnRegresarC.Location = New System.Drawing.Point(301, 361)
-        Me.btnRegresarC.Name = "btnRegresarC"
-        Me.btnRegresarC.Size = New System.Drawing.Size(102, 26)
-        Me.btnRegresarC.TabIndex = 86
-        Me.btnRegresarC.Text = "BACK"
-        Me.btnRegresarC.UseVisualStyleBackColor = True
-        '
-        'btnRegistrarC
-        '
-        Me.btnRegistrarC.Location = New System.Drawing.Point(301, 52)
-        Me.btnRegistrarC.Name = "btnRegistrarC"
-        Me.btnRegistrarC.Size = New System.Drawing.Size(102, 26)
-        Me.btnRegistrarC.TabIndex = 85
-        Me.btnRegistrarC.Text = "Registrar"
-        Me.btnRegistrarC.UseVisualStyleBackColor = True
-        '
-        'txtVistaC
-        '
-        Me.txtVistaC.Location = New System.Drawing.Point(128, 233)
-        Me.txtVistaC.Name = "txtVistaC"
-        Me.txtVistaC.Size = New System.Drawing.Size(100, 20)
-        Me.txtVistaC.TabIndex = 84
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(89, 236)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(30, 13)
-        Me.Label7.TabIndex = 83
-        Me.Label7.Text = "Vista"
+        Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.GroupBox1.Controls.Add(Me.txtIDtipoval)
+        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Controls.Add(Me.txtIdComida)
+        Me.GroupBox1.Controls.Add(Me.Label2)
+        Me.GroupBox1.Controls.Add(Me.txtNombreC)
+        Me.GroupBox1.Controls.Add(Me.Label4)
+        Me.GroupBox1.Controls.Add(Me.txtHoraInicio)
+        Me.GroupBox1.Controls.Add(Me.Label5)
+        Me.GroupBox1.Controls.Add(Me.txtHoraFin)
+        Me.GroupBox1.Controls.Add(Me.txtVistaC)
+        Me.GroupBox1.Controls.Add(Me.Label6)
+        Me.GroupBox1.Controls.Add(Me.Label7)
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Location = New System.Drawing.Point(41, 32)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(482, 260)
+        Me.GroupBox1.TabIndex = 80
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Comidas"
         '
         'txtIDtipoval
         '
-        Me.txtIDtipoval.Location = New System.Drawing.Point(128, 122)
+        Me.txtIDtipoval.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtIDtipoval.Location = New System.Drawing.Point(176, 102)
         Me.txtIDtipoval.Name = "txtIDtipoval"
-        Me.txtIDtipoval.Size = New System.Drawing.Size(100, 20)
-        Me.txtIDtipoval.TabIndex = 82
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(50, 125)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(69, 13)
-        Me.Label6.TabIndex = 81
-        Me.Label6.Text = "ID Tipo Valor"
-        '
-        'txtHoraFin
-        '
-        Me.txtHoraFin.Location = New System.Drawing.Point(128, 194)
-        Me.txtHoraFin.Name = "txtHoraFin"
-        Me.txtHoraFin.Size = New System.Drawing.Size(42, 20)
-        Me.txtHoraFin.TabIndex = 80
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(67, 197)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(47, 13)
-        Me.Label5.TabIndex = 79
-        Me.Label5.Text = "Hora Fin"
-        '
-        'txtHoraInicio
-        '
-        Me.txtHoraInicio.Location = New System.Drawing.Point(128, 158)
-        Me.txtHoraInicio.Name = "txtHoraInicio"
-        Me.txtHoraInicio.Size = New System.Drawing.Size(42, 20)
-        Me.txtHoraInicio.TabIndex = 78
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(63, 161)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(56, 13)
-        Me.Label4.TabIndex = 77
-        Me.Label4.Text = "Hora Inico"
-        '
-        'txtNombreC
-        '
-        Me.txtNombreC.Location = New System.Drawing.Point(128, 87)
-        Me.txtNombreC.Name = "txtNombreC"
-        Me.txtNombreC.Size = New System.Drawing.Size(100, 20)
-        Me.txtNombreC.TabIndex = 76
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(75, 90)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(44, 13)
-        Me.Label2.TabIndex = 75
-        Me.Label2.Text = "Nombre"
-        '
-        'txtIdComida
-        '
-        Me.txtIdComida.Location = New System.Drawing.Point(128, 52)
-        Me.txtIdComida.Name = "txtIdComida"
-        Me.txtIdComida.Size = New System.Drawing.Size(100, 20)
-        Me.txtIdComida.TabIndex = 74
+        Me.txtIDtipoval.Size = New System.Drawing.Size(278, 26)
+        Me.txtIDtipoval.TabIndex = 62
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(58, 55)
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(79, 33)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(56, 13)
-        Me.Label1.TabIndex = 73
-        Me.Label1.Text = "ID Comida"
+        Me.Label1.Size = New System.Drawing.Size(76, 24)
+        Me.Label1.TabIndex = 51
+        Me.Label1.Text = "Codigo:"
+        '
+        'txtIdComida
+        '
+        Me.txtIdComida.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtIdComida.Location = New System.Drawing.Point(176, 30)
+        Me.txtIdComida.Name = "txtIdComida"
+        Me.txtIdComida.Size = New System.Drawing.Size(278, 26)
+        Me.txtIdComida.TabIndex = 52
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(71, 65)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(84, 24)
+        Me.Label2.TabIndex = 53
+        Me.Label2.Text = "Nombre:"
+        '
+        'txtNombreC
+        '
+        Me.txtNombreC.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNombreC.Location = New System.Drawing.Point(176, 65)
+        Me.txtNombreC.Name = "txtNombreC"
+        Me.txtNombreC.Size = New System.Drawing.Size(278, 26)
+        Me.txtNombreC.TabIndex = 54
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(23, 139)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(132, 24)
+        Me.Label4.TabIndex = 57
+        Me.Label4.Text = "Hora de Inicio:"
+        '
+        'txtHoraInicio
+        '
+        Me.txtHoraInicio.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtHoraInicio.Location = New System.Drawing.Point(176, 139)
+        Me.txtHoraInicio.Name = "txtHoraInicio"
+        Me.txtHoraInicio.Size = New System.Drawing.Size(278, 26)
+        Me.txtHoraInicio.TabIndex = 58
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.BackColor = System.Drawing.Color.Transparent
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(40, 173)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(115, 24)
+        Me.Label5.TabIndex = 59
+        Me.Label5.Text = "Hora de Fin:"
+        '
+        'txtHoraFin
+        '
+        Me.txtHoraFin.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtHoraFin.Location = New System.Drawing.Point(176, 173)
+        Me.txtHoraFin.Name = "txtHoraFin"
+        Me.txtHoraFin.Size = New System.Drawing.Size(278, 26)
+        Me.txtHoraFin.TabIndex = 60
+        '
+        'txtVistaC
+        '
+        Me.txtVistaC.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtVistaC.Location = New System.Drawing.Point(176, 208)
+        Me.txtVistaC.Name = "txtVistaC"
+        Me.txtVistaC.Size = New System.Drawing.Size(278, 26)
+        Me.txtVistaC.TabIndex = 64
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.BackColor = System.Drawing.Color.Transparent
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(53, 102)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(102, 24)
+        Me.Label6.TabIndex = 61
+        Me.Label6.Text = "Tipo Valor:"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.BackColor = System.Drawing.Color.Transparent
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(100, 208)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(55, 24)
+        Me.Label7.TabIndex = 63
+        Me.Label7.Text = "Vista:"
+        '
+        'btnEliminarC
+        '
+        Me.btnEliminarC.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEliminarC.Image = Global.cafeteria.My.Resources.Resources.eliminar
+        Me.btnEliminarC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnEliminarC.Location = New System.Drawing.Point(558, 249)
+        Me.btnEliminarC.Name = "btnEliminarC"
+        Me.btnEliminarC.Size = New System.Drawing.Size(115, 43)
+        Me.btnEliminarC.TabIndex = 79
+        Me.btnEliminarC.Text = "Eliminar"
+        Me.btnEliminarC.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnEliminarC.UseVisualStyleBackColor = True
+        '
+        'btnModificarC
+        '
+        Me.btnModificarC.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnModificarC.Image = Global.cafeteria.My.Resources.Resources.editar
+        Me.btnModificarC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnModificarC.Location = New System.Drawing.Point(558, 197)
+        Me.btnModificarC.Name = "btnModificarC"
+        Me.btnModificarC.Size = New System.Drawing.Size(115, 43)
+        Me.btnModificarC.TabIndex = 78
+        Me.btnModificarC.Text = "Editar"
+        Me.btnModificarC.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnModificarC.UseVisualStyleBackColor = True
+        '
+        'btnRegresarC
+        '
+        Me.btnRegresarC.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRegresarC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnRegresarC.Location = New System.Drawing.Point(41, 307)
+        Me.btnRegresarC.Name = "btnRegresarC"
+        Me.btnRegresarC.Size = New System.Drawing.Size(124, 42)
+        Me.btnRegresarC.TabIndex = 77
+        Me.btnRegresarC.Text = "Regresar"
+        Me.btnRegresarC.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnRegresarC.UseVisualStyleBackColor = True
+        '
+        'btnRegistrarC
+        '
+        Me.btnRegistrarC.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRegistrarC.Image = Global.cafeteria.My.Resources.Resources.anadir
+        Me.btnRegistrarC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnRegistrarC.Location = New System.Drawing.Point(558, 148)
+        Me.btnRegistrarC.Name = "btnRegistrarC"
+        Me.btnRegistrarC.Size = New System.Drawing.Size(115, 43)
+        Me.btnRegistrarC.TabIndex = 76
+        Me.btnRegistrarC.Text = "Añadir"
+        Me.btnRegistrarC.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnRegistrarC.UseVisualStyleBackColor = True
         '
         'InventarioComida
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(453, 410)
-        Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.txtMinFin)
-        Me.Controls.Add(Me.txtMinInicio)
+        Me.ClientSize = New System.Drawing.Size(714, 381)
+        Me.Controls.Add(Me.btnLimpiar)
+        Me.Controls.Add(Me.btnBuscar)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btnEliminarC)
         Me.Controls.Add(Me.btnModificarC)
         Me.Controls.Add(Me.btnRegresarC)
         Me.Controls.Add(Me.btnRegistrarC)
-        Me.Controls.Add(Me.txtVistaC)
-        Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.txtIDtipoval)
-        Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.txtHoraFin)
-        Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.txtHoraInicio)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.txtNombreC)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.txtIdComida)
-        Me.Controls.Add(Me.Label1)
         Me.Name = "InventarioComida"
         Me.Text = "InventarioComida"
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents Label8 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents txtMinFin As TextBox
-    Friend WithEvents txtMinInicio As TextBox
+    Friend WithEvents btnLimpiar As Button
+    Friend WithEvents btnBuscar As Button
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents txtIDtipoval As TextBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents txtIdComida As TextBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents txtNombreC As TextBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents txtHoraInicio As TextBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents txtHoraFin As TextBox
+    Friend WithEvents txtVistaC As TextBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label7 As Label
     Friend WithEvents btnEliminarC As Button
     Friend WithEvents btnModificarC As Button
     Friend WithEvents btnRegresarC As Button
     Friend WithEvents btnRegistrarC As Button
-    Friend WithEvents txtVistaC As TextBox
-    Friend WithEvents Label7 As Label
-    Friend WithEvents txtIDtipoval As TextBox
-    Friend WithEvents Label6 As Label
-    Friend WithEvents txtHoraFin As TextBox
-    Friend WithEvents Label5 As Label
-    Friend WithEvents txtHoraInicio As TextBox
-    Friend WithEvents Label4 As Label
-    Friend WithEvents txtNombreC As TextBox
-    Friend WithEvents Label2 As Label
-    Friend WithEvents txtIdComida As TextBox
-    Friend WithEvents Label1 As Label
 End Class

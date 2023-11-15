@@ -1,10 +1,20 @@
-﻿Imports BOCafeteria
+﻿Imports System.Data.SqlClient
+Imports BOCafeteria
 Public Class InventarioComida
     Public comida As New BOComida()
     Dim etiqueta As Boolean = True
+    Public Sub New()
+        ' Esta llamada es exigida por el diseñador.
+        InitializeComponent()
+        Me.BackgroundImage = Image.FromFile("..\\..\\Resources\\Presentación1\\Diapositiva1.png")
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+
+    End Sub
     Private Sub btnRegresarC_Click(sender As Object, e As EventArgs) Handles btnRegresarC.Click
+        LimpiarTxt()
         Me.Hide()
     End Sub
+
     Private Sub btnRegistrarC_Click(sender As Object, e As EventArgs) Handles btnRegistrarC.Click
         Dim valido As Boolean = True
 
@@ -30,22 +40,18 @@ Public Class InventarioComida
             Dim Hora1, Hora2 As String
             Dim HoraInicio, HoraFin, A, B As TimeSpan
 
-            Hora1 = (txtHoraInicio.Text & ":" & txtMinInicio.Text & ":" & "00")
-            Hora2 = (txtHoraFin.Text & ":" & txtMinFin.Text & ":" & "00")
+            Hora1 = txtHoraInicio.Text
+            Hora2 = txtHoraFin.Text
 
             If TimeSpan.TryParse(Hora1, A) AndAlso TimeSpan.TryParse(Hora2, B) Then
                 HoraInicio = A
                 HoraFin = B
                 etiqueta = comida.RegistrarComida(txtIdComida.Text, txtNombreC.Text, txtIDtipoval.Text, HoraInicio, HoraFin, txtVistaC.Text)
+                MsgBox("La informacion se ha registrado con Exito")
+                LimpiarTxt()
             Else
-                MsgBox("Formato de tiempo incorrecto. Introduce el tiempo en formato HH:mm:ss")
+                MsgBox("No se ha podido registrar la informacion: Formato de tiempo incorrecto. Introduce el tiempo en formato HH:mm")
             End If
-
-        End If
-        If etiqueta Then
-            MsgBox("La informacion se ha registrado con Exito")
-        Else
-            MessageBox.Show("No se ha podido registrar la informacion.")
         End If
     End Sub
 
@@ -74,21 +80,18 @@ Public Class InventarioComida
             Dim Hora1, Hora2 As String
             Dim HoraInicio, HoraFin, A, B As TimeSpan
 
-            Hora1 = (txtHoraInicio.Text & ":" & txtMinInicio.Text & ":" & "00")
-            Hora2 = (txtHoraFin.Text & ":" & txtMinFin.Text & ":" & "00")
+            Hora1 = txtHoraInicio.Text
+            Hora2 = txtHoraFin.Text
 
             If TimeSpan.TryParse(Hora1, A) AndAlso TimeSpan.TryParse(Hora2, B) Then
                 HoraInicio = A
                 HoraFin = B
-                etiqueta = comida.RegistrarComida(txtIdComida.Text, txtNombreC.Text, txtIDtipoval.Text, HoraInicio, HoraFin, txtVistaC.Text)
+                etiqueta = comida.ModificarComida(txtIdComida.Text, txtNombreC.Text, txtIDtipoval.Text, HoraInicio, HoraFin, txtVistaC.Text)
+                MsgBox("La informacion se ha Modificado con Exito")
+                LimpiarTxt()
             Else
-                MsgBox("Formato de tiempo incorrecto. Introduce el tiempo en formato HH:mm:ss")
+                MsgBox("No se ha podido Modificar la informacion: Formato de tiempo incorrecto. Introduce el tiempo en formato HH:mm:ss")
             End If
-        End If
-        If etiqueta Then
-            MsgBox("La informacion se ha Modificado con Exito")
-        Else
-            MessageBox.Show("No se ha podido Modificar la informacion.")
         End If
     End Sub
 
@@ -101,11 +104,49 @@ Public Class InventarioComida
         If valido Then
 
             etiqueta = comida.EliminarComida(txtIdComida.Text)
-        End If
-        If etiqueta Then
             MsgBox("La informacion se ha eliminado con Exito")
+            LimpiarTxt()
         Else
             MessageBox.Show("No se ha podido eliminar la informacion.")
         End If
+    End Sub
+    Private Sub LimpiarTxt()
+        txtIdComida.Clear()
+        txtNombreC.Clear()
+        txtIDtipoval.Clear()
+        txtHoraInicio.Clear()
+        txtHoraFin.Clear()
+        txtVistaC.Clear()
+    End Sub
+
+    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
+        Dim conexion As String = "Server=DESKTOP-R538THL;Database=Proyecto; Integrated Security=True;"
+        Dim conn As SqlConnection = New SqlConnection(conexion)
+        conn.Open()
+        Dim cmd As New SqlCommand("select * from Comida where id_Comida = @id_Comida", conn)
+        cmd.CommandType = CommandType.Text
+        cmd.Parameters.Add(New SqlParameter("@id_Comida", txtIdComida.Text))
+        Using sda As New SqlDataAdapter()
+            sda.SelectCommand = cmd
+            Using dt As New DataTable()
+                sda.Fill(dt)
+                If dt.Rows.Count Then
+                    txtNombreC.Text = dt.Rows(0)(1).ToString
+                    txtIDtipoval.Text = dt.Rows(0)(2).ToString
+                    txtHoraInicio.Text = dt.Rows(0)(3).ToString
+                    txtHoraFin.Text = dt.Rows(0)(4).ToString
+                    If dt.Rows(0)(5) = True Then
+                        txtVistaC.Text = 1
+                    Else
+                        txtVistaC.Text = 0
+                    End If
+                End If
+            End Using
+        End Using
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnLimpiar.Click
+        LimpiarTxt()
     End Sub
 End Class
