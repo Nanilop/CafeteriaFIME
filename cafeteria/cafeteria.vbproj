@@ -159,6 +159,12 @@
     <Compile Include="Notificaciones.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="OrdenVer.Designer.vb">
+      <DependentUpon>OrdenVer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="OrdenVer.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Precios.Designer.vb">
       <DependentUpon>Precios.vb</DependentUpon>
     </Compile>
@@ -246,6 +252,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrdenVer.resx">
+      <DependentUpon>OrdenVer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sesion.resx">
       <DependentUpon>Sesion.vb</DependentUpon>

@@ -172,20 +172,20 @@ Public Class BOUsuario
         Dim da As New SqlDataAdapter(cmd)
         da.Fill(dt)
         For Each row As DataRow In dt.Rows
-            response = row(12)
+            response = row(0)
             If response Then
                 Usuario = user
                 Contraseña = contrasena
-                Id = row(0)
-                Nombre = row(1)
-                Telefono = row(2)
-                Email = row(3)
-                Vista = row(6)
-                Inventario = row(7)
-                Venta = row(9)
-                Informes = row(10)
-                Usuarios = row(8)
-                Descuentos = row(11)
+                Id = row(1)
+                Nombre = row(2)
+                Telefono = row(3)
+                Email = row(4)
+                Vista = row(7)
+                Inventario = row(8)
+                Venta = row(10)
+                Informes = row(11)
+                Usuarios = row(9)
+                Descuentos = row(12)
             End If
         Next
         conn.Close()

@@ -72,6 +72,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BOComida.vb" />
+    <Compile Include="BONotificacion.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BONotificacionLabel.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="BOProducto.vb" />
     <Compile Include="BOUsuario.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
