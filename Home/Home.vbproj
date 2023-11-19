@@ -108,12 +108,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\cafeteria\cafeteria.vbproj">
-      <Project>{A995ADE7-7AE5-4FAA-B302-0BE2EC1529BE}</Project>
-      <Name>cafeteria</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Diapositiva1.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

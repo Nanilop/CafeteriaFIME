@@ -123,7 +123,6 @@ Public Class BOComida
         cmd.Parameters.Add(New SqlParameter("@HoraInicio", hinicio))
         cmd.Parameters.Add(New SqlParameter("@HoraFin", hfin))
         cmd.Parameters.Add(New SqlParameter("@VistaC", vc))
-        cmd.ExecuteReader()
         Using rdr As SqlDataReader = cmd.ExecuteReader()
             While rdr.Read
                 response = rdr("response")
@@ -147,7 +146,7 @@ Public Class BOComida
         Dim cmd As New SqlCommand("EliminarComida", conn)
         cmd.CommandType = CommandType.StoredProcedure
         cmd.Parameters.Add(New SqlParameter("@id_Comida", id))
-        cmd.ExecuteReader()
+
         Using rdr As SqlDataReader = cmd.ExecuteReader()
             While rdr.Read
                 response = rdr("response")

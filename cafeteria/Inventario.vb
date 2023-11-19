@@ -1,8 +1,10 @@
 ﻿Imports System.Data
 Imports System.Data.OleDb
+Imports System.Data.SqlClient
 Imports System.Reflection.Emit
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Public Class Inventario
+    Dim cnn As SqlConnection = New SqlConnection("Server=DESKTOP-R538THL;Database=Proyecto; Integrated Security=True;")
     Public Sub New()
 
         ' Esta llamada es exigida por el diseñador.
@@ -19,6 +21,50 @@ Public Class Inventario
 
     Private Sub btnEditarC_Click(sender As Object, e As EventArgs) Handles btnEditarC.Click
         InventarioComida.Show()
+    End Sub
+    Public Sub MostrarProductos()
+        Dim cmd = New SqlCommand("SELECT * FROM Producto", cnn)
+        Dim da = New SqlDataAdapter(cmd)
+        Dim dt = New DataTable()
+        Try
+            cnn.Open()
+            da.Fill(dt)
+        Catch ex As Exception
+            MessageBox.Show("Error al abrir la conexión: " & ex.Message)
+        Finally
+            If cnn.State = ConnectionState.Open Then
+                cnn.Close()
+            End If
+        End Try
+
+        ' Mostrar los datos en el DataGridView
+        dgvProductos.DataSource = dt
+    End Sub
+    Public Sub MostrarComidas()
+        Dim cmd = New SqlCommand("SELECT * FROM Comida", cnn)
+        Dim da = New SqlDataAdapter(cmd)
+        Dim dt = New DataTable()
+        Try
+            cnn.Open()
+            da.Fill(dt)
+        Catch ex As Exception
+            MessageBox.Show("Error al abrir la conexión: " & ex.Message)
+        Finally
+            If cnn.State = ConnectionState.Open Then
+                cnn.Close()
+            End If
+        End Try
+
+        ' Mostrar los datos en el DataGridView
+        dgvComidas.DataSource = dt
+    End Sub
+
+    Private Sub btnActualizarP_Click(sender As Object, e As EventArgs) Handles btnActualizarP.Click
+        MostrarProductos()
+    End Sub
+
+    Private Sub btnActualizarC_Click(sender As Object, e As EventArgs) Handles btnActualizarC.Click
+        MostrarComidas()
     End Sub
 End Class
 
