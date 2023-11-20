@@ -44,11 +44,11 @@ Public Class Menu
                                                session.Close()
                                                session.Dispose()
                                                session = Nothing
-                                               inventa = New Inventario()
-                                               venta = New Venta()
-                                               usario = New Usuarios()
-                                               informe = New Informes()
-                                               ayuda = New Ayuda()
+                                               inventa = New Inventario(usuario)
+                                               venta = New Venta(usuario)
+                                               usario = New Usuarios(usuario)
+                                               informe = New Informes(usuario)
+                                               ayuda = New Ayuda(usuario)
                                                inicio = New Inicio(usuario)
                                                inicio.MdiParent = Me
                                                inicio.Dock = DockStyle.Fill
@@ -66,6 +66,13 @@ Public Class Menu
                                                opciones.Visible = True
                                                picLogo.Visible = True
                                                notif.Visible = True
+
+
+
+
+
+
+
                                            End If
                                        End Sub,
                                        Action))
@@ -123,6 +130,26 @@ Public Class Menu
     Private Sub btnAyuda_Click(sender As Object, e As EventArgs) Handles btnAyuda.Click
         cerrar()
         ayuda.Show()
+        Try
+            Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                sql.Open()
+                Using cmd As New SqlCommand
+                    With cmd
+                        .Connection = sql
+                        .CommandText = "REGISTROBitUsuario"
+                        .CommandType = CommandType.StoredProcedure
+                        .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                        .Parameters.Add(New SqlParameter("@id_TipoVal", 30))
+                        .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                        .Parameters.Add(New SqlParameter("@VistaBU", "1"))
+                    End With
+                    cmd.ExecuteNonQuery()
+                End Using
+                sql.Close()
+            End Using
+        Catch ex As SqlException
+            MessageBox.Show(ex.Message)
+        End Try
     End Sub
     Private Sub notif_Click(sender As Object, e As EventArgs) Handles notif.Click
         If PNotificaciones.Visible Then
@@ -269,6 +296,26 @@ Public Class Menu
         AddHandler orden.btnEntrega.Click, AddressOf EventoCerrarOrden
         AddHandler orden.btnCancela.Click, AddressOf EventoCerrarOrden
         orden.Show()
+        Try
+            Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                sql.Open()
+                Using cmd As New SqlCommand
+                    With cmd
+                        .Connection = sql
+                        .CommandText = "REGISTROBitUsuario"
+                        .CommandType = CommandType.StoredProcedure
+                        .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                        .Parameters.Add(New SqlParameter("@id_TipoVal", 12))
+                        .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                        .Parameters.Add(New SqlParameter("@VistaBU", "1"))
+                    End With
+                    cmd.ExecuteNonQuery()
+                End Using
+                sql.Close()
+            End Using
+        Catch ex As SqlException
+            MessageBox.Show(ex.Message)
+        End Try
     End Sub
     Private Sub EventoRecarga(sender As Object, ea As EventArgs)
         recargaNotif()
@@ -282,6 +329,26 @@ Public Class Menu
         usario.Show()
     End Sub
     Private Sub btnCerrarSesion_Click(sender As Object, e As EventArgs) Handles btnCerrarSesion.Click
+        Try
+            Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                sql.Open()
+                Using cmd As New SqlCommand
+                    With cmd
+                        .Connection = sql
+                        .CommandText = "REGISTROBitUsuario"
+                        .CommandType = CommandType.StoredProcedure
+                        .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                        .Parameters.Add(New SqlParameter("@id_TipoVal", 54))
+                        .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                        .Parameters.Add(New SqlParameter("@VistaBU", "1"))
+                    End With
+                    cmd.ExecuteNonQuery()
+                End Using
+                sql.Close()
+            End Using
+        Catch ex As SqlException
+            MessageBox.Show(ex.Message)
+        End Try
         opciones.Visible = False
         picLogo.Visible = False
         session = New Sesion()

@@ -4,8 +4,11 @@ Imports System.Data.SqlClient
 Imports System.Drawing.Printing
 Imports System.Reflection.Emit
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports BOCafeteria
+
 Public Class Venta
-    Public Sub New()
+    Private usuario As New BOUsuario
+    Public Sub New(user As BOUsuario)
 
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
@@ -14,6 +17,7 @@ Public Class Venta
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.FormBorderStyle = FormBorderStyle.None
+        usuario = user
     End Sub
     Public conn2 As New OleDbConnection
     Public Sub conecta()

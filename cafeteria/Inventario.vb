@@ -3,9 +3,12 @@ Imports System.Data.OleDb
 Imports System.Data.SqlClient
 Imports System.Reflection.Emit
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports BOCafeteria
+
 Public Class Inventario
     Dim cnn As SqlConnection = New SqlConnection("Server=DESKTOP-R538THL;Database=Proyecto; Integrated Security=True;")
-    Public Sub New()
+    Private usuario As New BOUsuario
+    Public Sub New(user As BOUsuario)
 
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
@@ -14,6 +17,7 @@ Public Class Inventario
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.FormBorderStyle = FormBorderStyle.None
+        usuario = user
     End Sub
     Private Sub btnEditarP_Click(sender As Object, e As EventArgs) Handles btnEditarP.Click
         InventarioProducto.Show()
