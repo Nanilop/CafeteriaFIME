@@ -180,12 +180,12 @@ Public Class BOUsuario
                 Nombre = row(2)
                 Telefono = row(3)
                 Email = row(4)
-                Vista = row(7)
-                Inventario = row(8)
-                Venta = row(10)
-                Informes = row(11)
+                Vista = row(5)
+                Inventario = row(6)
+                Venta = row(7)
+                Informes = row(8)
                 Usuarios = row(9)
-                Descuentos = row(12)
+                Descuentos = row(10)
             End If
         Next
         conn.Close()

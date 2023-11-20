@@ -66,13 +66,38 @@ Public Class Menu
                                                opciones.Visible = True
                                                picLogo.Visible = True
                                                notif.Visible = True
-
-
-
-
-
-
-
+                                               If Not usuario.Venta Then
+                                                   btnVenta.Enabled = False
+                                                   btnVenta.Visible = False
+                                                   notif.Enabled = False
+                                                   notif.Visible = False
+                                               Else
+                                                   btnVenta.Enabled = True
+                                                   btnVenta.Visible = True
+                                                   notif.Enabled = True
+                                                   notif.Visible = True
+                                               End If
+                                               If Not usuario.Inventario Then
+                                                   btninventario.Enabled = False
+                                                   btninventario.Visible = False
+                                               Else
+                                                   btninventario.Enabled = True
+                                                   btninventario.Visible = True
+                                               End If
+                                               If Not usuario.Informes Then
+                                                   btnInformes.Enabled = False
+                                                   btnInformes.Visible = False
+                                               Else
+                                                   btnInformes.Enabled = True
+                                                   btnInformes.Visible = True
+                                               End If
+                                               If Not usuario.Usuarios Then
+                                                   btnUsuarios.Enabled = False
+                                                   btnUsuarios.Visible = False
+                                               Else
+                                                   btnUsuarios.Enabled = True
+                                                   btnUsuarios.Visible = True
+                                               End If
                                            End If
                                        End Sub,
                                        Action))
