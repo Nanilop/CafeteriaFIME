@@ -110,5 +110,15 @@
   <ItemGroup>
     <None Include="Resources\Diapositiva1.PNG" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BOCafeteria\BOCafeteria.vbproj">
+      <Project>{ac467b4f-bff4-43eb-b169-a4b8aa3eead8}</Project>
+      <Name>BOCafeteria</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cafeteria\cafeteria.vbproj">
+      <Project>{a995ade7-7ae5-4faa-b302-0be2ec1529be}</Project>
+      <Name>cafeteria</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

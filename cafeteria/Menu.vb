@@ -5,14 +5,12 @@ Imports BOCafeteria
 Imports Microsoft.VisualBasic.ApplicationServices
 
 Public Class Menu
-
     Dim session As Sesion
     Dim inventa As Inventario
     Dim venta As Venta
     Dim usuario As BOUsuario = New BOUsuario()
-    'Dim carga As Cargando = New Cargando()
+    Dim usario As Usuarios
     Dim inicio As Inicio
-    Dim descuento As Descuentos
     Dim informe As Informes
     Dim ayuda As Ayuda
     Dim orden As OrdenVer
@@ -48,16 +46,20 @@ Public Class Menu
                                                session = Nothing
                                                inventa = New Inventario()
                                                venta = New Venta()
-                                               descuento = New Descuentos()
+                                               usario = New Usuarios()
                                                informe = New Informes()
                                                ayuda = New Ayuda()
                                                inicio = New Inicio(usuario)
                                                inicio.MdiParent = Me
                                                inicio.Dock = DockStyle.Fill
                                                venta.MdiParent = Me
-                                               inventa.MdiParent = Me
                                                venta.Dock = DockStyle.Fill
+                                               inventa.MdiParent = Me
                                                inventa.Dock = DockStyle.Fill
+                                               informe.MdiParent = Me
+                                               informe.Dock = DockStyle.Fill
+                                               usario.MdiParent = Me
+                                               usario.Dock = DockStyle.Fill
                                                ayuda.MdiParent = Me
                                                ayuda.Dock = DockStyle.Fill
                                                inicio.Show()
@@ -84,7 +86,7 @@ Public Class Menu
         inicio.Hide()
         venta.Hide()
         inventa.Hide()
-        descuento.Hide()
+        usario.Hide()
         informe.Hide()
         ayuda.Hide()
     End Sub
@@ -179,7 +181,7 @@ Public Class Menu
                 .Size = New Size(94, 26),
                 .Text = row(1),
                 .Cursor = System.Windows.Forms.Cursors.Hand,
-                .ForeColor = Color.White   
+                .ForeColor = Color.White
             }
             Dim aceptar As New BONotificacion(row(0)) With {
             .Image = Image.FromFile("..\\..\\Resources\\aceptaOrden.png"),
@@ -276,13 +278,9 @@ Public Class Menu
     End Sub
 
     Private Sub btnUsuarios_Click(sender As Object, e As EventArgs) Handles btnUsuarios.Click
-
+        cerrar()
+        usario.Show()
     End Sub
-
-    Private Sub opciones_Paint(sender As Object, e As PaintEventArgs) Handles opciones.Paint
-
-    End Sub
-
     Private Sub btnCerrarSesion_Click(sender As Object, e As EventArgs) Handles btnCerrarSesion.Click
         opciones.Visible = False
         picLogo.Visible = False
@@ -296,5 +294,10 @@ Public Class Menu
         PNotificaciones.Visible = False
         PicVacio.Visible = False
         usuario = New BOUsuario()
+    End Sub
+
+    Private Sub btnInformes_Click(sender As Object, e As EventArgs) Handles btnInformes.Click
+        cerrar()
+        informe.Show()
     End Sub
 End Class

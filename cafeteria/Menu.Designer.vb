@@ -28,12 +28,12 @@ Partial Class Menu
         Me.btninventario = New System.Windows.Forms.Label()
         Me.btnAyuda = New System.Windows.Forms.Label()
         Me.opciones = New System.Windows.Forms.Panel()
+        Me.btnCerrarSesion = New System.Windows.Forms.Label()
         Me.btnUsuarios = New System.Windows.Forms.Label()
         Me.picLogo = New System.Windows.Forms.PictureBox()
         Me.PNotificaciones = New System.Windows.Forms.Panel()
         Me.PicVacio = New System.Windows.Forms.PictureBox()
         Me.notif = New System.Windows.Forms.PictureBox()
-        Me.btnCerrarSesion = New System.Windows.Forms.Label()
         Me.opciones.SuspendLayout()
         CType(Me.picLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PicVacio, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -130,6 +130,21 @@ Partial Class Menu
         Me.opciones.Size = New System.Drawing.Size(674, 39)
         Me.opciones.TabIndex = 6
         '
+        'btnCerrarSesion
+        '
+        Me.btnCerrarSesion.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(17, Byte), Integer))
+        Me.btnCerrarSesion.Dock = System.Windows.Forms.DockStyle.Left
+        Me.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCerrarSesion.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCerrarSesion.ForeColor = System.Drawing.Color.White
+        Me.btnCerrarSesion.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btnCerrarSesion.Location = New System.Drawing.Point(497, 0)
+        Me.btnCerrarSesion.Name = "btnCerrarSesion"
+        Me.btnCerrarSesion.Size = New System.Drawing.Size(133, 39)
+        Me.btnCerrarSesion.TabIndex = 7
+        Me.btnCerrarSesion.Text = "Cerrar Sesión"
+        Me.btnCerrarSesion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'btnUsuarios
         '
         Me.btnUsuarios.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(17, Byte), Integer))
@@ -190,21 +205,6 @@ Partial Class Menu
         Me.notif.TabIndex = 9
         Me.notif.TabStop = False
         Me.notif.Visible = False
-        '
-        'btnCerrarSesion
-        '
-        Me.btnCerrarSesion.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(17, Byte), Integer))
-        Me.btnCerrarSesion.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCerrarSesion.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCerrarSesion.ForeColor = System.Drawing.Color.White
-        Me.btnCerrarSesion.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnCerrarSesion.Location = New System.Drawing.Point(497, 0)
-        Me.btnCerrarSesion.Name = "btnCerrarSesion"
-        Me.btnCerrarSesion.Size = New System.Drawing.Size(133, 39)
-        Me.btnCerrarSesion.TabIndex = 7
-        Me.btnCerrarSesion.Text = "Cerrar Sesión"
-        Me.btnCerrarSesion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Menu
         '
