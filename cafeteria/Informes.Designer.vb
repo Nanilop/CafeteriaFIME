@@ -22,18 +22,51 @@ Partial Class Informes
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.dgvInformes = New System.Windows.Forms.DataGridView()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        CType(Me.dgvInformes, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'dgvInformes
+        '
+        Me.dgvInformes.AllowUserToAddRows = False
+        Me.dgvInformes.AllowUserToDeleteRows = False
+        Me.dgvInformes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvInformes.Location = New System.Drawing.Point(12, 119)
+        Me.dgvInformes.Name = "dgvInformes"
+        Me.dgvInformes.ReadOnly = True
+        Me.dgvInformes.RowHeadersVisible = False
+        Me.dgvInformes.Size = New System.Drawing.Size(810, 329)
+        Me.dgvInformes.TabIndex = 0
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.cafeteria.My.Resources.Resources.excel
+        Me.PictureBox1.Location = New System.Drawing.Point(774, 64)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(48, 49)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 1
+        Me.PictureBox1.TabStop = False
         '
         'Informes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(834, 460)
+        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.dgvInformes)
         Me.Location = New System.Drawing.Point(0, 35)
         Me.Name = "Informes"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
-        Me.Text = "InfoInventario"
+        Me.Text = "Informes"
+        CType(Me.dgvInformes, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
+
+    Friend WithEvents dgvInformes As DataGridView
+    Friend WithEvents PictureBox1 As PictureBox
 End Class
