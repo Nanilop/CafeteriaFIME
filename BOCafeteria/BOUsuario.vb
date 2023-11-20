@@ -14,6 +14,7 @@ Public Class BOUsuario
     Private _Venta As Boolean
     Private _Informes As Boolean
     Private _Descuentos As Boolean
+    Private _Precio As Boolean
 
 
     Private conexion As String = "Server=DESKTOP-CUOAPA9\SQLEXPRESS;Database=Proyecto;User Id=Admin;Password=AdminTCE123;"
@@ -29,11 +30,12 @@ Public Class BOUsuario
         _Usuario = False
         _Venta = False
         _Informes = False
-        _Descuentos = false
+        _Descuentos = False
+        _Precio = False
     End Sub
     Public Sub New(id As String, nombre As String, telefono As String, email As String,
                    usuario As String, contrasena As String, vista As Boolean, inventario As Boolean,
-                   usuarios As Boolean, venta As Boolean, informes As Boolean, descuentos As Boolean)
+                   usuarios As Boolean, venta As Boolean, informes As Boolean, descuentos As Boolean, precio As Boolean)
         _id_Usuario = id
         _nombre = nombre
         _telefono = telefono
@@ -46,6 +48,7 @@ Public Class BOUsuario
         _Venta = venta
         _Informes = informes
         _Descuentos = descuentos
+        _Precio = precio
     End Sub
     Public Sub New(row As DataRow)
         _id_Usuario = row.Field(Of String)("id_Usuario")
@@ -60,6 +63,7 @@ Public Class BOUsuario
         _Venta = row.Field(Of Boolean)("Venta")
         _Informes = row.Field(Of Boolean)("Informes")
         _Descuentos = row.Field(Of Boolean)("Descuentos")
+        _Precio = row.Field(Of Boolean)("Precios")
     End Sub
 
     Property Id As String
@@ -158,6 +162,14 @@ Public Class BOUsuario
             _Descuentos = value
         End Set
     End Property
+    Property Precio As Boolean
+        Get
+            Return _Precio
+        End Get
+        Set(value As Boolean)
+            _Precio = value
+        End Set
+    End Property
 
     Function Acceder(user As String, contrasena As String) As Boolean
         Dim dt As New DataTable()
@@ -186,6 +198,7 @@ Public Class BOUsuario
                 Informes = row(8)
                 Usuarios = row(9)
                 Descuentos = row(10)
+                Precio = row(11)
             End If
         Next
         conn.Close()

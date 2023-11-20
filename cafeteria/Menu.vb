@@ -14,6 +14,7 @@ Public Class Menu
     Dim informe As Informes
     Dim ayuda As Ayuda
     Dim orden As OrdenVer
+    Dim precio As Precios
     'Dim oredenes As BOOrdenes()
     Public Sub New()
 
@@ -50,6 +51,7 @@ Public Class Menu
                                                informe = New Informes(usuario)
                                                ayuda = New Ayuda(usuario)
                                                inicio = New Inicio(usuario)
+                                               precio = New Precios(usuario)
                                                inicio.MdiParent = Me
                                                inicio.Dock = DockStyle.Fill
                                                venta.MdiParent = Me
@@ -62,6 +64,8 @@ Public Class Menu
                                                usario.Dock = DockStyle.Fill
                                                ayuda.MdiParent = Me
                                                ayuda.Dock = DockStyle.Fill
+                                               precio.MdiParent = Me
+                                               precio.Dock = DockStyle.Fill
                                                inicio.Show()
                                                opciones.Visible = True
                                                picLogo.Visible = True
@@ -76,6 +80,13 @@ Public Class Menu
                                                    btnVenta.Visible = True
                                                    notif.Enabled = True
                                                    notif.Visible = True
+                                               End If
+                                               If Not usuario.Precio Then
+                                                   btnPrecios.Enabled = False
+                                                   btnPrecios.Visible = False
+                                               Else
+                                                   btnPrecios.Enabled = True
+                                                   btnPrecios.Visible = True
                                                End If
                                                If Not usuario.Inventario Then
                                                    btninventario.Enabled = False
@@ -121,6 +132,7 @@ Public Class Menu
         usario.Hide()
         informe.Hide()
         ayuda.Hide()
+        precio.Hide()
     End Sub
     Private Sub parpadeo(lab As Label, inOut As Boolean)
         Dim col As Color = Color.FromArgb(197, 90, 17)
@@ -135,11 +147,11 @@ Public Class Menu
 
     End Sub
 
-    Private Sub Label1_MouseMove(sender As Object, e As MouseEventArgs) Handles btnHome.MouseMove, btnAyuda.MouseMove, btnInformes.MouseMove, btninventario.MouseMove, btnVenta.MouseMove, btnCerrarSesion.MouseMove
+    Private Sub Label1_MouseMove(sender As Object, e As MouseEventArgs) Handles btnHome.MouseMove, btnAyuda.MouseMove, btnInformes.MouseMove, btninventario.MouseMove, btnVenta.MouseMove, btnCerrarSesion.MouseMove, btnPrecios.MouseMove
         parpadeo(sender, True)
     End Sub
 
-    Private Sub btnHome_MouseLeave(sender As Object, e As EventArgs) Handles btnHome.MouseLeave, btnAyuda.MouseLeave, btnInformes.MouseLeave, btninventario.MouseLeave, btnVenta.MouseLeave, btnCerrarSesion.MouseLeave
+    Private Sub btnHome_MouseLeave(sender As Object, e As EventArgs) Handles btnHome.MouseLeave, btnAyuda.MouseLeave, btnInformes.MouseLeave, btninventario.MouseLeave, btnVenta.MouseLeave, btnCerrarSesion.MouseLeave, btnPrecios.MouseLeave
         parpadeo(sender, False)
     End Sub
     Private Sub btnHome_Click(sender As Object, e As EventArgs) Handles btnHome.Click
@@ -391,5 +403,10 @@ Public Class Menu
     Private Sub btnInformes_Click(sender As Object, e As EventArgs) Handles btnInformes.Click
         cerrar()
         informe.Show()
+    End Sub
+
+    Private Sub btnPrecios_Click(sender As Object, e As EventArgs) Handles btnPrecios.Click
+        cerrar()
+        precio.Show()
     End Sub
 End Class

@@ -1,5 +1,9 @@
-﻿Public Class Precios
-    Public Sub New()
+﻿Imports BOCafeteria
+Imports Microsoft.VisualBasic.ApplicationServices
+
+Public Class Precios
+    Private usuario As New BOUsuario
+    Public Sub New(user As BOUsuario)
 
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
@@ -8,5 +12,6 @@
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.FormBorderStyle = FormBorderStyle.None
+        usuario = user
     End Sub
 End Class

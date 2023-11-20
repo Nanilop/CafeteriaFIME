@@ -30,6 +30,7 @@ Partial Class Menu
         Me.opciones = New System.Windows.Forms.Panel()
         Me.btnCerrarSesion = New System.Windows.Forms.Label()
         Me.btnUsuarios = New System.Windows.Forms.Label()
+        Me.btnPrecios = New System.Windows.Forms.Label()
         Me.picLogo = New System.Windows.Forms.PictureBox()
         Me.PNotificaciones = New System.Windows.Forms.Panel()
         Me.PicVacio = New System.Windows.Forms.PictureBox()
@@ -78,7 +79,7 @@ Partial Class Menu
         Me.btnInformes.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnInformes.ForeColor = System.Drawing.Color.White
         Me.btnInformes.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnInformes.Location = New System.Drawing.Point(238, 0)
+        Me.btnInformes.Location = New System.Drawing.Point(311, 0)
         Me.btnInformes.Name = "btnInformes"
         Me.btnInformes.Size = New System.Drawing.Size(94, 39)
         Me.btnInformes.TabIndex = 3
@@ -108,7 +109,7 @@ Partial Class Menu
         Me.btnAyuda.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAyuda.ForeColor = System.Drawing.Color.White
         Me.btnAyuda.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnAyuda.Location = New System.Drawing.Point(424, 0)
+        Me.btnAyuda.Location = New System.Drawing.Point(497, 0)
         Me.btnAyuda.Name = "btnAyuda"
         Me.btnAyuda.Size = New System.Drawing.Size(73, 39)
         Me.btnAyuda.TabIndex = 4
@@ -122,12 +123,13 @@ Partial Class Menu
         Me.opciones.Controls.Add(Me.btnAyuda)
         Me.opciones.Controls.Add(Me.btnUsuarios)
         Me.opciones.Controls.Add(Me.btnInformes)
+        Me.opciones.Controls.Add(Me.btnPrecios)
         Me.opciones.Controls.Add(Me.btninventario)
         Me.opciones.Controls.Add(Me.btnVenta)
         Me.opciones.Controls.Add(Me.btnHome)
         Me.opciones.Location = New System.Drawing.Point(81, 12)
         Me.opciones.Name = "opciones"
-        Me.opciones.Size = New System.Drawing.Size(674, 39)
+        Me.opciones.Size = New System.Drawing.Size(716, 39)
         Me.opciones.TabIndex = 6
         '
         'btnCerrarSesion
@@ -138,7 +140,7 @@ Partial Class Menu
         Me.btnCerrarSesion.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCerrarSesion.ForeColor = System.Drawing.Color.White
         Me.btnCerrarSesion.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnCerrarSesion.Location = New System.Drawing.Point(497, 0)
+        Me.btnCerrarSesion.Location = New System.Drawing.Point(570, 0)
         Me.btnCerrarSesion.Name = "btnCerrarSesion"
         Me.btnCerrarSesion.Size = New System.Drawing.Size(133, 39)
         Me.btnCerrarSesion.TabIndex = 7
@@ -153,12 +155,27 @@ Partial Class Menu
         Me.btnUsuarios.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnUsuarios.ForeColor = System.Drawing.Color.White
         Me.btnUsuarios.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnUsuarios.Location = New System.Drawing.Point(332, 0)
+        Me.btnUsuarios.Location = New System.Drawing.Point(405, 0)
         Me.btnUsuarios.Name = "btnUsuarios"
         Me.btnUsuarios.Size = New System.Drawing.Size(92, 39)
         Me.btnUsuarios.TabIndex = 6
         Me.btnUsuarios.Text = "Usuarios"
         Me.btnUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'btnPrecios
+        '
+        Me.btnPrecios.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(17, Byte), Integer))
+        Me.btnPrecios.Dock = System.Windows.Forms.DockStyle.Left
+        Me.btnPrecios.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnPrecios.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPrecios.ForeColor = System.Drawing.Color.White
+        Me.btnPrecios.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btnPrecios.Location = New System.Drawing.Point(238, 0)
+        Me.btnPrecios.Name = "btnPrecios"
+        Me.btnPrecios.Size = New System.Drawing.Size(73, 39)
+        Me.btnPrecios.TabIndex = 8
+        Me.btnPrecios.Text = "Precios"
+        Me.btnPrecios.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'picLogo
         '
@@ -244,4 +261,5 @@ Partial Class Menu
     Friend WithEvents notif As PictureBox
     Friend WithEvents PicVacio As PictureBox
     Friend WithEvents btnCerrarSesion As Label
+    Friend WithEvents btnPrecios As Label
 End Class
