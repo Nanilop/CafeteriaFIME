@@ -14,4 +14,9 @@ Public Class Precios
         Me.FormBorderStyle = FormBorderStyle.None
         usuario = user
     End Sub
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+        Dim modifica As New PrecioModificar("Nombre", "0.00")
+        modifica.Show()
+    End Sub
 End Class

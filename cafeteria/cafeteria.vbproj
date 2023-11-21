@@ -175,10 +175,10 @@
     <Compile Include="Precios.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RestablecerContraseña.Designer.vb">
-      <DependentUpon>RestablecerContraseña.vb</DependentUpon>
+    <Compile Include="PrecioModificar.Designer.vb">
+      <DependentUpon>PrecioModificar.vb</DependentUpon>
     </Compile>
-    <Compile Include="RestablecerContraseña.vb">
+    <Compile Include="PrecioModificar.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Sesion.Designer.vb">
@@ -263,6 +263,12 @@
     <EmbeddedResource Include="OrdenVer.resx">
       <DependentUpon>OrdenVer.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PrecioModificar.resx">
+      <DependentUpon>PrecioModificar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Precios.resx">
+      <DependentUpon>Precios.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sesion.resx">
       <DependentUpon>Sesion.vb</DependentUpon>
     </EmbeddedResource>
@@ -342,6 +348,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\buscar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\recargar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
