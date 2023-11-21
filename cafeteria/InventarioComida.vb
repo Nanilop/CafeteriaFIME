@@ -3,12 +3,14 @@ Imports BOCafeteria
 Public Class InventarioComida
     Public comida As New BOComida()
     Dim etiqueta As Boolean = True
-    Public Sub New()
+    Private usuario As New BOUsuario
+
+    Public Sub New(user As BOUsuario)
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
         Me.BackgroundImage = Image.FromFile("..\\..\\Resources\\Presentación1\\Diapositiva1.png")
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-
+        usuario = user
     End Sub
     Private Sub btnRegresarC_Click(sender As Object, e As EventArgs) Handles btnRegresarC.Click
         LimpiarTxt()
@@ -49,6 +51,26 @@ Public Class InventarioComida
                 etiqueta = comida.RegistrarComida(txtIdComida.Text, txtNombreC.Text, txtIDtipoval.Text, HoraInicio, HoraFin, txtVistaC.Text)
                 MsgBox("La informacion se ha registrado con Exito")
                 LimpiarTxt()
+                Try
+                    Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                        sql.Open()
+                        Using cmd As New SqlCommand
+                            With cmd
+                                .Connection = sql
+                                .CommandText = "REGISTROBitUsuario"
+                                .CommandType = CommandType.StoredProcedure
+                                .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                                .Parameters.Add(New SqlParameter("@id_TipoVal", 33))
+                                .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                                .Parameters.Add(New SqlParameter("@VistaBU", "1"))
+                            End With
+                            cmd.ExecuteNonQuery()
+                        End Using
+                        sql.Close()
+                    End Using
+                Catch ex As SqlException
+                    MessageBox.Show(ex.Message)
+                End Try
             Else
                 MsgBox("No se ha podido registrar la informacion: Formato de tiempo incorrecto. Introduce el tiempo en formato HH:mm")
             End If

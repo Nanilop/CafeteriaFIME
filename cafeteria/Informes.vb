@@ -57,6 +57,26 @@ Public Class Informes
                 hoja_trabajo.Cells(a, 9) = fila.Cells(8).Value.ToString()
                 a += 1
             Next
+            Try
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                    sql.Open()
+                    Using cmd As New SqlCommand
+                        With cmd
+                            .Connection = sql
+                            .CommandText = "REGISTROBitUsuario"
+                            .CommandType = CommandType.StoredProcedure
+                            .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                            .Parameters.Add(New SqlParameter("@id_TipoVal", 56))
+                            .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                            .Parameters.Add(New SqlParameter("@VistaBU", "1"))
+                        End With
+                        cmd.ExecuteNonQuery()
+                    End Using
+                    sql.Close()
+                End Using
+            Catch ex As SqlException
+                MessageBox.Show(ex.Message)
+            End Try
         ElseIf cbInformes.SelectedIndex = 1 Then
             'Reporte de Historial de Usuarios
             hoja_trabajo.Cells(1, 1) = "Fecha"
@@ -74,6 +94,26 @@ Public Class Informes
                 hoja_trabajo.Cells(a, 6) = fila.Cells(5).Value.ToString()
                 a += 1
             Next
+            Try
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                    sql.Open()
+                    Using cmd As New SqlCommand
+                        With cmd
+                            .Connection = sql
+                            .CommandText = "REGISTROBitUsuario"
+                            .CommandType = CommandType.StoredProcedure
+                            .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                            .Parameters.Add(New SqlParameter("@id_TipoVal", 57))
+                            .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                            .Parameters.Add(New SqlParameter("@VistaBU", "1"))
+                        End With
+                        cmd.ExecuteNonQuery()
+                    End Using
+                    sql.Close()
+                End Using
+            Catch ex As SqlException
+                MessageBox.Show(ex.Message)
+            End Try
         ElseIf cbInformes.SelectedIndex = 2 Then
             'Reporte de Inventarios
             hoja_trabajo.Cells(1, 1) = "Fecha"
@@ -93,6 +133,26 @@ Public Class Informes
                 hoja_trabajo.Cells(a, 7) = fila.Cells(6).Value.ToString()
                 a += 1
             Next
+            Try
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                    sql.Open()
+                    Using cmd As New SqlCommand
+                        With cmd
+                            .Connection = sql
+                            .CommandText = "REGISTROBitUsuario"
+                            .CommandType = CommandType.StoredProcedure
+                            .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                            .Parameters.Add(New SqlParameter("@id_TipoVal", 55))
+                            .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                            .Parameters.Add(New SqlParameter("@VistaBU", "1"))
+                        End With
+                        cmd.ExecuteNonQuery()
+                    End Using
+                    sql.Close()
+                End Using
+            Catch ex As SqlException
+                MessageBox.Show(ex.Message)
+            End Try
         End If
         libros_trabajo.SaveAs(dialogoGuardar.FileName)
         libros_trabajo.Close(True)
@@ -140,6 +200,26 @@ Public Class Informes
             End Try
             dgvInformes.DataSource = dt
             dgvInformes.Columns("Fecha").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            Try
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                    sql.Open()
+                    Using cmd As New SqlCommand
+                        With cmd
+                            .Connection = sql
+                            .CommandText = "REGISTROBitUsuario"
+                            .CommandType = CommandType.StoredProcedure
+                            .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                            .Parameters.Add(New SqlParameter("@id_TipoVal", 59))
+                            .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                            .Parameters.Add(New SqlParameter("@VistaBU", "1"))
+                        End With
+                        cmd.ExecuteNonQuery()
+                    End Using
+                    sql.Close()
+                End Using
+            Catch ex As SqlException
+                MessageBox.Show(ex.Message)
+            End Try
 
         ElseIf cbInformes.SelectedIndex = 1 Then
             'Reporte de Historial de Usuarios
@@ -180,7 +260,26 @@ Public Class Informes
             End Try
             dgvInformes.DataSource = dt
             dgvInformes.Columns("Fecha").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-
+            Try
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                    sql.Open()
+                    Using cmd As New SqlCommand
+                        With cmd
+                            .Connection = sql
+                            .CommandText = "REGISTROBitUsuario"
+                            .CommandType = CommandType.StoredProcedure
+                            .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                            .Parameters.Add(New SqlParameter("@id_TipoVal", 60))
+                            .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                            .Parameters.Add(New SqlParameter("@VistaBU", "1"))
+                        End With
+                        cmd.ExecuteNonQuery()
+                    End Using
+                    sql.Close()
+                End Using
+            Catch ex As SqlException
+                MessageBox.Show(ex.Message)
+            End Try
         ElseIf cbInformes.SelectedIndex = 2 Then
             'Reporte de Inventario
             Dim consult As String = ""
@@ -221,6 +320,26 @@ Public Class Informes
             dgvInformes.DataSource = dt
             dgvInformes.Columns("Fecha").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
 
+            Try
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                    sql.Open()
+                    Using cmd As New SqlCommand
+                        With cmd
+                            .Connection = sql
+                            .CommandText = "REGISTROBitUsuario"
+                            .CommandType = CommandType.StoredProcedure
+                            .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                            .Parameters.Add(New SqlParameter("@id_TipoVal", 58))
+                            .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                            .Parameters.Add(New SqlParameter("@VistaBU", "1"))
+                        End With
+                        cmd.ExecuteNonQuery()
+                    End Using
+                    sql.Close()
+                End Using
+            Catch ex As SqlException
+                MessageBox.Show(ex.Message)
+            End Try
         End If
 
     End Sub

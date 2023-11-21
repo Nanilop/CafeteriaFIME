@@ -70,6 +70,7 @@ Partial Class PrecioModificar
         '
         Me.txtprecioPrecioMod.Font = New System.Drawing.Font("Calibri", 15.75!)
         Me.txtprecioPrecioMod.Location = New System.Drawing.Point(95, 84)
+        Me.txtprecioPrecioMod.MaxLength = 8
         Me.txtprecioPrecioMod.Name = "txtprecioPrecioMod"
         Me.txtprecioPrecioMod.Size = New System.Drawing.Size(344, 33)
         Me.txtprecioPrecioMod.TabIndex = 4

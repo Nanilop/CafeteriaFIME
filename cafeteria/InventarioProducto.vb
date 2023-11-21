@@ -1,14 +1,15 @@
 ﻿Imports System.Data.SqlClient
 Imports BOCafeteria
 Public Class InventarioProducto
+    Private usuario As New BOUsuario
     Public producto As New BOProducto()
     Dim etiqueta As Boolean = True
-    Public Sub New()
+    Public Sub New(user As BOUsuario)
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
         Me.BackgroundImage = Image.FromFile("..\\..\\Resources\\Presentación1\\Diapositiva1.png")
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-
+        usuario = user
     End Sub
     Private Sub btnRegresarP_Click(sender As Object, e As EventArgs) Handles btnRegresarP.Click
         LimpiarTxt()
@@ -43,6 +44,26 @@ Public Class InventarioProducto
             etiqueta = producto.RegistrarProducto(txtIDproducto.Text, txtNombreP.Text, txtCantidadEx.Text, txtMinimoEx.Text, txtMaximoEx.Text, txtIDtipoval.Text, txtVistaP.Text)
             MessageBox.Show("La informacion se ha registrado con exito.")
             LimpiarTxt()
+            Try
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                    sql.Open()
+                    Using cmd As New SqlCommand
+                        With cmd
+                            .Connection = sql
+                            .CommandText = "REGISTROBitUsuario"
+                            .CommandType = CommandType.StoredProcedure
+                            .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                            .Parameters.Add(New SqlParameter("@id_TipoVal", 33))
+                            .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                            .Parameters.Add(New SqlParameter("@VistaBU", "1"))
+                        End With
+                        cmd.ExecuteNonQuery()
+                    End Using
+                    sql.Close()
+                End Using
+            Catch ex As SqlException
+                MessageBox.Show(ex.Message)
+            End Try
         Else
             MessageBox.Show("No se ha podido registrar la informacion.")
         End If

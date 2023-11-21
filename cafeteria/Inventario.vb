@@ -8,6 +8,8 @@ Imports BOCafeteria
 Public Class Inventario
     Dim cnn As SqlConnection = New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
     Private usuario As New BOUsuario
+    Private bcomida As Boolean = False
+    Private bproducto As Boolean = False
     Public Sub New(user As BOUsuario)
 
         ' Esta llamada es exigida por el diseñador.
@@ -20,11 +22,35 @@ Public Class Inventario
         usuario = user
     End Sub
     Private Sub btnEditarP_Click(sender As Object, e As EventArgs) Handles btnEditarP.Click
-        InventarioProducto.Show()
+        If bproducto Then
+
+        Else
+            bproducto = True
+            Dim p As New InventarioProducto(usuario)
+            Application.DoEvents()
+            AddHandler p.btnRegresarP.Click, AddressOf abre
+            AddHandler p.FormClosed, AddressOf abre
+            p.Show()
+        End If
+
+    End Sub
+    Private Sub abre(sender As Object, ea As EventArgs)
+        bproducto = False
+    End Sub
+    Private Sub abrec(sender As Object, ea As EventArgs)
+        bcomida = False
     End Sub
 
     Private Sub btnEditarC_Click(sender As Object, e As EventArgs) Handles btnEditarC.Click
-        InventarioComida.Show()
+        If bcomida Then
+        Else
+            bcomida = True
+            Dim c As New InventarioComida(usuario)
+            Application.DoEvents()
+            AddHandler c.btnRegresarC.Click, AddressOf abrec
+            AddHandler c.FormClosed, AddressOf abrec
+            c.Show()
+        End If
     End Sub
     Public Sub MostrarProductos()
         Dim cmd = New SqlCommand("SELECT * FROM Producto", cnn)
