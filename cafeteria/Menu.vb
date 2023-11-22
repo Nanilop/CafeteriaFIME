@@ -147,11 +147,11 @@ Public Class Menu
 
     End Sub
 
-    Private Sub Label1_MouseMove(sender As Object, e As MouseEventArgs) Handles btnHome.MouseMove, btnAyuda.MouseMove, btnInformes.MouseMove, btninventario.MouseMove, btnVenta.MouseMove, btnCerrarSesion.MouseMove, btnPrecios.MouseMove
+    Private Sub Label1_MouseMove(sender As Object, e As MouseEventArgs) Handles btnHome.MouseMove, btnAyuda.MouseMove, btnInformes.MouseMove, btninventario.MouseMove, btnVenta.MouseMove, btnCerrarSesion.MouseMove, btnPrecios.MouseMove, btnUsuarios.MouseMove
         parpadeo(sender, True)
     End Sub
 
-    Private Sub btnHome_MouseLeave(sender As Object, e As EventArgs) Handles btnHome.MouseLeave, btnAyuda.MouseLeave, btnInformes.MouseLeave, btninventario.MouseLeave, btnVenta.MouseLeave, btnCerrarSesion.MouseLeave, btnPrecios.MouseLeave
+    Private Sub btnHome_MouseLeave(sender As Object, e As EventArgs) Handles btnHome.MouseLeave, btnAyuda.MouseLeave, btnInformes.MouseLeave, btninventario.MouseLeave, btnVenta.MouseLeave, btnCerrarSesion.MouseLeave, btnPrecios.MouseLeave, btnUsuarios.MouseLeave
         parpadeo(sender, False)
     End Sub
     Private Sub btnHome_Click(sender As Object, e As EventArgs) Handles btnHome.Click

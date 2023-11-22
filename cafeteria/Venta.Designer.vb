@@ -68,7 +68,7 @@ Partial Class Venta
         'btnBuscar
         '
         Me.btnBuscar.Location = New System.Drawing.Point(407, 54)
-        Me.btnBuscar.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnBuscar.Margin = New System.Windows.Forms.Padding(2)
         Me.btnBuscar.Name = "btnBuscar"
         Me.btnBuscar.Size = New System.Drawing.Size(75, 28)
         Me.btnBuscar.TabIndex = 32
@@ -79,7 +79,7 @@ Partial Class Venta
         '
         Me.txtBusqueda.BackColor = System.Drawing.SystemColors.HighlightText
         Me.txtBusqueda.Location = New System.Drawing.Point(487, 58)
-        Me.txtBusqueda.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtBusqueda.Margin = New System.Windows.Forms.Padding(2)
         Me.txtBusqueda.Name = "txtBusqueda"
         Me.txtBusqueda.Size = New System.Drawing.Size(270, 20)
         Me.txtBusqueda.TabIndex = 31
@@ -88,7 +88,7 @@ Partial Class Venta
         '
         Me.PictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.PictureBox5.Location = New System.Drawing.Point(159, 49)
-        Me.PictureBox5.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PictureBox5.Margin = New System.Windows.Forms.Padding(2)
         Me.PictureBox5.Name = "PictureBox5"
         Me.PictureBox5.Size = New System.Drawing.Size(165, 151)
         Me.PictureBox5.TabIndex = 30
@@ -100,7 +100,7 @@ Partial Class Venta
         Me.Panel3.Controls.Add(Me.ResultadosP)
         Me.Panel3.Controls.Add(Me.Panel7)
         Me.Panel3.Location = New System.Drawing.Point(366, 94)
-        Me.Panel3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel3.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(454, 118)
         Me.Panel3.TabIndex = 29
@@ -110,7 +110,7 @@ Partial Class Venta
         Me.ResultadosP.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
         Me.ResultadosP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.ResultadosP.Location = New System.Drawing.Point(2, 24)
-        Me.ResultadosP.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ResultadosP.Margin = New System.Windows.Forms.Padding(2)
         Me.ResultadosP.Name = "ResultadosP"
         Me.ResultadosP.RowHeadersWidth = 51
         Me.ResultadosP.RowTemplate.Height = 24
@@ -122,7 +122,7 @@ Partial Class Venta
         Me.Panel7.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.Panel7.Controls.Add(Me.Label10)
         Me.Panel7.Location = New System.Drawing.Point(0, 0)
-        Me.Panel7.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel7.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(452, 20)
         Me.Panel7.TabIndex = 0
@@ -151,7 +151,7 @@ Partial Class Venta
         Me.Panel1.Controls.Add(Me.Label5)
         Me.Panel1.Controls.Add(Me.txtbTotal)
         Me.Panel1.Location = New System.Drawing.Point(159, 217)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(661, 240)
         Me.Panel1.TabIndex = 28
@@ -159,7 +159,7 @@ Partial Class Venta
         'btnImprimir
         '
         Me.btnImprimir.Location = New System.Drawing.Point(524, 152)
-        Me.btnImprimir.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnImprimir.Margin = New System.Windows.Forms.Padding(2)
         Me.btnImprimir.Name = "btnImprimir"
         Me.btnImprimir.Size = New System.Drawing.Size(99, 22)
         Me.btnImprimir.TabIndex = 7
@@ -172,7 +172,7 @@ Partial Class Venta
         Me.ListadoP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.ListadoP.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Cantidad, Me.NombrePC, Me.Precio, Me.PrecioTot})
         Me.ListadoP.Location = New System.Drawing.Point(2, 32)
-        Me.ListadoP.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ListadoP.Margin = New System.Windows.Forms.Padding(2)
         Me.ListadoP.Name = "ListadoP"
         Me.ListadoP.RowHeadersWidth = 51
         Me.ListadoP.RowTemplate.Height = 24
@@ -232,7 +232,7 @@ Partial Class Venta
         'txtbCambio
         '
         Me.txtbCambio.Location = New System.Drawing.Point(572, 125)
-        Me.txtbCambio.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtbCambio.Margin = New System.Windows.Forms.Padding(2)
         Me.txtbCambio.Name = "txtbCambio"
         Me.txtbCambio.Size = New System.Drawing.Size(76, 20)
         Me.txtbCambio.TabIndex = 6
@@ -250,7 +250,7 @@ Partial Class Venta
         'txtbPago
         '
         Me.txtbPago.Location = New System.Drawing.Point(572, 103)
-        Me.txtbPago.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtbPago.Margin = New System.Windows.Forms.Padding(2)
         Me.txtbPago.Name = "txtbPago"
         Me.txtbPago.Size = New System.Drawing.Size(76, 20)
         Me.txtbPago.TabIndex = 5
@@ -278,7 +278,7 @@ Partial Class Venta
         'txtbTotal
         '
         Me.txtbTotal.Location = New System.Drawing.Point(572, 82)
-        Me.txtbTotal.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtbTotal.Margin = New System.Windows.Forms.Padding(2)
         Me.txtbTotal.Name = "txtbTotal"
         Me.txtbTotal.Size = New System.Drawing.Size(76, 20)
         Me.txtbTotal.TabIndex = 4
@@ -291,7 +291,7 @@ Partial Class Venta
         Me.pbEliminar.Cursor = System.Windows.Forms.Cursors.No
         Me.pbEliminar.ErrorImage = Nothing
         Me.pbEliminar.Location = New System.Drawing.Point(328, 167)
-        Me.pbEliminar.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.pbEliminar.Margin = New System.Windows.Forms.Padding(2)
         Me.pbEliminar.Name = "pbEliminar"
         Me.pbEliminar.Size = New System.Drawing.Size(33, 33)
         Me.pbEliminar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -305,7 +305,7 @@ Partial Class Venta
         Me.pbAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pbAgregar.Cursor = System.Windows.Forms.Cursors.Default
         Me.pbAgregar.Location = New System.Drawing.Point(328, 126)
-        Me.pbAgregar.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.pbAgregar.Margin = New System.Windows.Forms.Padding(2)
         Me.pbAgregar.Name = "pbAgregar"
         Me.pbAgregar.Size = New System.Drawing.Size(33, 33)
         Me.pbAgregar.TabIndex = 26
@@ -326,7 +326,7 @@ Partial Class Venta
         Me.Controls.Add(Me.pbEliminar)
         Me.Controls.Add(Me.pbAgregar)
         Me.Location = New System.Drawing.Point(0, 35)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Venta"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Venta"

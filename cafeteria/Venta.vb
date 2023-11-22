@@ -425,6 +425,10 @@ Public Class Venta
         e.Graphics.DrawString("~ GRACIAS POR PREFERIRNOS ~", f10, Brushes.Black, centermargin, 70 + height2, center)
 
     End Sub
+
+    Private Sub Venta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class
 
 

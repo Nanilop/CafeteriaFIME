@@ -1,9 +1,12 @@
-﻿Imports System.Runtime.ConstrainedExecution
+﻿Imports System.Data.SqlClient
+Imports System.Runtime.ConstrainedExecution
 Imports BOCafeteria
 
 Public Class Usuarios
     Private usuario As New BOUsuario
     Private ver As Boolean = False
+    Private modifica As InsModUsuario
+    Private abierto As Boolean = False
     Public Sub New(user As BOUsuario)
 
         ' Esta llamada es exigida por el diseñador.
@@ -14,18 +17,82 @@ Public Class Usuarios
         Me.MinimizeBox = False
         Me.FormBorderStyle = FormBorderStyle.None
         usuario = user
-        look.Image = Image.FromFile("..\\..\\Resources\\mostrar.png")
+        recarga()
+    End Sub
+    Private Sub EventoRecarga(sender As Object, ea As EventArgs)
+        recarga()
+        modifica.Close()
+        abierto = False
+    End Sub
+    Private Sub recarga()
+        Dim dt As New DataTable()
+        Try
+
+            Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                sql.Open()
+                Using cmd As New SqlCommand
+                    With cmd
+                        .Connection = sql
+                        .CommandType = CommandType.Text
+                        .CommandText = "select id_Usuario,Nombre,Telefono,email as Email,
+                                        NombreU as [Nombre de Usuario],Contrasena as Contraseña,Vista,Inventario,
+                                        Usuario,Venta,Informes,Precios from Usuarios where id_Usuario!=1"
+                    End With
+
+                    Using da = New SqlDataAdapter(cmd)
+                        da.Fill(dt)
+                    End Using
+                End Using
+            End Using
+
+        Catch ex As SqlException
+
+            MessageBox.Show(ex.Message)
+
+        End Try
+        dgvusuarios.DataSource = dt
+        dgvusuarios.Columns("Contraseña").Visible = False
+        dgvusuarios.Columns("Nombre de Usuario").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        dgvusuarios.Columns("id_Usuario").Visible = False
+        dgvusuarios.Columns("Vista").Visible = False
+        dgvusuarios.Columns("Inventario").Visible = False
+        dgvusuarios.Columns("Usuario").Visible = False
+        dgvusuarios.Columns("Venta").Visible = False
+        dgvusuarios.Columns("Informes").Visible = False
+        dgvusuarios.Columns("Precios").Visible = False
+    End Sub
+    Private Sub abre(sender As Object, ea As EventArgs)
+        abierto = False
+    End Sub
+    Private Sub btnModifica_Click(sender As Object, e As EventArgs) Handles btnModifica.Click
+        If abierto Then
+            MessageBox.Show("Guardeo cierre para modificar")
+        Else
+            If dgvusuarios.SelectedRows.Count = 1 Then
+                abierto = True
+                modifica = New InsModUsuario(usuario, dgvusuarios.SelectedRows(0).Cells("id_Usuario").Value.ToString())
+                Application.DoEvents()
+                AddHandler modifica.btnGuardarModPrec.Click, AddressOf EventoRecarga
+                AddHandler modifica.FormClosed, AddressOf abre
+                modifica.Show()
+            Else
+                MessageBox.Show("Seleccione un renglon.")
+            End If
+
+        End If
     End Sub
 
-    Private Sub look_Click(sender As Object, e As EventArgs) Handles look.Click
-        If (ver) Then
-            txtContraseña.PasswordChar = "*"
-            ver = False
-            look.Image = Image.FromFile("..\\..\\Resources\\mostrar.png")
+    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
+        If abierto Then
+            MessageBox.Show("Guarde o cierre para insertar uno nuevo")
         Else
-            txtContraseña.PasswordChar = ""
-            ver = True
-            look.Image = Image.FromFile("..\\..\\Resources\\ocultar.png")
+
+            abierto = True
+                modifica = New InsModUsuario(usuario)
+                Application.DoEvents()
+                AddHandler modifica.btnGuardarModPrec.Click, AddressOf EventoRecarga
+                AddHandler modifica.FormClosed, AddressOf abre
+            modifica.Show()
         End If
     End Sub
 End Class

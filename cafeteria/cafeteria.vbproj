@@ -216,10 +216,10 @@
     <Compile Include="Usuarios.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Validacion.Designer.vb">
-      <DependentUpon>Validacion.vb</DependentUpon>
+    <Compile Include="InsModUsuario.Designer.vb">
+      <DependentUpon>InsModUsuario.vb</DependentUpon>
     </Compile>
-    <Compile Include="Validacion.vb">
+    <Compile Include="InsModUsuario.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Venta.Designer.vb">
@@ -241,6 +241,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cargando.resx">
       <DependentUpon>Cargando.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsModUsuario.resx">
+      <DependentUpon>InsModUsuario.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventario.resx">
       <DependentUpon>Inventario.vb</DependentUpon>
@@ -354,6 +357,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\recargar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agregar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agregar1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

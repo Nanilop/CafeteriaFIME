@@ -87,6 +87,7 @@ Public Class Precios
             MessageBox.Show("Guarde para modificar y cerrar")
         Else
             If dgvPrecio.SelectedRows.Count = 1 Then
+                abierto = True
                 modifica = New PrecioModificar(dgvPrecio.SelectedRows(0).Cells("Producto/Comida").Value.ToString(), dgvPrecio.SelectedRows(0).Cells("PrecioSug").Value.ToString(), dgvPrecio.SelectedRows(0).Cells("id_Precio").Value.ToString())
                 Application.DoEvents()
                 AddHandler modifica.btnGuardarModPrec.Click, AddressOf EventoRecarga
@@ -95,7 +96,7 @@ Public Class Precios
             Else
                 MessageBox.Show("Seleccione un renglon")
             End If
-            abierto = True
+
         End If
     End Sub
 End Class
