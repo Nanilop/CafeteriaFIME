@@ -110,7 +110,7 @@ Public Class InsModUsuario
     End Sub
 
     Private Sub btnGuardarModPrec_Click(sender As Object, e As EventArgs) Handles btnGuardarModPrec.Click
-        Dim vis,inv,inf,ven,pre,usrio As Boolean
+        Dim vis, inv, inf, ven, pre, usrio As Boolean
         vis = chkVista.Checked
         inv = chkInventario.Checked
         inf = chkInforme.Checked
@@ -242,6 +242,21 @@ Public Class InsModUsuario
             Catch ex As SqlException
                 MessageBox.Show(ex.Message)
             End Try
+        End If
+    End Sub
+    Private Sub txtNumTel_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTelefono.KeyPress
+        If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsNumber(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
+    Private Sub txtNombre_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNombre.KeyPress
+        If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsLetter(e.KeyChar) AndAlso Not Char.IsWhiteSpace(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
+    Private Sub txtNombreU_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNombreU.KeyPress
+        If Char.IsWhiteSpace(e.KeyChar) Then
+            e.Handled = True
         End If
     End Sub
 End Class

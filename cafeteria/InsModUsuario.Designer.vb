@@ -116,6 +116,7 @@ Partial Class InsModUsuario
         '
         Me.txtContraseña.Font = New System.Drawing.Font("Calibri", 15.75!)
         Me.txtContraseña.Location = New System.Drawing.Point(17, 285)
+        Me.txtContraseña.MaxLength = 100
         Me.txtContraseña.Name = "txtContraseña"
         Me.txtContraseña.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtContraseña.Size = New System.Drawing.Size(344, 33)
@@ -125,6 +126,7 @@ Partial Class InsModUsuario
         '
         Me.txtEmail.Font = New System.Drawing.Font("Calibri", 15.75!)
         Me.txtEmail.Location = New System.Drawing.Point(17, 226)
+        Me.txtEmail.MaxLength = 100
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.Size = New System.Drawing.Size(344, 33)
         Me.txtEmail.TabIndex = 31
@@ -142,6 +144,7 @@ Partial Class InsModUsuario
         '
         Me.txtNombre.Font = New System.Drawing.Font("Calibri", 15.75!)
         Me.txtNombre.Location = New System.Drawing.Point(17, 112)
+        Me.txtNombre.MaxLength = 600
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(344, 33)
         Me.txtNombre.TabIndex = 29
@@ -150,6 +153,7 @@ Partial Class InsModUsuario
         '
         Me.txtNombreU.Font = New System.Drawing.Font("Calibri", 15.75!)
         Me.txtNombreU.Location = New System.Drawing.Point(17, 55)
+        Me.txtNombreU.MaxLength = 100
         Me.txtNombreU.Name = "txtNombreU"
         Me.txtNombreU.Size = New System.Drawing.Size(344, 33)
         Me.txtNombreU.TabIndex = 28
