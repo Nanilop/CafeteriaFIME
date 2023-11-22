@@ -73,9 +73,12 @@ Public Class Venta
             ' Mostramos los resultados en el DataGridView
             ResultadosP.DataSource = dataTableResult
 
-            conn.Close()
         Catch ex As Exception
             MessageBox.Show("Error al buscar: " & ex.Message)
+        Finally
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
         End Try
     End Sub
 
@@ -259,96 +262,165 @@ Public Class Venta
 
         PPD.ShowDialog()
         PrintDocument1.Print()
-        Using conn As New SqlConnection(connectionString)
-            conn.Open()
+        conn.Open()
 
-            For Each row As DataGridViewRow In ListadoP.Rows
-                If Not row.IsNewRow Then
-                    If row.Cells("NombrePC").Value IsNot Nothing AndAlso row.Cells("Cantidad").Value IsNot Nothing Then
-                        Dim PoC As String = row.Cells("NombrePC").Value.ToString()
+        For Each row As DataGridViewRow In ListadoP.Rows
+            If Not row.IsNewRow Then
+                If row.Cells("NombrePC").Value IsNot Nothing AndAlso row.Cells("Cantidad").Value IsNot Nothing Then
+                    Dim PoC As String = row.Cells("NombrePC").Value.ToString()
 
-                        Dim cantidadARestar As Integer = 0
-                        If Integer.TryParse(row.Cells("Cantidad").Value.ToString(), cantidadARestar) Then
-                            If PoC <> "" AndAlso cantidadARestar > 0 Then
-                                Try
-                                    Dim queryCantidadP As String = "SELECT CantidadEx FROM Producto WHERE NombreP = @producto"
-                                    Using cmdProducto As New SqlCommand(queryCantidadP, conn)
-                                        cmdProducto.Parameters.AddWithValue("@producto", PoC)
-                                        Dim cantidadActual As Integer = Convert.ToInt32(cmdProducto.ExecuteScalar())
+                    ' Verificar si el valor de NombrePC existe en la tabla Productos
+                    Dim queryCheckExistence As String = "SELECT COUNT(*) FROM Producto WHERE NombreP = @producto"
+                    Using cmdCheckExistence As New SqlCommand(queryCheckExistence, conn)
+                        cmdCheckExistence.Parameters.AddWithValue("@producto", PoC)
+                        Dim existencia As Integer = Convert.ToInt32(cmdCheckExistence.ExecuteScalar())
 
-                                        If cantidadActual >= cantidadARestar Then
-                                            Dim nuevaCantidad As Integer = cantidadActual - cantidadARestar
-                                            Dim updateQuery As String = "UPDATE Producto SET CantidadEx = @nuevaCantidad WHERE NombreP= @producto"
+                        If existencia > 0 Then ' Si el valor existe en Productos
+                            Dim cantidadARestar As Integer = 0
+                            If Integer.TryParse(row.Cells("Cantidad").Value.ToString(), cantidadARestar) Then
+                                If PoC <> "" AndAlso cantidadARestar > 0 Then
+                                    Try
+                                        Dim queryCantidadP As String = "SELECT CantidadEx FROM Producto WHERE NombreP = @producto"
+                                        Using cmdProducto As New SqlCommand(queryCantidadP, conn)
+                                            cmdProducto.Parameters.AddWithValue("@producto", PoC)
+                                            Dim cantidadActual As Integer = Convert.ToInt32(cmdProducto.ExecuteScalar())
 
-                                            Using cmdCantidadNP As New SqlCommand(updateQuery, conn)
-                                                cmdCantidadNP.Parameters.AddWithValue("@nuevaCantidad", nuevaCantidad)
-                                                cmdCantidadNP.Parameters.AddWithValue("@producto", PoC)
-                                                ' Ejecutar la actualización de la base de datos aquí
-                                                cmdCantidadNP.ExecuteNonQuery()
-                                            End Using
-                                        Else
-                                            MessageBox.Show("No hay suficiente cantidad de " & PoC & " en la tabla Productos.")
-                                        End If
-                                    End Using
-                                Catch ex As SqlException
-                                    MessageBox.Show("Error de SQL al actualizar la base de datos: " & ex.Message)
-                                Catch ex As Exception
-                                    MessageBox.Show("Error al actualizar la base de datos: " & ex.Message)
-                                End Try
+                                            If cantidadActual >= cantidadARestar Then
+                                                Dim nuevaCantidad As Integer = cantidadActual - cantidadARestar
+                                                Dim updateQuery As String = "UPDATE Producto SET CantidadEx = @nuevaCantidad WHERE NombreP= @producto"
+
+                                                Using cmdCantidadNP As New SqlCommand(updateQuery, conn)
+                                                    cmdCantidadNP.Parameters.AddWithValue("@nuevaCantidad", nuevaCantidad)
+                                                    cmdCantidadNP.Parameters.AddWithValue("@producto", PoC)
+                                                    ' Ejecutar la actualización de la base de datos aquí
+                                                    cmdCantidadNP.ExecuteNonQuery()
+                                                End Using
+                                            Else
+                                                MessageBox.Show("No hay suficiente cantidad de " & PoC & " en la tabla Productos.")
+                                            End If
+                                        End Using
+                                    Catch ex As SqlException
+                                        MessageBox.Show("Error de SQL al actualizar la base de datos: " & ex.Message)
+                                    Catch ex As Exception
+                                        MessageBox.Show("Error al actualizar la base de datos: " & ex.Message)
+                                    End Try
+                                End If
+                            Else
+                                MessageBox.Show("El valor de cantidad no es válido en la fila " & (row.Index + 1).ToString())
                             End If
-                        Else
-                            MessageBox.Show("El valor de cantidad no es válido en la fila " & (row.Index + 1).ToString())
                         End If
-                    End If
+                    End Using
                 End If
-            Next
+            End If
+        Next
 
 
-            ' Obtener los valores de los TextBox
-            Dim total As Decimal = Decimal.Parse(txtbTotal.Text)
-            Dim pago As Decimal = Decimal.Parse(txtbPago.Text)
-            Dim cambio As Decimal = Decimal.Parse(txtbCambio.Text)
+        ' Obtener los valores de los TextBox
+        Dim total As Decimal = Decimal.Parse(txtbTotal.Text)
+        Dim pago As Decimal = Decimal.Parse(txtbPago.Text)
+        Dim cambio As Decimal = Decimal.Parse(txtbCambio.Text)
 
-            ' Insertar los datos de la venta en la base de datos
+        Dim existeCoincidencia As Boolean = False
+
+        ' Iterar sobre las filas del DataGridView
+        For Each row As DataGridViewRow In ListadoP.Rows
+            ' Verificar si la celda NombrePC no está vacía
+            If row.Cells("NombrePC").Value IsNot Nothing AndAlso Not String.IsNullOrWhiteSpace(row.Cells("NombrePC").Value.ToString()) Then
+                ' Obtener el valor de la celda NombrePC
+                Dim nombrePC As String = row.Cells("NombrePC").Value.ToString()
+
+                ' Consultar si existe coincidencia en la tabla Comida
+                Dim queryCheck As String = "SELECT COUNT(*) FROM Comida WHERE NombreC = @nombreC"
+                Using cmdCheck As New SqlCommand(queryCheck, conn)
+                    cmdCheck.Parameters.AddWithValue("@nombreC", nombrePC)
+                    Dim count As Integer = Convert.ToInt32(cmdCheck.ExecuteScalar())
+
+                    ' Si existe alguna coincidencia, asignar la bandera y salir del bucle
+                    If count > 0 Then
+                        existeCoincidencia = True
+                        Exit For
+                    End If
+                End Using
+            End If
+        Next
+
+        Dim idTipoVal As Integer = If(existeCoincidencia, 3, 4)
+
+        ' Insertar los datos de la venta en la base de datos
+
+        Try
+
+            ' Obtener el último ID_VENTA
+            Dim queryLastID As String = "SELECT TOP 1 id_Venta FROM Venta ORDER BY id_Venta DESC"
+            Dim lastID As Integer = 0
+
+            Using cmdLastID As New SqlCommand(queryLastID, conn)
+                Dim result As Object = cmdLastID.ExecuteScalar()
+                If result IsNot Nothing AndAlso Not IsDBNull(result) Then
+                    lastID = Convert.ToInt32(result)
+                End If
+            End Using
+
+            ' Generar el nuevo ID_VENTA
+            Dim newID As Integer = lastID + 1
+            ' Insertar los datos de la venta en la tabla Venta con id_TipoVal correspondiente
+            Dim insertQuery As String = "INSERT INTO Venta (id_Venta, id_TipoVal, TotalV, PagoV, Feria, FechaVenta) VALUES (@ID_VENTA, @idTipoVal, @Total, @Pago, @Cambio, GETDATE())"
+            Using cmdInsert As New SqlCommand(insertQuery, conn)
+                cmdInsert.Parameters.AddWithValue("@ID_VENTA", newID)
+                cmdInsert.Parameters.AddWithValue("@idTipoVal", idTipoVal)
+                cmdInsert.Parameters.AddWithValue("@Total", total)
+                cmdInsert.Parameters.AddWithValue("@Pago", pago)
+                cmdInsert.Parameters.AddWithValue("@Cambio", cambio)
+                cmdInsert.ExecuteNonQuery()
+            End Using
+
+            MessageBox.Show("Venta registrada correctamente: " & newID)
+            ' Insertar en la BitacoraUsuario si la venta fue registrada correctamente
+            Dim fechaHoraActual As DateTime = DateTime.Now
+
+            Dim newIDB As Integer = 0 ' Declarar la variable fuera del bloque Try
 
             Try
+                ' Consulta para obtener el último ID registrado
+                Dim queryLastIDB As String = "SELECT TOP 1 id_BitUsuario FROM BitacoraUsuario ORDER BY id_BitUsuario DESC"
+                Dim lastIDB As Integer = 0
 
-                ' Obtener el último ID_VENTA
-                Dim queryLastID As String = "SELECT TOP 1 id_Venta FROM Venta ORDER BY id_Venta DESC"
-                Dim lastID As Integer = 0
-
-                Using cmdLastID As New SqlCommand(queryLastID, conn)
-                    Dim result As Object = cmdLastID.ExecuteScalar()
+                Using cmdLastIDB As New SqlCommand(queryLastIDB, conn)
+                    Dim result As Object = cmdLastIDB.ExecuteScalar()
                     If result IsNot Nothing AndAlso Not IsDBNull(result) Then
-                        lastID = Convert.ToInt32(result)
+                        lastIDB = Convert.ToInt32(result)
                     End If
                 End Using
 
-                ' Generar el nuevo ID_VENTA
-                Dim newID As Integer = lastID + 1
-                ' Insertar los datos de la venta en la tabla Venta
-                Dim insertQuery As String = "INSERT INTO Venta (id_Venta, TotalV, PagoV, Feria, FechaVenta,id_Usuario) VALUES (@ID_VENTA, @Total, @Pago, @Cambio, GETDATE())"
-                Using cmdInsert As New SqlCommand(insertQuery, conn)
-                    cmdInsert.Parameters.AddWithValue("@ID_VENTA", newID)
-                    cmdInsert.Parameters.AddWithValue("@Total", total)
-                    cmdInsert.Parameters.AddWithValue("@Pago", pago)
-                    cmdInsert.Parameters.AddWithValue("@Cambio", cambio)
-                    cmdInsert.ExecuteNonQuery()
-
-                End Using
-
-                MessageBox.Show("Venta registrada correctamente: " & newID)
+                ' Calcular el nuevo ID fuera del bloque Try
+                newIDB = lastIDB + 1
             Catch ex As Exception
-                MessageBox.Show("Error al registrar la venta: " & ex.Message)
+                ' Manejar excepciones
             End Try
+
+            ' Consulta para insertar el nuevo registro
+            Dim consulta As String = "INSERT INTO BitacoraUsuario (id_BitUsuario, id_TipoVal, FechaHora) VALUES (@idNuevo, @idTipoValor, @fechaHora)"
+
+            Using comando As New SqlCommand(consulta, conn)
+                comando.Parameters.AddWithValue("@idNuevo", newIDB)
+                comando.Parameters.AddWithValue("@idTipoValor", 35)
+                comando.Parameters.AddWithValue("@fechaHora", fechaHoraActual)
+
+                comando.ExecuteNonQuery()
+            End Using
+        Catch ex As Exception
+            ' Manejar excepciones
             conn.Close()
-        End Using
+            MessageBox.Show("Error al registrar la venta: " & ex.Message)
+        End Try
         txtbTotal.Text = String.Empty
         txtbPago.Text = String.Empty
         txtbCambio.Text = String.Empty
         ListadoP.Rows.Clear()
+        conn.Close()
 
     End Sub
+
 
     'se definen los ajustes de impresion y del papel
     Private Sub PrintDocument1_BeginPrint(sender As Object, e As PrintEventArgs) Handles PrintDocument1.BeginPrint
@@ -393,11 +465,11 @@ Public Class Venta
 
         'Columnas
         e.Graphics.DrawString("Producto", f8, Brushes.Black, 0, 110)
-        e.Graphics.DrawString("Precio", f8, Brushes.Black, 75, 110)
-        e.Graphics.DrawString("Cant.", f8, Brushes.Black, 160, 110, right)
+        e.Graphics.DrawString("Precio", f8, Brushes.Black, 120, 110)
+        e.Graphics.DrawString("Cant.", f8, Brushes.Black, 180, 110, right)
         '
 
-        e.Graphics.DrawString(line, f8, Brushes.Black, 0, 120)
+        e.Graphics.DrawString(line, f8, Brushes.Black, 0, 180)
 
         Dim height As Integer
         Dim i As Long
@@ -406,10 +478,10 @@ Public Class Venta
         For row As Integer = 0 To ListadoP.RowCount - 1
             height += 15
             e.Graphics.DrawString(ListadoP.Rows(row).Cells(1).Value.ToString, f8, Brushes.Black, 0, 115 + height)
-            e.Graphics.DrawString(ListadoP.Rows(row).Cells(2).Value.ToString, f8, Brushes.Black, 75, 115 + height)
+            e.Graphics.DrawString(ListadoP.Rows(row).Cells(2).Value.ToString, f8, Brushes.Black, 120, 115 + height)
             i = ListadoP.Rows(row).Cells(2).Value
             ListadoP.Rows(row).Cells(2).Value = Format(i, "##,##0")
-            e.Graphics.DrawString(ListadoP.Rows(row).Cells(0).Value.ToString, f8, Brushes.Black, 150, 115 + height, right)
+            e.Graphics.DrawString(ListadoP.Rows(row).Cells(0).Value.ToString, f8, Brushes.Black, 175, 115 + height, right)
         Next
 
         Dim height2 As Integer
@@ -423,10 +495,6 @@ Public Class Venta
 
 
         e.Graphics.DrawString("~ GRACIAS POR PREFERIRNOS ~", f10, Brushes.Black, centermargin, 70 + height2, center)
-
-    End Sub
-
-    Private Sub Venta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 End Class
