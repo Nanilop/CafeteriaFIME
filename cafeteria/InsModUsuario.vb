@@ -8,6 +8,7 @@ Public Class InsModUsuario
     Private ver As Boolean = False
     Private insert As Boolean = False
     Private idUs As String = ""
+    Public cerrar As Boolean = True
     Public Sub New(user As BOUsuario, id As String)
 
         ' Esta llamada es exigida por el diseñador.
@@ -117,6 +118,7 @@ Public Class InsModUsuario
         ven = chkVenta.Checked
         pre = chkPrecio.Checked
         usrio = chkUsuario.Checked
+        Dim response As String = ""
         If insert Then
             Try
                 Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
@@ -138,7 +140,13 @@ Public Class InsModUsuario
                             .Parameters.Add(New SqlParameter("@Informes", inf))
                             .Parameters.Add(New SqlParameter("@Precios", pre))
                         End With
-                        cmd.ExecuteNonQuery()
+                        Dim lector As SqlDataReader
+                        lector = cmd.ExecuteReader
+                        If lector.HasRows Then
+                            While lector.Read
+                                response = lector(0).ToString()
+                            End While
+                        End If
                     End Using
                     sql.Close()
                 End Using
@@ -146,28 +154,32 @@ Public Class InsModUsuario
                 MessageBox.Show(ex.Message)
             End Try
 
-
-            Try
-                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
-                    sql.Open()
-                    Using cmd As New SqlCommand
-                        With cmd
-                            .Connection = sql
-                            .CommandText = "REGISTROBitUsuario"
-                            .CommandType = CommandType.StoredProcedure
-                            .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
-                            .Parameters.Add(New SqlParameter("@id_TipoVal", 61))
-                            .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
-                            .Parameters.Add(New SqlParameter("@VistaBU", "1"))
-                        End With
-                        cmd.ExecuteNonQuery()
+            If response.Equals("Escoga otro Nombre de Usuario") Then
+                MessageBox.Show(response)
+                cerrar = False
+            Else
+                cerrar = True
+                Try
+                    Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                        sql.Open()
+                        Using cmd As New SqlCommand
+                            With cmd
+                                .Connection = sql
+                                .CommandText = "REGISTROBitUsuario"
+                                .CommandType = CommandType.StoredProcedure
+                                .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                                .Parameters.Add(New SqlParameter("@id_TipoVal", 61))
+                                .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                                .Parameters.Add(New SqlParameter("@VistaBU", "1"))
+                            End With
+                            cmd.ExecuteNonQuery()
+                        End Using
+                        sql.Close()
                     End Using
-                    sql.Close()
-                End Using
-            Catch ex As SqlException
-                MessageBox.Show(ex.Message)
-            End Try
-
+                Catch ex As SqlException
+                    MessageBox.Show(ex.Message)
+                End Try
+            End If
         Else
             Try
                 Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
@@ -191,35 +203,45 @@ Public Class InsModUsuario
                             .Parameters.Add(New SqlParameter("@Precios ", pre))
 
                         End With
-                        cmd.ExecuteNonQuery()
+                        Dim lector As SqlDataReader
+                        lector = cmd.ExecuteReader
+                        If lector.HasRows Then
+                            While lector.Read
+                                response = lector(0).ToString()
+                            End While
+                        End If
                     End Using
                     sql.Close()
                 End Using
             Catch ex As SqlException
                 MessageBox.Show(ex.Message)
             End Try
-
-
-            Try
-                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
-                    sql.Open()
-                    Using cmd As New SqlCommand
-                        With cmd
-                            .Connection = sql
-                            .CommandText = "REGISTROBitUsuario"
-                            .CommandType = CommandType.StoredProcedure
-                            .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
-                            .Parameters.Add(New SqlParameter("@id_TipoVal", 62))
-                            .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
-                            .Parameters.Add(New SqlParameter("@VistaBU", "1"))
-                        End With
-                        cmd.ExecuteNonQuery()
+            If response.Equals("Escoga otro Nombre de Usuario") Then
+                MessageBox.Show(response)
+                cerrar = False
+            Else
+                cerrar = True
+                Try
+                    Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                        sql.Open()
+                        Using cmd As New SqlCommand
+                            With cmd
+                                .Connection = sql
+                                .CommandText = "REGISTROBitUsuario"
+                                .CommandType = CommandType.StoredProcedure
+                                .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                                .Parameters.Add(New SqlParameter("@id_TipoVal", 62))
+                                .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                                .Parameters.Add(New SqlParameter("@VistaBU", "1"))
+                            End With
+                            cmd.ExecuteNonQuery()
+                        End Using
+                        sql.Close()
                     End Using
-                    sql.Close()
-                End Using
-            Catch ex As SqlException
-                MessageBox.Show(ex.Message)
-            End Try
+                Catch ex As SqlException
+                    MessageBox.Show(ex.Message)
+                End Try
+            End If
         End If
         If chkVista.Checked = False Then
             Try

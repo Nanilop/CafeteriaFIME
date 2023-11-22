@@ -21,7 +21,9 @@ Public Class Usuarios
     End Sub
     Private Sub EventoRecarga(sender As Object, ea As EventArgs)
         recarga()
-        modifica.Close()
+        If modifica.cerrar Then
+            modifica.Close()
+        End If
         abierto = False
     End Sub
     Private Sub recarga()
