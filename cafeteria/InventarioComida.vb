@@ -80,6 +80,48 @@ Public Class InventarioComida
                     Catch ex As SqlException
                         MessageBox.Show(ex.Message)
                     End Try
+                    Try
+                        Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                            sql.Open()
+                            Using cmd As New SqlCommand
+                                With cmd
+                                    .Connection = sql
+                                    .CommandText = "REGISTROBitUsuario"
+                                    .CommandType = CommandType.StoredProcedure
+                                    .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                                    .Parameters.Add(New SqlParameter("@id_TipoVal", 19))
+                                    .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                                    .Parameters.Add(New SqlParameter("@VistaBU", "1"))
+                                End With
+                                cmd.ExecuteNonQuery()
+                            End Using
+                            sql.Close()
+                        End Using
+                    Catch ex As SqlException
+                        MessageBox.Show(ex.Message)
+                    End Try
+                    Try
+                        Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                            sql.Open()
+                            Using cmd As New SqlCommand
+                                With cmd
+                                    .Connection = sql
+                                    .CommandText = "REGISTROBitacoraInventario"
+                                    .CommandType = CommandType.StoredProcedure
+                                    .Parameters.Add(New SqlParameter("@id_TipoVal", 44))
+                                    .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                                    .Parameters.Add(New SqlParameter("@CantidadB", 1))
+                                    .Parameters.Add(New SqlParameter("@id_Producto", comida.IdComida))
+                                    .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                                    .Parameters.Add(New SqlParameter("@VistaB", "1"))
+                                End With
+                                cmd.ExecuteNonQuery()
+                            End Using
+                            sql.Close()
+                        End Using
+                    Catch ex As SqlException
+                        MessageBox.Show(ex.Message)
+                    End Try
                 Else
                     MsgBox("No se ha podido registrar la informacion: Formato de tiempo incorrecto. Introduce el tiempo en formato HH:mm")
                 End If
@@ -121,6 +163,48 @@ Public Class InventarioComida
                 etiqueta = comida.ModificarComida(txtIdComida.Text, txtNombreC.Text, txtIDtipoval.Text, HoraInicio, HoraFin, txtVistaC.Text)
                 MsgBox("La informacion se ha Modificado con Exito")
                 LimpiarTxt()
+                Try
+                    Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                        sql.Open()
+                        Using cmd As New SqlCommand
+                            With cmd
+                                .Connection = sql
+                                .CommandText = "REGISTROBitUsuario"
+                                .CommandType = CommandType.StoredProcedure
+                                .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                                .Parameters.Add(New SqlParameter("@id_TipoVal", 18))
+                                .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                                .Parameters.Add(New SqlParameter("@VistaBU", "1"))
+                            End With
+                            cmd.ExecuteNonQuery()
+                        End Using
+                        sql.Close()
+                    End Using
+                Catch ex As SqlException
+                    MessageBox.Show(ex.Message)
+                End Try
+                Try
+                    Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                        sql.Open()
+                        Using cmd As New SqlCommand
+                            With cmd
+                                .Connection = sql
+                                .CommandText = "REGISTROBitacoraInventario"
+                                .CommandType = CommandType.StoredProcedure
+                                .Parameters.Add(New SqlParameter("@id_TipoVal", 43))
+                                .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                                .Parameters.Add(New SqlParameter("@CantidadB", 1))
+                                .Parameters.Add(New SqlParameter("@id_Producto", comida.IdComida))
+                                .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                                .Parameters.Add(New SqlParameter("@VistaB", "1"))
+                            End With
+                            cmd.ExecuteNonQuery()
+                        End Using
+                        sql.Close()
+                    End Using
+                Catch ex As SqlException
+                    MessageBox.Show(ex.Message)
+                End Try
             Else
                 MsgBox("No se ha podido Modificar la informacion: Formato de tiempo incorrecto. Introduce el tiempo en formato HH:mm:ss")
             End If
@@ -138,6 +222,48 @@ Public Class InventarioComida
             etiqueta = comida.EliminarComida(txtIdComida.Text)
             MsgBox("La informacion se ha eliminado con Exito")
             LimpiarTxt()
+            Try
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                    sql.Open()
+                    Using cmd As New SqlCommand
+                        With cmd
+                            .Connection = sql
+                            .CommandText = "REGISTROBitUsuario"
+                            .CommandType = CommandType.StoredProcedure
+                            .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                            .Parameters.Add(New SqlParameter("@id_TipoVal", 17))
+                            .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                            .Parameters.Add(New SqlParameter("@VistaBU", "1"))
+                        End With
+                        cmd.ExecuteNonQuery()
+                    End Using
+                    sql.Close()
+                End Using
+            Catch ex As SqlException
+                MessageBox.Show(ex.Message)
+            End Try
+            Try
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                    sql.Open()
+                    Using cmd As New SqlCommand
+                        With cmd
+                            .Connection = sql
+                            .CommandText = "REGISTROBitacoraInventario"
+                            .CommandType = CommandType.StoredProcedure
+                            .Parameters.Add(New SqlParameter("@id_TipoVal", 42))
+                            .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                            .Parameters.Add(New SqlParameter("@CantidadB", 1))
+                            .Parameters.Add(New SqlParameter("@id_Producto", comida.IdComida))
+                            .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                            .Parameters.Add(New SqlParameter("@VistaB", "1"))
+                        End With
+                        cmd.ExecuteNonQuery()
+                    End Using
+                    sql.Close()
+                End Using
+            Catch ex As SqlException
+                MessageBox.Show(ex.Message)
+            End Try
         Else
             MessageBox.Show("No se ha podido eliminar la informacion.")
         End If

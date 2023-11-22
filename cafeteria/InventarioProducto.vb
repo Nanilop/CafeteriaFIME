@@ -72,6 +72,49 @@ Public Class InventarioProducto
                 Catch ex As SqlException
                     MessageBox.Show(ex.Message)
                 End Try
+                Try
+                    Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                        sql.Open()
+                        Using cmd As New SqlCommand
+                            With cmd
+                                .Connection = sql
+                                .CommandText = "REGISTROBitUsuario"
+                                .CommandType = CommandType.StoredProcedure
+                                .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                                .Parameters.Add(New SqlParameter("@id_TipoVal", 15))
+                                .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                                .Parameters.Add(New SqlParameter("@VistaBU", "1"))
+                            End With
+                            cmd.ExecuteNonQuery()
+                        End Using
+                        sql.Close()
+                    End Using
+                Catch ex As SqlException
+                    MessageBox.Show(ex.Message)
+                End Try
+                'Bitacora Inventario
+                Try
+                    Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                        sql.Open()
+                        Using cmd As New SqlCommand
+                            With cmd
+                                .Connection = sql
+                                .CommandText = "REGISTROBitacoraInventario"
+                                .CommandType = CommandType.StoredProcedure
+                                .Parameters.Add(New SqlParameter("@id_TipoVal", 40))
+                                .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                                .Parameters.Add(New SqlParameter("@CantidadB", 1))
+                                .Parameters.Add(New SqlParameter("@id_Producto", producto.IdProducto))
+                                .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                                .Parameters.Add(New SqlParameter("@VistaB", "1"))
+                            End With
+                            cmd.ExecuteNonQuery()
+                        End Using
+                        sql.Close()
+                    End Using
+                Catch ex As SqlException
+                    MessageBox.Show(ex.Message)
+                End Try
             Else
                 MessageBox.Show("No se ha podido registrar la informacion.")
             End If
@@ -108,6 +151,48 @@ Public Class InventarioProducto
             etiqueta = producto.ModificarProducto(txtIDproducto.Text, txtNombreP.Text, txtCantidadEx.Text, txtMinimoEx.Text, txtMaximoEx.Text, txtIDtipoval.Text, txtVistaP.Text)
             MessageBox.Show("La informacion se ha modificado con exito.")
             LimpiarTxt()
+            Try
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                    sql.Open()
+                    Using cmd As New SqlCommand
+                        With cmd
+                            .Connection = sql
+                            .CommandText = "REGISTROBitUsuario"
+                            .CommandType = CommandType.StoredProcedure
+                            .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                            .Parameters.Add(New SqlParameter("@id_TipoVal", 77))
+                            .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                            .Parameters.Add(New SqlParameter("@VistaBU", "1"))
+                        End With
+                        cmd.ExecuteNonQuery()
+                    End Using
+                    sql.Close()
+                End Using
+            Catch ex As SqlException
+                MessageBox.Show(ex.Message)
+            End Try
+            Try
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                    sql.Open()
+                    Using cmd As New SqlCommand
+                        With cmd
+                            .Connection = sql
+                            .CommandText = "REGISTROBitacoraInventario"
+                            .CommandType = CommandType.StoredProcedure
+                            .Parameters.Add(New SqlParameter("@id_TipoVal", 76))
+                            .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                            .Parameters.Add(New SqlParameter("@CantidadB", 1))
+                            .Parameters.Add(New SqlParameter("@id_Producto", producto.IdProducto))
+                            .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                            .Parameters.Add(New SqlParameter("@VistaB", "1"))
+                        End With
+                        cmd.ExecuteNonQuery()
+                    End Using
+                    sql.Close()
+                End Using
+            Catch ex As SqlException
+                MessageBox.Show(ex.Message)
+            End Try
         Else
             MessageBox.Show("No se ha podido modificar la informacion.")
         End If
@@ -126,6 +211,48 @@ Public Class InventarioProducto
             etiqueta = producto.EliminarProducto(txtIDproducto.Text)
             MessageBox.Show("La informacion se ha eliminado con exito.")
             LimpiarTxt()
+            Try
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                    sql.Open()
+                    Using cmd As New SqlCommand
+                        With cmd
+                            .Connection = sql
+                            .CommandText = "REGISTROBitUsuario"
+                            .CommandType = CommandType.StoredProcedure
+                            .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                            .Parameters.Add(New SqlParameter("@id_TipoVal", 16))
+                            .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                            .Parameters.Add(New SqlParameter("@VistaBU", "1"))
+                        End With
+                        cmd.ExecuteNonQuery()
+                    End Using
+                    sql.Close()
+                End Using
+            Catch ex As SqlException
+                MessageBox.Show(ex.Message)
+            End Try
+            Try
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                    sql.Open()
+                    Using cmd As New SqlCommand
+                        With cmd
+                            .Connection = sql
+                            .CommandText = "REGISTROBitacoraInventario"
+                            .CommandType = CommandType.StoredProcedure
+                            .Parameters.Add(New SqlParameter("@id_TipoVal", 41))
+                            .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                            .Parameters.Add(New SqlParameter("@CantidadB", 1))
+                            .Parameters.Add(New SqlParameter("@id_Producto", producto.IdProducto))
+                            .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                            .Parameters.Add(New SqlParameter("@VistaB", "1"))
+                        End With
+                        cmd.ExecuteNonQuery()
+                    End Using
+                    sql.Close()
+                End Using
+            Catch ex As SqlException
+                MessageBox.Show(ex.Message)
+            End Try
         Else
             MessageBox.Show("No se ha podido eliminar la informacion.")
         End If
