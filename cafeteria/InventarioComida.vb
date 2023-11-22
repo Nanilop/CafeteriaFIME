@@ -38,41 +38,51 @@ Public Class InventarioComida
         If (String.IsNullOrEmpty(txtVistaC.Text)) Then
             valido = False
         End If
-        If valido Then
-            Dim Hora1, Hora2 As String
-            Dim HoraInicio, HoraFin, A, B As TimeSpan
 
-            Hora1 = txtHoraInicio.Text
-            Hora2 = txtHoraFin.Text
+        Dim conn = New SqlConnection("Server=DESKTOP-R538THL;Database=Proyecto; Integrated Security=True;")
+        conn.Open()
+        Dim query As String = ("select * from Comida where id_Comida = '" & txtIdComida.Text & "'")
+        Dim cmd_ As New SqlCommand(query, conn)
+        Dim rdr As SqlDataReader = cmd_.ExecuteReader()
+        If rdr.HasRows Then
+            MessageBox.Show("El identificador unico ya existe, por favor, introduzca uno nuevo.")
+        Else
+            If valido Then
+                Dim Hora1, Hora2 As String
+                Dim HoraInicio, HoraFin, A, B As TimeSpan
 
-            If TimeSpan.TryParse(Hora1, A) AndAlso TimeSpan.TryParse(Hora2, B) Then
-                HoraInicio = A
-                HoraFin = B
-                etiqueta = comida.RegistrarComida(txtIdComida.Text, txtNombreC.Text, txtIDtipoval.Text, HoraInicio, HoraFin, txtVistaC.Text)
-                MsgBox("La informacion se ha registrado con Exito")
-                LimpiarTxt()
-                Try
-                    Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
-                        sql.Open()
-                        Using cmd As New SqlCommand
-                            With cmd
-                                .Connection = sql
-                                .CommandText = "REGISTROBitUsuario"
-                                .CommandType = CommandType.StoredProcedure
-                                .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
-                                .Parameters.Add(New SqlParameter("@id_TipoVal", 33))
-                                .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
-                                .Parameters.Add(New SqlParameter("@VistaBU", "1"))
-                            End With
-                            cmd.ExecuteNonQuery()
+                Hora1 = txtHoraInicio.Text
+                Hora2 = txtHoraFin.Text
+
+                If TimeSpan.TryParse(Hora1, A) AndAlso TimeSpan.TryParse(Hora2, B) Then
+                    HoraInicio = A
+                    HoraFin = B
+                    etiqueta = comida.RegistrarComida(txtIdComida.Text, txtNombreC.Text, txtIDtipoval.Text, HoraInicio, HoraFin, txtVistaC.Text)
+                    MsgBox("La informacion se ha registrado con Exito")
+                    LimpiarTxt()
+                    Try
+                        Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                            sql.Open()
+                            Using cmd As New SqlCommand
+                                With cmd
+                                    .Connection = sql
+                                    .CommandText = "REGISTROBitUsuario"
+                                    .CommandType = CommandType.StoredProcedure
+                                    .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                                    .Parameters.Add(New SqlParameter("@id_TipoVal", 33))
+                                    .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                                    .Parameters.Add(New SqlParameter("@VistaBU", "1"))
+                                End With
+                                cmd.ExecuteNonQuery()
+                            End Using
+                            sql.Close()
                         End Using
-                        sql.Close()
-                    End Using
-                Catch ex As SqlException
-                    MessageBox.Show(ex.Message)
-                End Try
-            Else
-                MsgBox("No se ha podido registrar la informacion: Formato de tiempo incorrecto. Introduce el tiempo en formato HH:mm")
+                    Catch ex As SqlException
+                        MessageBox.Show(ex.Message)
+                    End Try
+                Else
+                    MsgBox("No se ha podido registrar la informacion: Formato de tiempo incorrecto. Introduce el tiempo en formato HH:mm")
+                End If
             End If
         End If
     End Sub
@@ -170,5 +180,13 @@ Public Class InventarioComida
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnLimpiar.Click
         LimpiarTxt()
+    End Sub
+
+    Private Sub txtHoraInicio_Click(sender As Object, e As EventArgs) Handles txtHoraInicio.Click
+        txtHoraInicio.Clear()
+    End Sub
+
+    Private Sub txtHoraFin_Click(sender As Object, e As EventArgs) Handles txtHoraFin.Click
+        txtHoraFin.Clear()
     End Sub
 End Class

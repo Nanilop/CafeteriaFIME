@@ -54,7 +54,7 @@ Partial Class InventarioProducto
         Me.btnBuscar.Location = New System.Drawing.Point(572, 37)
         Me.btnBuscar.Name = "btnBuscar"
         Me.btnBuscar.Size = New System.Drawing.Size(113, 43)
-        Me.btnBuscar.TabIndex = 60
+        Me.btnBuscar.TabIndex = 8
         Me.btnBuscar.Text = "Buscar"
         Me.btnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnBuscar.UseVisualStyleBackColor = True
@@ -62,11 +62,12 @@ Partial Class InventarioProducto
         'btnLimpiar
         '
         Me.btnLimpiar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLimpiar.Image = Global.cafeteria.My.Resources.Resources.limpiar
         Me.btnLimpiar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnLimpiar.Location = New System.Drawing.Point(572, 88)
         Me.btnLimpiar.Name = "btnLimpiar"
         Me.btnLimpiar.Size = New System.Drawing.Size(113, 46)
-        Me.btnLimpiar.TabIndex = 59
+        Me.btnLimpiar.TabIndex = 9
         Me.btnLimpiar.Text = "Limpiar"
         Me.btnLimpiar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnLimpiar.UseVisualStyleBackColor = True
@@ -102,7 +103,7 @@ Partial Class InventarioProducto
         Me.txtIDproducto.Location = New System.Drawing.Point(215, 36)
         Me.txtIDproducto.Name = "txtIDproducto"
         Me.txtIDproducto.Size = New System.Drawing.Size(277, 26)
-        Me.txtIDproducto.TabIndex = 34
+        Me.txtIDproducto.TabIndex = 1
         '
         'Label1
         '
@@ -132,7 +133,7 @@ Partial Class InventarioProducto
         Me.txtNombreP.Location = New System.Drawing.Point(215, 68)
         Me.txtNombreP.Name = "txtNombreP"
         Me.txtNombreP.Size = New System.Drawing.Size(277, 26)
-        Me.txtNombreP.TabIndex = 36
+        Me.txtNombreP.TabIndex = 2
         '
         'Label3
         '
@@ -151,7 +152,7 @@ Partial Class InventarioProducto
         Me.txtVistaP.Location = New System.Drawing.Point(215, 245)
         Me.txtVistaP.Name = "txtVistaP"
         Me.txtVistaP.Size = New System.Drawing.Size(277, 26)
-        Me.txtVistaP.TabIndex = 46
+        Me.txtVistaP.TabIndex = 7
         '
         'txtCantidadEx
         '
@@ -159,7 +160,7 @@ Partial Class InventarioProducto
         Me.txtCantidadEx.Location = New System.Drawing.Point(215, 102)
         Me.txtCantidadEx.Name = "txtCantidadEx"
         Me.txtCantidadEx.Size = New System.Drawing.Size(277, 26)
-        Me.txtCantidadEx.TabIndex = 38
+        Me.txtCantidadEx.TabIndex = 3
         '
         'Label7
         '
@@ -189,7 +190,7 @@ Partial Class InventarioProducto
         Me.txtIDtipoval.Location = New System.Drawing.Point(215, 209)
         Me.txtIDtipoval.Name = "txtIDtipoval"
         Me.txtIDtipoval.Size = New System.Drawing.Size(277, 26)
-        Me.txtIDtipoval.TabIndex = 44
+        Me.txtIDtipoval.TabIndex = 6
         '
         'txtMinimoEx
         '
@@ -197,7 +198,7 @@ Partial Class InventarioProducto
         Me.txtMinimoEx.Location = New System.Drawing.Point(215, 137)
         Me.txtMinimoEx.Name = "txtMinimoEx"
         Me.txtMinimoEx.Size = New System.Drawing.Size(277, 26)
-        Me.txtMinimoEx.TabIndex = 40
+        Me.txtMinimoEx.TabIndex = 4
         '
         'Label6
         '
@@ -227,7 +228,7 @@ Partial Class InventarioProducto
         Me.txtMaximoEx.Location = New System.Drawing.Point(215, 173)
         Me.txtMaximoEx.Name = "txtMaximoEx"
         Me.txtMaximoEx.Size = New System.Drawing.Size(277, 26)
-        Me.txtMaximoEx.TabIndex = 42
+        Me.txtMaximoEx.TabIndex = 5
         '
         'btnEliminarP
         '
@@ -237,7 +238,7 @@ Partial Class InventarioProducto
         Me.btnEliminarP.Location = New System.Drawing.Point(572, 245)
         Me.btnEliminarP.Name = "btnEliminarP"
         Me.btnEliminarP.Size = New System.Drawing.Size(113, 44)
-        Me.btnEliminarP.TabIndex = 57
+        Me.btnEliminarP.TabIndex = 12
         Me.btnEliminarP.Text = "Eliminar"
         Me.btnEliminarP.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnEliminarP.UseVisualStyleBackColor = True
@@ -250,7 +251,7 @@ Partial Class InventarioProducto
         Me.btnModificarP.Location = New System.Drawing.Point(572, 189)
         Me.btnModificarP.Name = "btnModificarP"
         Me.btnModificarP.Size = New System.Drawing.Size(113, 46)
-        Me.btnModificarP.TabIndex = 56
+        Me.btnModificarP.TabIndex = 11
         Me.btnModificarP.Text = "Editar"
         Me.btnModificarP.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnModificarP.UseVisualStyleBackColor = True
@@ -258,11 +259,12 @@ Partial Class InventarioProducto
         'btnRegresarP
         '
         Me.btnRegresarP.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRegresarP.Image = Global.cafeteria.My.Resources.Resources.salir
         Me.btnRegresarP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnRegresarP.Location = New System.Drawing.Point(30, 318)
         Me.btnRegresarP.Name = "btnRegresarP"
         Me.btnRegresarP.Size = New System.Drawing.Size(127, 43)
-        Me.btnRegresarP.TabIndex = 55
+        Me.btnRegresarP.TabIndex = 13
         Me.btnRegresarP.Text = "Regresar"
         Me.btnRegresarP.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnRegresarP.UseVisualStyleBackColor = True
@@ -275,7 +277,7 @@ Partial Class InventarioProducto
         Me.btnRegistrarP.Location = New System.Drawing.Point(572, 140)
         Me.btnRegistrarP.Name = "btnRegistrarP"
         Me.btnRegistrarP.Size = New System.Drawing.Size(113, 43)
-        Me.btnRegistrarP.TabIndex = 54
+        Me.btnRegistrarP.TabIndex = 10
         Me.btnRegistrarP.Text = "Añadir"
         Me.btnRegistrarP.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnRegistrarP.UseVisualStyleBackColor = True

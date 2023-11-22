@@ -39,35 +39,44 @@ Public Class InventarioProducto
         If (String.IsNullOrEmpty(txtVistaP.Text)) Then
             valido = False
         End If
-        If valido Then
 
-            etiqueta = producto.RegistrarProducto(txtIDproducto.Text, txtNombreP.Text, txtCantidadEx.Text, txtMinimoEx.Text, txtMaximoEx.Text, txtIDtipoval.Text, txtVistaP.Text)
-            MessageBox.Show("La informacion se ha registrado con exito.")
-            LimpiarTxt()
-            Try
-                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
-                    sql.Open()
-                    Using cmd As New SqlCommand
-                        With cmd
-                            .Connection = sql
-                            .CommandText = "REGISTROBitUsuario"
-                            .CommandType = CommandType.StoredProcedure
-                            .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
-                            .Parameters.Add(New SqlParameter("@id_TipoVal", 33))
-                            .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
-                            .Parameters.Add(New SqlParameter("@VistaBU", "1"))
-                        End With
-                        cmd.ExecuteNonQuery()
-                    End Using
-                    sql.Close()
-                End Using
-            Catch ex As SqlException
-                MessageBox.Show(ex.Message)
-            End Try
+        Dim conn = New SqlConnection("Server=DESKTOP-R538THL;Database=Proyecto; Integrated Security=True;")
+        conn.Open()
+        Dim query As String = ("select * from Producto where id_Producto = '" & txtIDproducto.Text & "'")
+        Dim cmd_ As New SqlCommand(query, conn)
+        Dim rdr As SqlDataReader = cmd_.ExecuteReader()
+        If rdr.HasRows Then
+            MessageBox.Show("El identificador unico ya existe, por favor, introduzca uno nuevo.")
         Else
-            MessageBox.Show("No se ha podido registrar la informacion.")
+            If valido Then
+                etiqueta = producto.RegistrarProducto(txtIDproducto.Text, txtNombreP.Text, txtCantidadEx.Text, txtMinimoEx.Text, txtMaximoEx.Text, txtIDtipoval.Text, txtVistaP.Text)
+                MessageBox.Show("La informacion se ha registrado con exito.")
+                LimpiarTxt()
+                Try
+                    Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                        sql.Open()
+                        Using cmd As New SqlCommand
+                            With cmd
+                                .Connection = sql
+                                .CommandText = "REGISTROBitUsuario"
+                                .CommandType = CommandType.StoredProcedure
+                                .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                                .Parameters.Add(New SqlParameter("@id_TipoVal", 33))
+                                .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                                .Parameters.Add(New SqlParameter("@VistaBU", "1"))
+                            End With
+                            cmd.ExecuteNonQuery()
+                        End Using
+                        sql.Close()
+                    End Using
+                Catch ex As SqlException
+                    MessageBox.Show(ex.Message)
+                End Try
+            Else
+                MessageBox.Show("No se ha podido registrar la informacion.")
+            End If
         End If
-
+        conn.Close()
     End Sub
 
     Private Sub btnModificarP_Click(sender As Object, e As EventArgs) Handles btnModificarP.Click
