@@ -87,7 +87,7 @@ Public Class Venta
         Dim precio As Decimal = 0
 
         ' Consulta para obtener el precio por ID desde la tabla Precios
-        Dim queryPrecio As String = "SELECT PrecioSug FROM Precio WHERE id_Producto = @id_Producto"
+        Dim queryPrecio As String = "SELECT PrecioSug FROM Precio WHERE id_TipoVal=3 and id_Producto = @id_Producto"
         Dim cmdPrecio As New SqlCommand(queryPrecio, conn)
         cmdPrecio.Parameters.AddWithValue("@id_Producto", id)
 
@@ -344,7 +344,7 @@ Public Class Venta
             End If
         Next
 
-        Dim idTipoVal As Integer = If(existeCoincidencia, 3, 4)
+        Dim idTipoVal As Integer = If(existeCoincidencia, 7, 8)
 
         ' Insertar los datos de la venta en la base de datos
 
@@ -378,31 +378,31 @@ Public Class Venta
             ' Insertar en la BitacoraUsuario si la venta fue registrada correctamente
             Dim fechaHoraActual As DateTime = DateTime.Now
 
-            Dim newIDB As Integer = 0 ' Declarar la variable fuera del bloque Try
+            'Dim newIDB As Integer = 0 ' Declarar la variable fuera del bloque Try
 
-            Try
-                ' Consulta para obtener el último ID registrado
-                Dim queryLastIDB As String = "SELECT TOP 1 id_BitUsuario FROM BitacoraUsuario ORDER BY id_BitUsuario DESC"
-                Dim lastIDB As Integer = 0
+            'Try
+            '    ' Consulta para obtener el último ID registrado
+            '    Dim queryLastIDB As String = "SELECT TOP 1 id_BitUsuario FROM BitacoraUsuario ORDER BY id_BitUsuario DESC"
+            '    Dim lastIDB As Integer = 0
 
-                Using cmdLastIDB As New SqlCommand(queryLastIDB, conn)
-                    Dim result As Object = cmdLastIDB.ExecuteScalar()
-                    If result IsNot Nothing AndAlso Not IsDBNull(result) Then
-                        lastIDB = Convert.ToInt32(result)
-                    End If
-                End Using
+            '    Using cmdLastIDB As New SqlCommand(queryLastIDB, conn)
+            '        Dim result As Object = cmdLastIDB.ExecuteScalar()
+            '        If result IsNot Nothing AndAlso Not IsDBNull(result) Then
+            '            lastIDB = Convert.ToInt32(result)
+            '        End If
+            '    End Using
 
-                ' Calcular el nuevo ID fuera del bloque Try
-                newIDB = lastIDB + 1
-            Catch ex As Exception
-                ' Manejar excepciones
-            End Try
+            '    ' Calcular el nuevo ID fuera del bloque Try
+            '    newIDB = lastIDB + 1
+            'Catch ex As Exception
+            '    ' Manejar excepciones
+            'End Try
 
             ' Consulta para insertar el nuevo registro
             Dim consulta As String = "INSERT INTO BitacoraUsuario (id_BitUsuario, id_TipoVal, FechaHora) VALUES (@idNuevo, @idTipoValor, @fechaHora)"
 
             Using comando As New SqlCommand(consulta, conn)
-                comando.Parameters.AddWithValue("@idNuevo", newIDB)
+                'comando.Parameters.AddWithValue("@idNuevo", newIDB)
                 comando.Parameters.AddWithValue("@idTipoValor", 35)
                 comando.Parameters.AddWithValue("@fechaHora", fechaHoraActual)
 
