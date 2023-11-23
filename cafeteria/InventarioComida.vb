@@ -127,6 +127,7 @@ Public Class InventarioComida
                 End If
             End If
         End If
+        conn.Close()
     End Sub
 
     Private Sub btnModificarC_Click(sender As Object, e As EventArgs) Handles btnModificarC.Click
@@ -301,7 +302,7 @@ Public Class InventarioComida
                 End If
             End Using
         End Using
-
+        conn.Close()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnLimpiar.Click

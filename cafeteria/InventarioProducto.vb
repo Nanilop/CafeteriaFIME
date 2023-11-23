@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Drawing.Text
 Imports BOCafeteria
 Public Class InventarioProducto
     Private usuario As New BOUsuario
@@ -103,7 +104,7 @@ Public Class InventarioProducto
                                 .CommandType = CommandType.StoredProcedure
                                 .Parameters.Add(New SqlParameter("@id_TipoVal", 40))
                                 .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
-                                .Parameters.Add(New SqlParameter("@CantidadB", 1))
+                                .Parameters.Add(New SqlParameter("@CantidadB", producto.CantEx))
                                 .Parameters.Add(New SqlParameter("@id_Producto", producto.IdProducto))
                                 .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
                                 .Parameters.Add(New SqlParameter("@VistaB", "1"))
@@ -147,8 +148,10 @@ Public Class InventarioProducto
             valido = False
         End If
         If valido Then
+            Dim Diff = Val(txtCantidadEx)
 
             etiqueta = producto.ModificarProducto(txtIDproducto.Text, txtNombreP.Text, txtCantidadEx.Text, txtMinimoEx.Text, txtMaximoEx.Text, txtIDtipoval.Text, txtVistaP.Text)
+
             MessageBox.Show("La informacion se ha modificado con exito.")
             LimpiarTxt()
             Try
@@ -181,7 +184,7 @@ Public Class InventarioProducto
                             .CommandType = CommandType.StoredProcedure
                             .Parameters.Add(New SqlParameter("@id_TipoVal", 76))
                             .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
-                            .Parameters.Add(New SqlParameter("@CantidadB", 1))
+                            .Parameters.Add(New SqlParameter("@CantidadB", producto.CantEx - Diff))
                             .Parameters.Add(New SqlParameter("@id_Producto", producto.IdProducto))
                             .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
                             .Parameters.Add(New SqlParameter("@VistaB", "1"))
@@ -241,7 +244,7 @@ Public Class InventarioProducto
                             .CommandType = CommandType.StoredProcedure
                             .Parameters.Add(New SqlParameter("@id_TipoVal", 41))
                             .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
-                            .Parameters.Add(New SqlParameter("@CantidadB", 1))
+                            .Parameters.Add(New SqlParameter("@CantidadB", producto.CantEx))
                             .Parameters.Add(New SqlParameter("@id_Producto", producto.IdProducto))
                             .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
                             .Parameters.Add(New SqlParameter("@VistaB", "1"))
@@ -293,6 +296,7 @@ Public Class InventarioProducto
                 End If
             End Using
         End Using
+        conn.Close()
     End Sub
 
     Private Sub btnLimpiar_Click(sender As Object, e As EventArgs) Handles btnLimpiar.Click
