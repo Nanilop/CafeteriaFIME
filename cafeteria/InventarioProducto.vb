@@ -41,7 +41,7 @@ Public Class InventarioProducto
             valido = False
         End If
 
-        Dim conn = New SqlConnection("Server=DESKTOP-R538THL;Database=Proyecto; Integrated Security=True;")
+        Dim conn = New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
         conn.Open()
         Dim query As String = ("select * from Producto where id_Producto = '" & txtIDproducto.Text & "'")
         Dim cmd_ As New SqlCommand(query, conn)
@@ -50,7 +50,7 @@ Public Class InventarioProducto
             MessageBox.Show("El identificador unico ya existe, por favor, introduzca uno nuevo.")
         Else
             If valido Then
-                etiqueta = producto.RegistrarProducto(txtIDproducto.Text, txtNombreP.Text, txtCantidadEx.Text, txtMinimoEx.Text, txtMaximoEx.Text, txtIDtipoval.Text, txtVistaP.Text)
+                etiqueta = producto.RegistrarProducto(txtIDproducto.Text, txtNombreP.Text, txtCantidadEx.Text, txtMinimoEx.Text, txtMaximoEx.Text, "49", "1")
                 MessageBox.Show("La informacion se ha registrado con exito.")
                 LimpiarTxt()
                 Try
@@ -104,8 +104,8 @@ Public Class InventarioProducto
                                 .CommandType = CommandType.StoredProcedure
                                 .Parameters.Add(New SqlParameter("@id_TipoVal", 40))
                                 .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
-                                .Parameters.Add(New SqlParameter("@CantidadB", producto.CantEx))
-                                .Parameters.Add(New SqlParameter("@id_Producto", producto.IdProducto))
+                                .Parameters.Add(New SqlParameter("@CantidadB", txtCantidadEx.Text))
+                                .Parameters.Add(New SqlParameter("@id_Producto", txtIDproducto.Text))
                                 .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
                                 .Parameters.Add(New SqlParameter("@VistaB", "1"))
                             End With
@@ -272,7 +272,7 @@ Public Class InventarioProducto
     End Sub
 
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
-        Dim conexion As String = "Server=DESKTOP-R538THL;Database=Proyecto; Integrated Security=True;"
+        Dim conexion As String = "Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True"
         Dim conn As SqlConnection = New SqlConnection(conexion)
         conn.Open()
         Dim cmd As New SqlCommand("select * from Producto where id_Producto = @id_Producto", conn)
