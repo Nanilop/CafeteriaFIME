@@ -17,7 +17,7 @@ Public Class BOUsuario
     Private _Precio As Boolean
 
 
-    Private conexion As String = "Server=DESKTOP-CUOAPA9\SQLEXPRESS;Database=Proyecto;User Id=Admin;Password=AdminTCE123;"
+    Private conexion As String = "Server=LAPTOP-9KA9VTM6\SQLEXPRESS01;Database=Proyecto;User Id=Admin;Password=AdminTCE123; integrated security= true;"
     Public Sub New()
         _id_Usuario = ""
         _nombre = ""

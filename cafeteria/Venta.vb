@@ -20,7 +20,7 @@ Public Class Venta
         Me.FormBorderStyle = FormBorderStyle.None
         usuario = user
     End Sub
-    Private connectionString As String = "Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True"
+    Private connectionString As String = "Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True"
     Private conn As New SqlConnection(connectionString)
 
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
@@ -167,7 +167,7 @@ Public Class Venta
                 ListadoP.Rows.Add(1, cop, idpc, nombre, precio)
             End If
         Else
-            MessageBox.Show("Selecciona un elemento en el DataGridView ResultadosP antes de agregarlo.")
+            MessageBox.Show("Favor de selecciona un Producto o Comida.")
         End If
         'Recalcular los valores de "PrecioTot" después de agregar un elemento
         For Each fila As DataGridViewRow In ListadoP.Rows
@@ -230,7 +230,7 @@ Public Class Venta
             txtbCambio.Text = cambio.ToString()
         Else
             ' Manejar el caso en el que los valores no sean numéricos
-            txtbCambio.Text = "Error"
+            txtbCambio.Text = "Pendiente"
         End If
     End Sub
     Private Sub txtbTotal_TextChanged(sender As Object, e As EventArgs) Handles txtbTotal.TextChanged
@@ -267,7 +267,8 @@ Public Class Venta
         PPD.Document = PrintDocument1
 
         PPD.ShowDialog()
-        PrintDocument1.Print()
+        'Quitar Comentario******************************************************************************************************
+        'PrintDocument1.Print()
         conn.Open()
 
         For Each row As DataGridViewRow In ListadoP.Rows
@@ -303,7 +304,7 @@ Public Class Venta
                                                         cmdCantidadNP.ExecuteNonQuery()
                                                     End Using
                                                     Try
-                                                        Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                                                        Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
                                                             sql.Open()
                                                             Using cmd As New SqlCommand
                                                                 With cmd
@@ -409,7 +410,7 @@ Public Class Venta
 
             MessageBox.Show("Venta registrada correctamente")
             Try
-                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
                     sql.Open()
                     Using cmd As New SqlCommand
                         With cmd
@@ -488,7 +489,7 @@ Public Class Venta
 
                     ' Consultar si existe coincidencia en la tabla Comida
                     Try
-                            Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                            Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
                                 sql.Open()
                                 Using cmd As New SqlCommand
                                     With cmd
@@ -523,6 +524,7 @@ Public Class Venta
         txtbTotal.Text = String.Empty
         txtbPago.Text = String.Empty
         txtbCambio.Text = String.Empty
+        txtCliente.Text = String.Empty
         ListadoP.Rows.Clear()
         conn.Close()
 
@@ -542,6 +544,8 @@ Public Class Venta
         Dim f10 As New Font("Calibri", 8, FontStyle.Regular)
         Dim f10b As New Font("Calibri", 10, FontStyle.Bold)
         Dim f14 As New Font("Calibri", 14, FontStyle.Bold)
+        Dim f10ab As New Font("Calibri", 8, FontStyle.Bold)
+
 
         Dim leftmargin As Integer = PrintDocument1.DefaultPageSettings.Margins.Left
         Dim centermargin As Integer = PrintDocument1.DefaultPageSettings.PaperSize.Width / 2
@@ -557,38 +561,32 @@ Public Class Venta
         Dim line As String
         line = "****************************************************************"
 
+        Dim logoImage As Image = My.Resources.ResourceManager.GetObject("Tazita")
+        e.Graphics.DrawImage(logoImage, CInt((e.PageBounds.Width - 110) / 2), 5, 100, 95)
+        e.Graphics.DrawString("Catering Empresarial", f10ab, Brushes.Black, centermargin, -3, center)
+        e.Graphics.DrawString("Info #866 148 8162", f10ab, Brushes.Black, centermargin, 8, center)
 
-        e.Graphics.DrawString("NOMBRE DE LA EMPRESA", f10, Brushes.Black, centermargin, 30, center)
-        e.Graphics.DrawString("TELEFONO Y DIRECCION", f10, Brushes.Black, centermargin, 40, center)
-
-        e.Graphics.DrawString("Factura N", f8, Brushes.Black, 0, 75)
-        e.Graphics.DrawString(":", f8, Brushes.Black, 50, 75)
-        e.Graphics.DrawString("01234568", f8, Brushes.Black, 70, 75)
-
-        e.Graphics.DrawString("Cliente", f8, Brushes.Black, 0, 85)
-        e.Graphics.DrawString(":", f8, Brushes.Black, 50, 85)
-
-        e.Graphics.DrawString("Fecha: " + DateTime.Now.ToShortDateString() + " - Hora: " + DateTime.Now.ToShortTimeString(), f8, Brushes.Black, 0, 95)
+        e.Graphics.DrawString("Cliente", f10ab, Brushes.Black, 0, 83)
+        e.Graphics.DrawString(":", f10ab, Brushes.Black, 30, 83)
+        e.Graphics.DrawString(txtCliente.Text, f8, Brushes.Black, 35, 83)
+        e.Graphics.DrawString("Fecha:" + DateTime.Now.ToShortDateString() + "-Hora:" + DateTime.Now.ToShortTimeString(), f10ab, Brushes.Black, 0, 95)
 
         'Columnas
-        e.Graphics.DrawString("Producto", f8, Brushes.Black, 0, 110)
-        e.Graphics.DrawString("Precio", f8, Brushes.Black, 120, 110)
-        e.Graphics.DrawString("Cant.", f8, Brushes.Black, 180, 110, right)
-        '
-
-        e.Graphics.DrawString(line, f8, Brushes.Black, 0, 180)
-
+        e.Graphics.DrawString("Producto", f10ab, Brushes.Black, 0, 110)
+        e.Graphics.DrawString("Precio", f10ab, Brushes.Black, 115, 110) '75
+        e.Graphics.DrawString("Cant.", f10ab, Brushes.Black, 175, 110, right)
+        e.Graphics.DrawString(line, f8, Brushes.Black, 0, 120)
         Dim height As Integer
         Dim i As Long
         ListadoP.AllowUserToAddRows = False
 
         For row As Integer = 0 To ListadoP.RowCount - 1
             height += 15
-            e.Graphics.DrawString(ListadoP.Rows(row).Cells(1).Value.ToString, f8, Brushes.Black, 0, 115 + height)
-            e.Graphics.DrawString(ListadoP.Rows(row).Cells(2).Value.ToString, f8, Brushes.Black, 120, 115 + height)
-            i = ListadoP.Rows(row).Cells(2).Value
-            ListadoP.Rows(row).Cells(2).Value = Format(i, "##,##0")
-            e.Graphics.DrawString(ListadoP.Rows(row).Cells(0).Value.ToString, f8, Brushes.Black, 175, 115 + height, right)
+            e.Graphics.DrawString(ListadoP.Rows(row).Cells(3).Value.ToString, f8, Brushes.Black, 0, 110 + height)
+            e.Graphics.DrawString(ListadoP.Rows(row).Cells(4).Value.ToString, f8, Brushes.Black, 120, 110 + height)
+            i = ListadoP.Rows(row).Cells(4).Value
+            ListadoP.Rows(row).Cells(4).Value = Format(i, "##,##0")
+            e.Graphics.DrawString(ListadoP.Rows(row).Cells(0).Value.ToString, f8, Brushes.Black, 165, 110 + height, right)
         Next
 
         Dim height2 As Integer
@@ -596,12 +594,16 @@ Public Class Venta
 
 
         e.Graphics.DrawString(line, f8, Brushes.Black, 0, height2)
-        e.Graphics.DrawString("Total: " + txtbTotal.Text, f10b, Brushes.Black, 0, 10 + height2)
-        e.Graphics.DrawString("Pago: " + txtbPago.Text, f10b, Brushes.Black, 0, 25 + height2)
-        e.Graphics.DrawString("Cambio: " + txtbCambio.Text, f10b, Brushes.Black, 0, 40 + height2)
+        e.Graphics.DrawString("Total: " + txtbTotal.Text, f10ab, Brushes.Black, 0, 10 + height2)
+        e.Graphics.DrawString("Pago: " + txtbPago.Text, f10ab, Brushes.Black, 0, 25 + height2)
+        e.Graphics.DrawString("Cambio: " + txtbCambio.Text, f10ab, Brushes.Black, 0, 40 + height2)
 
 
-        e.Graphics.DrawString("~ GRACIAS POR PREFERIRNOS ~", f10, Brushes.Black, centermargin, 70 + height2, center)
+        e.Graphics.DrawString("~GRACIAS POR SU COMPRA(˘³˘)❤~", f10, Brushes.Black, centermargin, 70 + height2, center)
+
+    End Sub
+
+    Private Sub ListadoP_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles ListadoP.CellContentClick
 
     End Sub
 End Class

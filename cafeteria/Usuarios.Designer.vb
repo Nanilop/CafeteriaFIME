@@ -34,18 +34,21 @@ Partial Class Usuarios
         '
         Me.dgvusuarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvusuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvusuarios.Location = New System.Drawing.Point(12, 104)
+        Me.dgvusuarios.Location = New System.Drawing.Point(16, 128)
+        Me.dgvusuarios.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dgvusuarios.Name = "dgvusuarios"
-        Me.dgvusuarios.Size = New System.Drawing.Size(810, 378)
+        Me.dgvusuarios.RowHeadersWidth = 51
+        Me.dgvusuarios.Size = New System.Drawing.Size(1080, 465)
         Me.dgvusuarios.TabIndex = 0
         '
         'btnModifica
         '
         Me.btnModifica.BackColor = System.Drawing.Color.FromArgb(CType(CType(205, Byte), Integer), CType(CType(104, Byte), Integer), CType(CType(35, Byte), Integer))
         Me.btnModifica.Image = Global.cafeteria.My.Resources.Resources.editar1
-        Me.btnModifica.Location = New System.Drawing.Point(788, 64)
+        Me.btnModifica.Location = New System.Drawing.Point(1051, 79)
+        Me.btnModifica.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnModifica.Name = "btnModifica"
-        Me.btnModifica.Size = New System.Drawing.Size(34, 34)
+        Me.btnModifica.Size = New System.Drawing.Size(45, 42)
         Me.btnModifica.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.btnModifica.TabIndex = 2
         Me.btnModifica.TabStop = False
@@ -54,22 +57,24 @@ Partial Class Usuarios
         '
         Me.PictureBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(205, Byte), Integer), CType(CType(104, Byte), Integer), CType(CType(35, Byte), Integer))
         Me.PictureBox2.Image = Global.cafeteria.My.Resources.Resources.agregar1
-        Me.PictureBox2.Location = New System.Drawing.Point(748, 64)
+        Me.PictureBox2.Location = New System.Drawing.Point(997, 79)
+        Me.PictureBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(34, 34)
+        Me.PictureBox2.Size = New System.Drawing.Size(45, 42)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox2.TabIndex = 3
         Me.PictureBox2.TabStop = False
         '
         'Usuarios
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(834, 494)
+        Me.ClientSize = New System.Drawing.Size(1112, 608)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.btnModifica)
         Me.Controls.Add(Me.dgvusuarios)
         Me.Location = New System.Drawing.Point(0, 35)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "Usuarios"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Tag = "Contraseña"

@@ -233,8 +233,20 @@
     <EmbeddedResource Include="Ayuda.resx">
       <DependentUpon>Ayuda.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BitacoraUsuario.resx">
+      <DependentUpon>BitacoraUsuario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeUsuario_Permisos.resx">
+      <DependentUpon>ChangeUsuario_Permisos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comidas.resx">
+      <DependentUpon>Comidas.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Informes.resx">
       <DependentUpon>Informes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoVeenta.resx">
+      <DependentUpon>InfoVeenta.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.vb</DependentUpon>
@@ -262,6 +274,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notificaciones.resx">
+      <DependentUpon>Notificaciones.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrdenVer.resx">
       <DependentUpon>OrdenVer.vb</DependentUpon>
@@ -363,6 +378,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\agregar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imprimir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tazita %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tazita.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logotipo cafe.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

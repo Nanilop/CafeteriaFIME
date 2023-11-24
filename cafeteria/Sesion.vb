@@ -63,4 +63,8 @@ Public Class Sesion
     Private Sub txtUsuario_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtUsuario.KeyPress
 
     End Sub
+
+    Private Sub Sesion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

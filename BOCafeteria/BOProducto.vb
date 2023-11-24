@@ -9,7 +9,7 @@ Public Class BOProducto
     Private _MaximoEx As Integer
     Private _id_TipoVal As String
     Private _VistaP As Integer
-    Private conexion As String = "Server=DESKTOP-R538THL;Database=Proyecto; Integrated Security=True;"
+    Private conexion As String = "Server=LAPTOP-9KA9VTM6\SQLEXPRESS01;Database=Proyecto; Integrated Security=True;"
     Public Sub New()
         _id_Producto = ""
         _NombreP = ""
