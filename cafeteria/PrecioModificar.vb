@@ -77,7 +77,7 @@ Public Class PrecioModificar
 
     Private Sub btnGuardarModPrec_Click(sender As Object, e As EventArgs) Handles btnGuardarModPrec.Click
         Try
-            Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+            Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
                 sql.Open()
                 Using cmd As New SqlCommand
                     With cmd

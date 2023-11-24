@@ -54,7 +54,7 @@ Public Class InventarioProducto
                 MessageBox.Show("La informacion se ha registrado con exito.")
                 LimpiarTxt()
                 Try
-                    Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                    Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
                         sql.Open()
                         Using cmd As New SqlCommand
                             With cmd
@@ -74,7 +74,7 @@ Public Class InventarioProducto
                     MessageBox.Show(ex.Message)
                 End Try
                 Try
-                    Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                    Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
                         sql.Open()
                         Using cmd As New SqlCommand
                             With cmd
@@ -95,7 +95,7 @@ Public Class InventarioProducto
                 End Try
                 'Bitacora Inventario
                 Try
-                    Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                    Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
                         sql.Open()
                         Using cmd As New SqlCommand
                             With cmd
@@ -155,7 +155,7 @@ Public Class InventarioProducto
             MessageBox.Show("La informacion se ha modificado con exito.")
             LimpiarTxt()
             Try
-                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
                     sql.Open()
                     Using cmd As New SqlCommand
                         With cmd
@@ -175,7 +175,7 @@ Public Class InventarioProducto
                 MessageBox.Show(ex.Message)
             End Try
             Try
-                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
                     sql.Open()
                     Using cmd As New SqlCommand
                         With cmd
@@ -215,7 +215,7 @@ Public Class InventarioProducto
             MessageBox.Show("La informacion se ha eliminado con exito.")
             LimpiarTxt()
             Try
-                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
                     sql.Open()
                     Using cmd As New SqlCommand
                         With cmd
@@ -235,7 +235,7 @@ Public Class InventarioProducto
                 MessageBox.Show(ex.Message)
             End Try
             Try
-                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
                     sql.Open()
                     Using cmd As New SqlCommand
                         With cmd
@@ -272,7 +272,7 @@ Public Class InventarioProducto
     End Sub
 
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
-        Dim conexion As String = "Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True"
+        Dim conexion As String = "Server=DESKTOP-R538THL;Database=Proyecto; Integrated Security=True;"
         Dim conn As SqlConnection = New SqlConnection(conexion)
         conn.Open()
         Dim cmd As New SqlCommand("select * from Producto where id_Producto = @id_Producto", conn)

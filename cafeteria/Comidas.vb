@@ -10,4 +10,8 @@
         Me.FormBorderStyle = FormBorderStyle.None
 
     End Sub
+
+    Private Sub Comidas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

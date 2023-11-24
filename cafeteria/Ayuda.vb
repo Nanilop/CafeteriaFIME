@@ -28,7 +28,7 @@ Public Class Ayuda
             File.Copy("..\\..\\Resources\\patrones de bordado.pdf", archivo.FileName)
             MessageBox.Show("Guardado")
             Try
-                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
                     sql.Open()
                     Using cmd As New SqlCommand
                         With cmd

@@ -168,7 +168,7 @@ Public Class Menu
         cerrar()
         ayuda.Show()
         Try
-            Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+            Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
                 sql.Open()
                 Using cmd As New SqlCommand
                     With cmd
@@ -203,7 +203,7 @@ Public Class Menu
         Dim dt As New DataTable
         Try
 
-            Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+            Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
 
                 sql.Open()
 
@@ -278,7 +278,7 @@ Public Class Menu
     Private Sub EventoCancelar(sender As BONotificacion, ea As EventArgs)
         Dim response As Integer = 0
         Try
-            Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+            Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
                 sql.Open()
                 Using cmd As New SqlCommand
                     With cmd
@@ -303,7 +303,7 @@ Public Class Menu
     Private Sub EventoAceptar(sender As BONotificacion, ea As EventArgs)
         Dim response As Integer = 0
         Try
-            Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+            Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
                 sql.Open()
                 Using cmd As New SqlCommand
                     With cmd
@@ -334,7 +334,7 @@ Public Class Menu
         AddHandler orden.btnCancela.Click, AddressOf EventoCerrarOrden
         orden.Show()
         Try
-            Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+            Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
                 sql.Open()
                 Using cmd As New SqlCommand
                     With cmd
@@ -367,7 +367,7 @@ Public Class Menu
     End Sub
     Private Sub btnCerrarSesion_Click(sender As Object, e As EventArgs) Handles btnCerrarSesion.Click
         Try
-            Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+            Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
                 sql.Open()
                 Using cmd As New SqlCommand
                     With cmd

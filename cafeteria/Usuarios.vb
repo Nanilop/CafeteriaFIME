@@ -30,7 +30,7 @@ Public Class Usuarios
         Dim dt As New DataTable()
         Try
 
-            Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+            Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
                 sql.Open()
                 Using cmd As New SqlCommand
                     With cmd
@@ -96,5 +96,9 @@ Public Class Usuarios
                 AddHandler modifica.FormClosed, AddressOf abre
             modifica.Show()
         End If
+    End Sub
+
+    Private Sub Usuarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 End Class
