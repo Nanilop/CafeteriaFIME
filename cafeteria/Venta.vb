@@ -144,7 +144,7 @@ Public Class Venta
             Dim selectedRow = ResultadosP.SelectedRows(0)
             Dim nombre As String = If(selectedRow.Cells("Nombre").Value IsNot Nothing, selectedRow.Cells("Nombre").Value.ToString(), "")
             Dim precio As Decimal = If(selectedRow.Cells("PrecioSug").Value IsNot Nothing, CDec(selectedRow.Cells("PrecioSug").Value), 0)
-            Dim idpc As Decimal = If(selectedRow.Cells("idpc").Value IsNot Nothing, selectedRow.Cells("idpc").Value.ToString(), 0)
+            Dim idpc As Decimal = If(selectedRow.Cells("id").Value IsNot Nothing, selectedRow.Cells("id").Value.ToString(), 0)
             Dim cop As Decimal = If(selectedRow.Cells("cop").Value IsNot Nothing, selectedRow.Cells("cop").Value.ToString(), 0)
             Dim existe = False
             Dim index As Integer = -1
@@ -478,11 +478,11 @@ Public Class Venta
                     ' Obtener el valor de la celda NombrePC
                     Dim c, p As String
                     If row.Cells("cop").Value.ToString().Equals("0") Then
-                        c = vbNull
+                        c = 0
                         p = row.Cells("idpc").Value
 
                     Else
-                        p = vbNull
+                        p = 0
                         c = row.Cells("idpc").Value
                     End If
 
