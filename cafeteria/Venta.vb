@@ -20,7 +20,7 @@ Public Class Venta
         Me.FormBorderStyle = FormBorderStyle.None
         usuario = user
     End Sub
-    Private connectionString As String = "Server=SPIDEY31;Database=Proyecto;Integrated Security=True;"
+    Private connectionString As String = "Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True"
     Private conn As New SqlConnection(connectionString)
 
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
@@ -51,6 +51,10 @@ Public Class Venta
             dataTableResult.Columns.Add("Id", GetType(Integer))
             dataTableResult.Columns.Add("Nombre", GetType(String))
             dataTableResult.Columns.Add("PrecioSug", GetType(Decimal))
+            dataTableResult.Columns.Add("cop", GetType(Integer))
+
+
+
 
             ' Llenamos los DataTables con los resultados de las consultas
             Dim dataTableProducto As New DataTable()
@@ -62,16 +66,17 @@ Public Class Venta
             ' Iteramos sobre los resultados de Producto y Comida para obtener el precio de la tabla Precios
             For Each row As DataRow In dataTableProducto.Rows
                 Dim precio As Decimal = ObtenerPrecioPorId(row("id_Producto"), conn)
-                dataTableResult.Rows.Add(row("id_Producto"), row("NombreP"), precio)
+                dataTableResult.Rows.Add(row("id_Producto"), row("NombreP"), precio, 0)
             Next
 
             For Each row As DataRow In dataTableComida.Rows
                 Dim precio As Decimal = ObtenerPrecioPorId(row("id_Comida"), conn)
-                dataTableResult.Rows.Add(row("id_Comida"), row("NombreC"), precio)
+                dataTableResult.Rows.Add(row("id_Comida"), row("NombreC"), precio, 1)
             Next
 
             ' Mostramos los resultados en el DataGridView
             ResultadosP.DataSource = dataTableResult
+            ResultadosP.Columns("cop").Visible = False
 
         Catch ex As Exception
             MessageBox.Show("Error al buscar: " & ex.Message)
@@ -139,7 +144,8 @@ Public Class Venta
             Dim selectedRow = ResultadosP.SelectedRows(0)
             Dim nombre As String = If(selectedRow.Cells("Nombre").Value IsNot Nothing, selectedRow.Cells("Nombre").Value.ToString(), "")
             Dim precio As Decimal = If(selectedRow.Cells("PrecioSug").Value IsNot Nothing, CDec(selectedRow.Cells("PrecioSug").Value), 0)
-
+            Dim idpc As Decimal = If(selectedRow.Cells("idpc").Value IsNot Nothing, selectedRow.Cells("idpc").Value.ToString(), 0)
+            Dim cop As Decimal = If(selectedRow.Cells("cop").Value IsNot Nothing, selectedRow.Cells("cop").Value.ToString(), 0)
             Dim existe = False
             Dim index As Integer = -1
 
@@ -158,7 +164,7 @@ Public Class Venta
                     ' Manejar el caso en el que la celda "Cantidad" esté vacía
                 End If
             Else
-                ListadoP.Rows.Add(1, nombre, precio)
+                ListadoP.Rows.Add(1, cop, idpc, nombre, precio)
             End If
         Else
             MessageBox.Show("Selecciona un elemento en el DataGridView ResultadosP antes de agregarlo.")
@@ -267,49 +273,85 @@ Public Class Venta
         For Each row As DataGridViewRow In ListadoP.Rows
             If Not row.IsNewRow Then
                 If row.Cells("NombrePC").Value IsNot Nothing AndAlso row.Cells("Cantidad").Value IsNot Nothing Then
+
                     Dim PoC As String = row.Cells("NombrePC").Value.ToString()
+                    If (row.Cells("cop").Value.ToString().Equals("0")) Then
+                        ' Verificar si el valor de NombrePC existe en la tabla Productos
+                        Dim queryCheckExistence As String = "SELECT COUNT(*) FROM Producto WHERE NombreP = @producto"
+                        Using cmdCheckExistence As New SqlCommand(queryCheckExistence, conn)
+                            cmdCheckExistence.Parameters.AddWithValue("@producto", PoC)
+                            Dim existencia As Integer = Convert.ToInt32(cmdCheckExistence.ExecuteScalar())
 
-                    ' Verificar si el valor de NombrePC existe en la tabla Productos
-                    Dim queryCheckExistence As String = "SELECT COUNT(*) FROM Producto WHERE NombreP = @producto"
-                    Using cmdCheckExistence As New SqlCommand(queryCheckExistence, conn)
-                        cmdCheckExistence.Parameters.AddWithValue("@producto", PoC)
-                        Dim existencia As Integer = Convert.ToInt32(cmdCheckExistence.ExecuteScalar())
+                            If existencia > 0 Then ' Si el valor existe en Productos
+                                Dim cantidadARestar As Integer = 0
+                                If Integer.TryParse(row.Cells("Cantidad").Value.ToString(), cantidadARestar) Then
+                                    If PoC <> "" AndAlso cantidadARestar > 0 Then
+                                        Try
+                                            Dim queryCantidadP As String = "SELECT CantidadEx FROM Producto WHERE NombreP = @producto"
+                                            Using cmdProducto As New SqlCommand(queryCantidadP, conn)
+                                                cmdProducto.Parameters.AddWithValue("@producto", PoC)
+                                                Dim cantidadActual As Integer = Convert.ToInt32(cmdProducto.ExecuteScalar())
 
-                        If existencia > 0 Then ' Si el valor existe en Productos
-                            Dim cantidadARestar As Integer = 0
-                            If Integer.TryParse(row.Cells("Cantidad").Value.ToString(), cantidadARestar) Then
-                                If PoC <> "" AndAlso cantidadARestar > 0 Then
-                                    Try
-                                        Dim queryCantidadP As String = "SELECT CantidadEx FROM Producto WHERE NombreP = @producto"
-                                        Using cmdProducto As New SqlCommand(queryCantidadP, conn)
-                                            cmdProducto.Parameters.AddWithValue("@producto", PoC)
-                                            Dim cantidadActual As Integer = Convert.ToInt32(cmdProducto.ExecuteScalar())
+                                                If cantidadActual >= cantidadARestar Then
+                                                    Dim nuevaCantidad As Integer = cantidadActual - cantidadARestar
+                                                    Dim updateQuery As String = "UPDATE Producto SET CantidadEx = @nuevaCantidad WHERE NombreP= @producto"
 
-                                            If cantidadActual >= cantidadARestar Then
-                                                Dim nuevaCantidad As Integer = cantidadActual - cantidadARestar
-                                                Dim updateQuery As String = "UPDATE Producto SET CantidadEx = @nuevaCantidad WHERE NombreP= @producto"
-
-                                                Using cmdCantidadNP As New SqlCommand(updateQuery, conn)
-                                                    cmdCantidadNP.Parameters.AddWithValue("@nuevaCantidad", nuevaCantidad)
-                                                    cmdCantidadNP.Parameters.AddWithValue("@producto", PoC)
-                                                    ' Ejecutar la actualización de la base de datos aquí
-                                                    cmdCantidadNP.ExecuteNonQuery()
-                                                End Using
-                                            Else
-                                                MessageBox.Show("No hay suficiente cantidad de " & PoC & " en la tabla Productos.")
-                                            End If
-                                        End Using
-                                    Catch ex As SqlException
-                                        MessageBox.Show("Error de SQL al actualizar la base de datos: " & ex.Message)
-                                    Catch ex As Exception
-                                        MessageBox.Show("Error al actualizar la base de datos: " & ex.Message)
-                                    End Try
+                                                    Using cmdCantidadNP As New SqlCommand(updateQuery, conn)
+                                                        cmdCantidadNP.Parameters.AddWithValue("@nuevaCantidad", nuevaCantidad)
+                                                        cmdCantidadNP.Parameters.AddWithValue("@producto", PoC)
+                                                        ' Ejecutar la actualización de la base de datos aquí
+                                                        cmdCantidadNP.ExecuteNonQuery()
+                                                    End Using
+                                                    Try
+                                                        Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                                                            sql.Open()
+                                                            Using cmd As New SqlCommand
+                                                                With cmd
+                                                                    .Connection = sql
+                                                                    .CommandText = "REGISTROBitUsuario"
+                                                                    .CommandType = CommandType.StoredProcedure
+                                                                    .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                                                                    .Parameters.Add(New SqlParameter("@id_TipoVal", 14))
+                                                                    .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                                                                    .Parameters.Add(New SqlParameter("@VistaBU", "1"))
+                                                                End With
+                                                                cmd.ExecuteNonQuery()
+                                                            End Using
+                                                            sql.Close()
+                                                        End Using
+                                                    Catch ex As SqlException
+                                                        MessageBox.Show(ex.Message)
+                                                    End Try
+                                                Else
+                                                    MessageBox.Show("No hay suficiente cantidad de " & PoC & " en la tabla Productos.")
+                                                End If
+                                            End Using
+                                        Catch ex As SqlException
+                                            MessageBox.Show("Error de SQL al actualizar la base de datos: " & ex.Message)
+                                        Catch ex As Exception
+                                            MessageBox.Show("Error al actualizar la base de datos: " & ex.Message)
+                                        End Try
+                                    End If
+                                Else
+                                    MessageBox.Show("El valor de cantidad no es válido en la fila " & (row.Index + 1).ToString())
                                 End If
-                            Else
-                                MessageBox.Show("El valor de cantidad no es válido en la fila " & (row.Index + 1).ToString())
                             End If
-                        End If
-                    End Using
+                        End Using
+                    End If
+
+
+
+
+
+
+
+
+
+
+
+
+                Else
+
                 End If
             End If
         Next
@@ -350,23 +392,14 @@ Public Class Venta
 
         Try
 
-            ' Obtener el último ID_VENTA
-            Dim queryLastID As String = "SELECT TOP 1 id_Venta FROM Venta ORDER BY id_Venta DESC"
-            Dim lastID As Integer = 0
 
-            Using cmdLastID As New SqlCommand(queryLastID, conn)
-                Dim result As Object = cmdLastID.ExecuteScalar()
-                If result IsNot Nothing AndAlso Not IsDBNull(result) Then
-                    lastID = Convert.ToInt32(result)
-                End If
-            End Using
 
             ' Generar el nuevo ID_VENTA
-            Dim newID As Integer = lastID + 1
+
             ' Insertar los datos de la venta en la tabla Venta con id_TipoVal correspondiente
-            Dim insertQuery As String = "INSERT INTO Venta (id_Venta, id_TipoVal, TotalV, PagoV, Feria, FechaVenta) VALUES (@ID_VENTA, @idTipoVal, @Total, @Pago, @Cambio, GETDATE())"
+            Dim insertQuery As String = "INSERT INTO Venta ( id_TipoVal, TotalV, PagoV, Feria, FechaVenta) VALUES (@idTipoVal, @Total, @Pago, @Cambio, GETDATE())"
             Using cmdInsert As New SqlCommand(insertQuery, conn)
-                cmdInsert.Parameters.AddWithValue("@ID_VENTA", newID)
+
                 cmdInsert.Parameters.AddWithValue("@idTipoVal", idTipoVal)
                 cmdInsert.Parameters.AddWithValue("@Total", total)
                 cmdInsert.Parameters.AddWithValue("@Pago", pago)
@@ -374,7 +407,27 @@ Public Class Venta
                 cmdInsert.ExecuteNonQuery()
             End Using
 
-            MessageBox.Show("Venta registrada correctamente: " & newID)
+            MessageBox.Show("Venta registrada correctamente")
+            Try
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                    sql.Open()
+                    Using cmd As New SqlCommand
+                        With cmd
+                            .Connection = sql
+                            .CommandText = "REGISTROBitUsuario"
+                            .CommandType = CommandType.StoredProcedure
+                            .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                            .Parameters.Add(New SqlParameter("@id_TipoVal", 35))
+                            .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
+                            .Parameters.Add(New SqlParameter("@VistaBU", "1"))
+                        End With
+                        cmd.ExecuteNonQuery()
+                    End Using
+                    sql.Close()
+                End Using
+            Catch ex As SqlException
+                MessageBox.Show(ex.Message)
+            End Try
             ' Insertar en la BitacoraUsuario si la venta fue registrada correctamente
             Dim fechaHoraActual As DateTime = DateTime.Now
 
@@ -399,15 +452,69 @@ Public Class Venta
             'End Try
 
             ' Consulta para insertar el nuevo registro
-            Dim consulta As String = "INSERT INTO BitacoraUsuario (id_BitUsuario, id_TipoVal, FechaHora) VALUES (@idNuevo, @idTipoValor, @fechaHora)"
+            'Dim consulta As String = "INSERT INTO BitacoraUsuario (id_BitUsuario, id_TipoVal, FechaHora) VALUES (@idNuevo, @idTipoValor, @fechaHora)"
 
-            Using comando As New SqlCommand(consulta, conn)
-                'comando.Parameters.AddWithValue("@idNuevo", newIDB)
-                comando.Parameters.AddWithValue("@idTipoValor", 35)
-                comando.Parameters.AddWithValue("@fechaHora", fechaHoraActual)
+            'Using comando As New SqlCommand(consulta, conn)
+            '    'comando.Parameters.AddWithValue("@idNuevo", newIDB)
+            '    comando.Parameters.AddWithValue("@idTipoValor", 35)
+            '    comando.Parameters.AddWithValue("@fechaHora", fechaHoraActual)
 
-                comando.ExecuteNonQuery()
+            '    comando.ExecuteNonQuery()
+            'End Using
+            ' Obtener el último ID_VENTA
+            Dim queryLastID As String = "SELECT TOP 1 id_Venta FROM Venta ORDER BY id_Venta DESC"
+            Dim lastID As Integer = 0
+
+            Using cmdLastID As New SqlCommand(queryLastID, conn)
+                Dim result As Object = cmdLastID.ExecuteScalar()
+                If result IsNot Nothing AndAlso Not IsDBNull(result) Then
+                    lastID = Convert.ToInt32(result)
+                End If
             End Using
+
+            For Each row As DataGridViewRow In ListadoP.Rows
+                ' Verificar si la celda NombrePC no está vacía
+                If row.Cells("NombrePC").Value IsNot Nothing AndAlso Not String.IsNullOrWhiteSpace(row.Cells("NombrePC").Value.ToString()) Then
+                    ' Obtener el valor de la celda NombrePC
+                    Dim c, p As String
+                    If row.Cells("cop").Value.ToString().Equals("0") Then
+                        c = vbNull
+                        p = row.Cells("idpc").Value
+
+                    Else
+                        p = vbNull
+                        c = row.Cells("idpc").Value
+                    End If
+
+                    ' Consultar si existe coincidencia en la tabla Comida
+                    Try
+                            Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
+                                sql.Open()
+                                Using cmd As New SqlCommand
+                                    With cmd
+                                        .Connection = sql
+                                        .CommandText = "REGISTROBitacoraInventariodETALLE"
+                                        .CommandType = CommandType.StoredProcedure
+
+                                        .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
+                                        .Parameters.Add(New SqlParameter("@id_Venta", lastID))
+                                    .Parameters.Add(New SqlParameter("@Cantidad", row.Cells("Cantidad").Value))
+                                    .Parameters.Add(New SqlParameter("@id_Comida", c))
+                                    .Parameters.Add(New SqlParameter("@id_Producto", p))
+                                    .Parameters.Add(New SqlParameter("@PrecioVenta", row.Cells("PrecioTot").Value))
+                                End With
+                                    cmd.ExecuteNonQuery()
+                                End Using
+                                sql.Close()
+                            End Using
+                        Catch ex As SqlException
+                            MessageBox.Show(ex.Message)
+                        End Try
+                    End If
+            Next
+
+
+
         Catch ex As Exception
             ' Manejar excepciones
             conn.Close()

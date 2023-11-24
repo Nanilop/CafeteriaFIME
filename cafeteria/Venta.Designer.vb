@@ -35,10 +35,6 @@ Partial Class Venta
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnImprimir = New System.Windows.Forms.Button()
         Me.ListadoP = New System.Windows.Forms.DataGridView()
-        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NombrePC = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PrecioTot = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtbCambio = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -48,6 +44,12 @@ Partial Class Venta
         Me.txtbTotal = New System.Windows.Forms.TextBox()
         Me.pbEliminar = New System.Windows.Forms.PictureBox()
         Me.pbAgregar = New System.Windows.Forms.PictureBox()
+        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cop = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.idpc = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NombrePC = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrecioTot = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         CType(Me.ResultadosP, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -170,7 +172,7 @@ Partial Class Venta
         '
         Me.ListadoP.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
         Me.ListadoP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.ListadoP.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Cantidad, Me.NombrePC, Me.Precio, Me.PrecioTot})
+        Me.ListadoP.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Cantidad, Me.cop, Me.idpc, Me.NombrePC, Me.Precio, Me.PrecioTot})
         Me.ListadoP.Location = New System.Drawing.Point(2, 32)
         Me.ListadoP.Margin = New System.Windows.Forms.Padding(2)
         Me.ListadoP.Name = "ListadoP"
@@ -178,45 +180,6 @@ Partial Class Venta
         Me.ListadoP.RowTemplate.Height = 24
         Me.ListadoP.Size = New System.Drawing.Size(487, 206)
         Me.ListadoP.TabIndex = 17
-        '
-        'Cantidad
-        '
-        Me.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Cantidad.Frozen = True
-        Me.Cantidad.HeaderText = "CANT"
-        Me.Cantidad.MinimumWidth = 6
-        Me.Cantidad.Name = "Cantidad"
-        Me.Cantidad.Width = 61
-        '
-        'NombrePC
-        '
-        Me.NombrePC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.NombrePC.Frozen = True
-        Me.NombrePC.HeaderText = "PRODUCTO/COMIDA"
-        Me.NombrePC.MinimumWidth = 6
-        Me.NombrePC.Name = "NombrePC"
-        Me.NombrePC.ReadOnly = True
-        Me.NombrePC.Width = 140
-        '
-        'Precio
-        '
-        Me.Precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Precio.Frozen = True
-        Me.Precio.HeaderText = "PRECIO"
-        Me.Precio.MinimumWidth = 6
-        Me.Precio.Name = "Precio"
-        Me.Precio.ReadOnly = True
-        Me.Precio.Width = 72
-        '
-        'PrecioTot
-        '
-        Me.PrecioTot.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.PrecioTot.Frozen = True
-        Me.PrecioTot.HeaderText = "PRECIOT"
-        Me.PrecioTot.MinimumWidth = 6
-        Me.PrecioTot.Name = "PrecioTot"
-        Me.PrecioTot.ReadOnly = True
-        Me.PrecioTot.Width = 79
         '
         'Label1
         '
@@ -311,6 +274,59 @@ Partial Class Venta
         Me.pbAgregar.TabIndex = 26
         Me.pbAgregar.TabStop = False
         '
+        'Cantidad
+        '
+        Me.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Cantidad.Frozen = True
+        Me.Cantidad.HeaderText = "CANT"
+        Me.Cantidad.MinimumWidth = 6
+        Me.Cantidad.Name = "Cantidad"
+        Me.Cantidad.Width = 61
+        '
+        'cop
+        '
+        Me.cop.Frozen = True
+        Me.cop.HeaderText = "cop"
+        Me.cop.Name = "cop"
+        Me.cop.Visible = False
+        '
+        'idpc
+        '
+        Me.idpc.Frozen = True
+        Me.idpc.HeaderText = "idpc"
+        Me.idpc.Name = "idpc"
+        Me.idpc.Visible = False
+        '
+        'NombrePC
+        '
+        Me.NombrePC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.NombrePC.Frozen = True
+        Me.NombrePC.HeaderText = "PRODUCTO/COMIDA"
+        Me.NombrePC.MinimumWidth = 6
+        Me.NombrePC.Name = "NombrePC"
+        Me.NombrePC.ReadOnly = True
+        Me.NombrePC.Width = 140
+        '
+        'Precio
+        '
+        Me.Precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Precio.Frozen = True
+        Me.Precio.HeaderText = "PRECIO"
+        Me.Precio.MinimumWidth = 6
+        Me.Precio.Name = "Precio"
+        Me.Precio.ReadOnly = True
+        Me.Precio.Width = 72
+        '
+        'PrecioTot
+        '
+        Me.PrecioTot.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.PrecioTot.Frozen = True
+        Me.PrecioTot.HeaderText = "PRECIOT"
+        Me.PrecioTot.MinimumWidth = 6
+        Me.PrecioTot.Name = "PrecioTot"
+        Me.PrecioTot.ReadOnly = True
+        Me.PrecioTot.Width = 79
+        '
         'Venta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -356,10 +372,6 @@ Partial Class Venta
     Friend WithEvents Panel1 As Panel
     Friend WithEvents btnImprimir As Button
     Friend WithEvents ListadoP As DataGridView
-    Friend WithEvents Cantidad As DataGridViewTextBoxColumn
-    Friend WithEvents NombrePC As DataGridViewTextBoxColumn
-    Friend WithEvents Precio As DataGridViewTextBoxColumn
-    Friend WithEvents PrecioTot As DataGridViewTextBoxColumn
     Friend WithEvents Label1 As Label
     Friend WithEvents txtbCambio As TextBox
     Friend WithEvents Label3 As Label
@@ -369,4 +381,10 @@ Partial Class Venta
     Friend WithEvents txtbTotal As TextBox
     Friend WithEvents pbEliminar As PictureBox
     Friend WithEvents pbAgregar As PictureBox
+    Friend WithEvents Cantidad As DataGridViewTextBoxColumn
+    Friend WithEvents cop As DataGridViewTextBoxColumn
+    Friend WithEvents idpc As DataGridViewTextBoxColumn
+    Friend WithEvents NombrePC As DataGridViewTextBoxColumn
+    Friend WithEvents Precio As DataGridViewTextBoxColumn
+    Friend WithEvents PrecioTot As DataGridViewTextBoxColumn
 End Class
