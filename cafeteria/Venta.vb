@@ -33,12 +33,12 @@ Public Class Venta
         Try
 
             conn.Open()
-            Dim queryProducto As String = "SELECT id_Producto, NombreP FROM Producto WHERE NombreP LIKE @searchTerm"
+            Dim queryProducto As String = "SELECT id_Producto, NombreP,CantidadEx FROM Producto WHERE id_TipoVal!=52 and VistaP=1 and NombreP LIKE @searchTerm"
             Dim cmdProducto As New SqlCommand(queryProducto, conn)
             cmdProducto.Parameters.AddWithValue("@searchTerm", "%" & searchTerm & "%")
 
             ' Consulta para la tabla Comida
-            Dim queryComida As String = "SELECT id_Comida, NombreC FROM Comida WHERE NombreC LIKE @searchTerm"
+            Dim queryComida As String = "SELECT id_Comida, NombreC FROM Comida WHERE id_TipoVal!=48 and VistaC=1 and NombreC LIKE @searchTerm"
             Dim cmdComida As New SqlCommand(queryComida, conn)
             cmdComida.Parameters.AddWithValue("@searchTerm", "%" & searchTerm & "%")
 
@@ -52,6 +52,7 @@ Public Class Venta
             dataTableResult.Columns.Add("Nombre", GetType(String))
             dataTableResult.Columns.Add("PrecioSug", GetType(Decimal))
             dataTableResult.Columns.Add("cop", GetType(Integer))
+            dataTableResult.Columns.Add("max", GetType(Integer))
 
 
 
@@ -66,17 +67,18 @@ Public Class Venta
             ' Iteramos sobre los resultados de Producto y Comida para obtener el precio de la tabla Precios
             For Each row As DataRow In dataTableProducto.Rows
                 Dim precio As Decimal = ObtenerPrecioPorId(row("id_Producto"), conn)
-                dataTableResult.Rows.Add(row("id_Producto"), row("NombreP"), precio, 0)
+                dataTableResult.Rows.Add(row("id_Producto"), row("NombreP"), precio, 0, row("CantidadEx"))
             Next
 
             For Each row As DataRow In dataTableComida.Rows
                 Dim precio As Decimal = ObtenerPrecioPorId(row("id_Comida"), conn)
-                dataTableResult.Rows.Add(row("id_Comida"), row("NombreC"), precio, 1)
+                dataTableResult.Rows.Add(row("id_Comida"), row("NombreC"), precio, 1, 0)
             Next
 
             ' Mostramos los resultados en el DataGridView
             ResultadosP.DataSource = dataTableResult
             ResultadosP.Columns("cop").Visible = False
+            ResultadosP.Columns("max").Visible = False
 
         Catch ex As Exception
             MessageBox.Show("Error al buscar: " & ex.Message)
@@ -146,6 +148,7 @@ Public Class Venta
             Dim precio As Decimal = If(selectedRow.Cells("PrecioSug").Value IsNot Nothing, CDec(selectedRow.Cells("PrecioSug").Value), 0)
             Dim idpc As Decimal = If(selectedRow.Cells("id").Value IsNot Nothing, selectedRow.Cells("id").Value.ToString(), 0)
             Dim cop As Decimal = If(selectedRow.Cells("cop").Value IsNot Nothing, selectedRow.Cells("cop").Value.ToString(), 0)
+            Dim maximo As Decimal = If(selectedRow.Cells("max").Value IsNot Nothing, selectedRow.Cells("max").Value.ToString(), 0)
             Dim existe = False
             Dim index As Integer = -1
 
@@ -159,10 +162,17 @@ Public Class Venta
 
             If existe Then
                 If ListadoP.Rows(index).Cells("Cantidad").Value IsNot Nothing Then
-                    ListadoP.Rows(index).Cells("Cantidad").Value = CInt(ListadoP.Rows(index).Cells("Cantidad").Value) + 1
+                    If cop = 1 Then
+                        ListadoP.Rows(index).Cells("Cantidad").Value = CInt(ListadoP.Rows(index).Cells("Cantidad").Value) + 1
+                    Else
+                        If ListadoP.Rows(index).Cells("Cantidad").Value < maximo Then
+                            ListadoP.Rows(index).Cells("Cantidad").Value = CInt(ListadoP.Rows(index).Cells("Cantidad").Value) + 1
+                        End If
+                    End If
+
                 Else
-                    ' Manejar el caso en el que la celda "Cantidad" esté vacía
-                End If
+                        ' Manejar el caso en el que la celda "Cantidad" esté vacía
+                    End If
             Else
                 ListadoP.Rows.Add(1, cop, idpc, nombre, precio)
             End If
@@ -526,12 +536,14 @@ Public Class Venta
             conn.Close()
             MessageBox.Show("Error al registrar la venta: " & ex.Message)
         End Try
-        txtbTotal.Text = String.Empty
-        txtbPago.Text = String.Empty
-        txtbCambio.Text = String.Empty
-        txtCliente.Text = String.Empty
-        ListadoP.Rows.Clear()
-        conn.Close()
+            txtbTotal.Text = String.Empty
+            txtbPago.Text = String.Empty
+            txtbCambio.Text = String.Empty
+            txtCliente.Text = String.Empty
+            ListadoP.Rows.Clear()
+            ResultadosP.DataSource = New DataTable()
+            txtBusqueda.Text = String.Empty
+            conn.Close()
         End If
     End Sub
 
