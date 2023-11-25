@@ -9,6 +9,7 @@ Imports Microsoft.VisualBasic.Logging
 
 Public Class Venta
     Private usuario As New BOUsuario
+    Private punto As Boolean = False
     Public Sub New(user As BOUsuario)
 
         ' Esta llamada es exigida por el diseñador.
@@ -207,9 +208,42 @@ Public Class Venta
         End If
     End Sub
     Private Sub txtbPago_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtbPago.KeyPress
-        If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) Then
-            e.Handled = True
+        Dim a = txtbPago.Text.ToArray()
+        Dim i As Integer = 0
+        Dim cant As Integer = a.Count
+        For Each c As Char In a
+            If c = "." Then
+                i = i + 1
+            End If
+        Next
+        If i = 1 Then
+            punto = True
+        ElseIf i = 0 Then
+            punto = False
+        Else
+
         End If
+        If punto Then
+            If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsNumber(e.KeyChar) Then
+                e.Handled = True
+            Else
+                If cant = 8 AndAlso Not Char.IsControl(e.KeyChar) Then
+                    e.Handled = True
+                End If
+            End If
+        Else
+            If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsNumber(e.KeyChar) AndAlso Not Char.IsPunctuation(e.KeyChar) Then
+
+                e.Handled = True
+            Else
+                If cant = 5 AndAlso Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsPunctuation(e.KeyChar) Then
+                    e.Handled = True
+                End If
+            End If
+        End If
+        'If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) Then
+        '    e.Handled = True
+        'End If
         If e.KeyChar = Convert.ToChar(Keys.Enter) Then
             CalcularCambio()
             e.Handled = True ' Evitar que se ingrese el salto de línea al presionar Enter
@@ -287,6 +321,8 @@ Public Class Venta
             MessageBox.Show("Ingrese a quien le pertenece la orden.")
         ElseIf String.IsNullOrEmpty(txtbPago.Text) Or String.IsNullOrWhiteSpace(txtbPago.Text) Or txtbCambio.Text.Equals("Pendiente") Then
             MessageBox.Show("Ingrese la cantidad de dinero proporcionada y precione Enter.")
+        ElseIf Convert.ToDecimal(txtbCambio.Text) < 0 Then
+            MessageBox.Show("Falta dinero.")
         Else
             changelongpaper()
             PPD.Document = PrintDocument1
@@ -643,6 +679,10 @@ Public Class Venta
 
     Private Sub ListadoP_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles ListadoP.CellContentClick
 
+    End Sub
+
+    Private Sub txtbPago_Leave(sender As Object, e As EventArgs) Handles txtbPago.Leave
+        txtbPago.Text = Convert.ToDouble(txtbPago.Text).ToString("0.00")
     End Sub
 End Class
 

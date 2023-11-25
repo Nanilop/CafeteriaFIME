@@ -53,7 +53,7 @@ Public Class Inventario
         End If
     End Sub
     Public Sub MostrarProductos()
-        Dim cmd = New SqlCommand("SELECT * FROM Producto", cnn)
+        Dim cmd = New SqlCommand("SELECT * FROM Producto order by id_TipoVal desc", cnn)
         Dim da = New SqlDataAdapter(cmd)
         Dim dt = New DataTable()
         Try
@@ -69,9 +69,12 @@ Public Class Inventario
 
         ' Mostrar los datos en el DataGridView
         dgvProductos.DataSource = dt
+        dgvProductos.Columns("NombreP").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvProductos.Columns("id_TipoVal").Visible = False
+        dgvProductos.Columns("VistaP").Visible = False
     End Sub
     Public Sub MostrarComidas()
-        Dim cmd = New SqlCommand("SELECT * FROM Comida", cnn)
+        Dim cmd = New SqlCommand("SELECT * FROM Comida order by VistaC desc", cnn)
         Dim da = New SqlDataAdapter(cmd)
         Dim dt = New DataTable()
         Try
@@ -87,6 +90,9 @@ Public Class Inventario
 
         ' Mostrar los datos en el DataGridView
         dgvComidas.DataSource = dt
+        dgvComidas.Columns("NombreC").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvComidas.Columns("id_TipoVal").Visible = False
+        dgvComidas.Columns("VistaC").Visible = False
     End Sub
 
     Private Sub btnActualizarP_Click(sender As Object, e As EventArgs) Handles btnActualizarP.Click

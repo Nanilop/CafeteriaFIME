@@ -8,7 +8,7 @@ Public Class BOProducto
     Private _MinimoEx As Integer
     Private _MaximoEx As Integer
     Private _id_TipoVal As String
-    Private _VistaP As Integer
+    Private _VistaP As Boolean
     Private conexion As String = "Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True"
     Public Sub New()
         _id_Producto = ""
@@ -17,10 +17,10 @@ Public Class BOProducto
         _MinimoEx = 0
         _MaximoEx = 0
         _id_TipoVal = ""
-        _VistaP = 0
+        _VistaP = False
     End Sub
     Public Sub New(id As String, nombrep As String, cantidadex As Integer, minex As Integer,
-                   maxex As Integer, idtipoval As String, vistap As Integer)
+                   maxex As Integer, idtipoval As String, vistap As Boolean)
         _id_Producto = id
         _NombreP = nombrep
         _CantidadEx = cantidadex
@@ -36,7 +36,7 @@ Public Class BOProducto
         _MinimoEx = row.Field(Of Integer)("MinimoEx")
         _MaximoEx = row.Field(Of Integer)("MaximoEx")
         _id_TipoVal = row.Field(Of String)("id_TipoVal")
-        _VistaP = row.Field(Of Integer)("VistaP")
+        _VistaP = row.Field(Of Boolean)("VistaP")
     End Sub
     Property IdProducto As String
         Get
@@ -86,16 +86,16 @@ Public Class BOProducto
             _id_TipoVal = value
         End Set
     End Property
-    Property Vistap As Integer
+    Property Vistap As Boolean
         Get
             Return _VistaP
         End Get
-        Set(value As Integer)
+        Set(value As Boolean)
             _VistaP = value
         End Set
     End Property
     Function RegistrarProducto(id As String, nombrep As String, cantidadex As Integer, minex As Integer,
-                   maxex As Integer, idtval As String, vp As Integer)
+                   maxex As Integer, vp As Boolean)
 
         Dim response As Boolean = False
         Dim conn As SqlConnection = New SqlConnection(conexion)
@@ -107,7 +107,6 @@ Public Class BOProducto
         cmd.Parameters.Add(New SqlParameter("@CantidadEx", cantidadex))
         cmd.Parameters.Add(New SqlParameter("@MinimoEx", minex))
         cmd.Parameters.Add(New SqlParameter("@MaximoEx", maxex))
-        cmd.Parameters.Add(New SqlParameter("@id_TipoVal", idtval))
         cmd.Parameters.Add(New SqlParameter("@VistaP", vp))
         Using rdr As SqlDataReader = cmd.ExecuteReader()
             While rdr.Read
@@ -120,13 +119,12 @@ Public Class BOProducto
             CantEx = cantidadex
             MinimoEx = minex
             MaximoEx = maxex
-            IdTipoVal = idtval
             Vistap = vp
         End If
         Return response
     End Function
     Function ModificarProducto(id As String, nombrep As String, cantidadex As Integer, minex As Integer,
-                   maxex As Integer, idtval As String, vp As Integer)
+                   maxex As Integer, vp As Boolean)
 
         Dim response As Boolean = False
         Dim conn As SqlConnection = New SqlConnection(conexion)
@@ -138,7 +136,6 @@ Public Class BOProducto
         cmd.Parameters.Add(New SqlParameter("@CantidadEx", cantidadex))
         cmd.Parameters.Add(New SqlParameter("@MinimoEx", minex))
         cmd.Parameters.Add(New SqlParameter("@MaximoEx", maxex))
-        cmd.Parameters.Add(New SqlParameter("@id_TipoVal", idtval))
         cmd.Parameters.Add(New SqlParameter("@VistaP", vp))
         Using rdr As SqlDataReader = cmd.ExecuteReader()
             While rdr.Read
@@ -151,7 +148,6 @@ Public Class BOProducto
             CantEx = cantidadex
             MinimoEx = minex
             MaximoEx = maxex
-            IdTipoVal = idtval
             Vistap = vp
         End If
         Return response

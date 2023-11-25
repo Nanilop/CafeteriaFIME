@@ -7,7 +7,7 @@ Public Class BOComida
     Private _id_TipoVal As String
     Private _HoraInicio As TimeSpan
     Private _HoraFin As TimeSpan
-    Private _VistaC As Integer
+    Private _VistaC As Boolean
     Private conexion As String = "Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True"
     Public Sub New()
         _id_Comida = ""
@@ -15,9 +15,9 @@ Public Class BOComida
         _id_TipoVal = ""
         _HoraInicio = New TimeSpan(0, 0, 0)
         _HoraFin = New TimeSpan(0, 0, 0)
-        _VistaC = 0
+        _VistaC = False
     End Sub
-    Public Sub New(id As String, nombrec As String, idtipoval As String, horainicio As TimeSpan, horafin As TimeSpan, vc As Integer)
+    Public Sub New(id As String, nombrec As String, idtipoval As String, horainicio As TimeSpan, horafin As TimeSpan, vc As Boolean)
         _id_Comida = id
         _NombreC = nombrec
         _id_TipoVal = idtipoval
@@ -31,7 +31,7 @@ Public Class BOComida
         _id_TipoVal = row.Field(Of String)("id_TipoVal")
         _HoraInicio = row.Field(Of TimeSpan)("HoraInicio")
         _HoraFin = row.Field(Of TimeSpan)("HoraFin")
-        _VistaC = row.Field(Of String)("VistaC")
+        _VistaC = row.Field(Of Boolean)("VistaC")
     End Sub
     Property IdComida As String
         Get
@@ -73,16 +73,16 @@ Public Class BOComida
             _HoraFin = value
         End Set
     End Property
-    Property VistaC As Integer
+    Property VistaC As Boolean
         Get
             Return _VistaC
         End Get
-        Set(value As Integer)
+        Set(value As Boolean)
             _VistaC = value
         End Set
     End Property
-    Function RegistrarComida(id As String, nomc As String, tipoval As String, hinicio As TimeSpan,
-                             hfin As TimeSpan, vc As Integer)
+    Function RegistrarComida(id As String, nomc As String, hinicio As TimeSpan,
+                             hfin As TimeSpan, vc As Boolean)
 
         Dim response As Boolean = False
         Dim conn As SqlConnection = New SqlConnection(conexion)
@@ -91,7 +91,6 @@ Public Class BOComida
         cmd.CommandType = CommandType.StoredProcedure
         cmd.Parameters.Add(New SqlParameter("@id_Comida", id))
         cmd.Parameters.Add(New SqlParameter("@NombreC", nomc))
-        cmd.Parameters.Add(New SqlParameter("@id_TipoVal", tipoval))
         cmd.Parameters.Add(New SqlParameter("@HoraInicio", hinicio))
         cmd.Parameters.Add(New SqlParameter("@HoraFin", hfin))
         cmd.Parameters.Add(New SqlParameter("@VistaC", vc))
@@ -103,7 +102,6 @@ Public Class BOComida
         If response = 1 Then
             IdComida = id
             NombreC = nomc
-            IdTipoVal = tipoval
             HoraInicio = hinicio
             HoraFin = hfin
             VistaC = vc
@@ -111,7 +109,7 @@ Public Class BOComida
         conn.Close()
         Return response
     End Function
-    Function ModificarComida(id As String, nomc As String, tipoval As String, hinicio As TimeSpan, hfin As TimeSpan, vc As Integer)
+    Function ModificarComida(id As String, nomc As String, hinicio As TimeSpan, hfin As TimeSpan, vc As Boolean)
         Dim response As Boolean = False
         Dim conn As SqlConnection = New SqlConnection(conexion)
         conn.Open()
@@ -119,7 +117,6 @@ Public Class BOComida
         cmd.CommandType = CommandType.StoredProcedure
         cmd.Parameters.Add(New SqlParameter("@id_Comida", id))
         cmd.Parameters.Add(New SqlParameter("@NombreC", nomc))
-        cmd.Parameters.Add(New SqlParameter("@id_TipoVal", tipoval))
         cmd.Parameters.Add(New SqlParameter("@HoraInicio", hinicio))
         cmd.Parameters.Add(New SqlParameter("@HoraFin", hfin))
         cmd.Parameters.Add(New SqlParameter("@VistaC", vc))
@@ -131,7 +128,6 @@ Public Class BOComida
         If response = 1 Then
             IdComida = id
             NombreC = nomc
-            IdTipoVal = tipoval
             HoraInicio = hinicio
             HoraFin = hfin
             VistaC = vc

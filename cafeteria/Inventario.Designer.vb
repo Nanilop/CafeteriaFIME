@@ -37,9 +37,14 @@ Partial Class Inventario
         '
         'dgvComidas
         '
+        Me.dgvComidas.AllowUserToAddRows = False
+        Me.dgvComidas.AllowUserToDeleteRows = False
+        Me.dgvComidas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.dgvComidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvComidas.Location = New System.Drawing.Point(200, 314)
+        Me.dgvComidas.MultiSelect = False
         Me.dgvComidas.Name = "dgvComidas"
+        Me.dgvComidas.ReadOnly = True
         Me.dgvComidas.Size = New System.Drawing.Size(612, 139)
         Me.dgvComidas.TabIndex = 40
         '
@@ -67,9 +72,14 @@ Partial Class Inventario
         '
         'dgvProductos
         '
+        Me.dgvProductos.AllowUserToAddRows = False
+        Me.dgvProductos.AllowUserToDeleteRows = False
+        Me.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvProductos.Location = New System.Drawing.Point(200, 117)
+        Me.dgvProductos.MultiSelect = False
         Me.dgvProductos.Name = "dgvProductos"
+        Me.dgvProductos.ReadOnly = True
         Me.dgvProductos.Size = New System.Drawing.Size(612, 139)
         Me.dgvProductos.TabIndex = 37
         '

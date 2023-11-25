@@ -59,7 +59,7 @@ Public Class PrecioModificar
             If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsNumber(e.KeyChar) Then
                 e.Handled = True
             Else
-                If cant = 5 AndAlso Not Char.IsControl(e.KeyChar) Then
+                If cant = 8 AndAlso Not Char.IsControl(e.KeyChar) Then
                     e.Handled = True
                 End If
             End If

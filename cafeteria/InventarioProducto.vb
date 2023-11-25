@@ -1,10 +1,12 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Drawing.Text
+Imports System.Security.Cryptography
 Imports BOCafeteria
 Public Class InventarioProducto
     Private usuario As New BOUsuario
     Public producto As New BOProducto()
     Dim etiqueta As Boolean = True
+    Dim Diff As Double = 0
     Public Sub New(user As BOUsuario)
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
@@ -34,12 +36,7 @@ Public Class InventarioProducto
         If (String.IsNullOrEmpty(txtMaximoEx.Text)) Then
             valido = False
         End If
-        If (String.IsNullOrEmpty(txtIDtipoval.Text)) Then
-            valido = False
-        End If
-        If (String.IsNullOrEmpty(txtVistaP.Text)) Then
-            valido = False
-        End If
+
 
         Dim conn = New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
         conn.Open()
@@ -50,9 +47,9 @@ Public Class InventarioProducto
             MessageBox.Show("El identificador unico ya existe, por favor, introduzca uno nuevo.")
         Else
             If valido Then
-                etiqueta = producto.RegistrarProducto(txtIDproducto.Text, txtNombreP.Text, txtCantidadEx.Text, txtMinimoEx.Text, txtMaximoEx.Text, "49", "1")
+                etiqueta = producto.RegistrarProducto(txtIDproducto.Text, txtNombreP.Text, txtCantidadEx.Text, txtMinimoEx.Text, txtMaximoEx.Text, "1")
                 MessageBox.Show("La informacion se ha registrado con exito.")
-                LimpiarTxt()
+
                 Try
                     Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
                         sql.Open()
@@ -116,6 +113,7 @@ Public Class InventarioProducto
                 Catch ex As SqlException
                     MessageBox.Show(ex.Message)
                 End Try
+                LimpiarTxt()
             Else
                 MessageBox.Show("No se ha podido registrar la informacion.")
             End If
@@ -141,19 +139,14 @@ Public Class InventarioProducto
         If (String.IsNullOrEmpty(txtMaximoEx.Text)) Then
             valido = False
         End If
-        If (String.IsNullOrEmpty(txtIDtipoval.Text)) Then
-            valido = False
-        End If
-        If (String.IsNullOrEmpty(txtVistaP.Text)) Then
-            valido = False
-        End If
-        If valido Then
-            Dim Diff = Val(txtCantidadEx)
 
-            etiqueta = producto.ModificarProducto(txtIDproducto.Text, txtNombreP.Text, txtCantidadEx.Text, txtMinimoEx.Text, txtMaximoEx.Text, txtIDtipoval.Text, txtVistaP.Text)
+        If valido Then
+
+
+            etiqueta = producto.ModificarProducto(txtIDproducto.Text, txtNombreP.Text, txtCantidadEx.Text, txtMinimoEx.Text, txtMaximoEx.Text, chkvistaP.Checked)
 
             MessageBox.Show("La informacion se ha modificado con exito.")
-            LimpiarTxt()
+
             Try
                 Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
                     sql.Open()
@@ -184,8 +177,8 @@ Public Class InventarioProducto
                             .CommandType = CommandType.StoredProcedure
                             .Parameters.Add(New SqlParameter("@id_TipoVal", 76))
                             .Parameters.Add(New SqlParameter("@FechaHora", DateTime.Now))
-                            .Parameters.Add(New SqlParameter("@CantidadB", producto.CantEx - Diff))
-                            .Parameters.Add(New SqlParameter("@id_Producto", producto.IdProducto))
+                            .Parameters.Add(New SqlParameter("@CantidadB", Convert.ToInt32(txtCantidadEx.Text) - Diff))
+                            .Parameters.Add(New SqlParameter("@id_Producto", txtIDproducto.Text))
                             .Parameters.Add(New SqlParameter("@id_Usuario", usuario.Id))
                             .Parameters.Add(New SqlParameter("@VistaB", "1"))
                         End With
@@ -196,6 +189,7 @@ Public Class InventarioProducto
             Catch ex As SqlException
                 MessageBox.Show(ex.Message)
             End Try
+            LimpiarTxt()
         Else
             MessageBox.Show("No se ha podido modificar la informacion.")
         End If
@@ -267,8 +261,7 @@ Public Class InventarioProducto
         txtCantidadEx.Clear()
         txtMinimoEx.Clear()
         txtMaximoEx.Clear()
-        txtIDtipoval.Clear()
-        txtVistaP.Clear()
+        chkvistaP.Checked = False
     End Sub
 
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
@@ -285,13 +278,13 @@ Public Class InventarioProducto
                 If dt.Rows.Count Then
                     txtNombreP.Text = dt.Rows(0)(1).ToString
                     txtCantidadEx.Text = dt.Rows(0)(2).ToString
+                    Diff = Convert.ToDouble(txtCantidadEx.Text)
                     txtMinimoEx.Text = dt.Rows(0)(3).ToString
                     txtMaximoEx.Text = dt.Rows(0)(4).ToString
-                    txtIDtipoval.Text = dt.Rows(0)(5).ToString
                     If dt.Rows(0)(6) = True Then
-                        txtVistaP.Text = 1
+                        chkvistaP.Checked = True
                     Else
-                        txtVistaP.Text = 0
+                        chkvistaP.Checked = False
                     End If
                 End If
             End Using
@@ -302,5 +295,11 @@ Public Class InventarioProducto
     Private Sub btnLimpiar_Click(sender As Object, e As EventArgs) Handles btnLimpiar.Click
         LimpiarTxt()
 
+    End Sub
+
+    Private Sub txtCantidadEx_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCantidadEx.KeyPress, txtMaximoEx.KeyPress, txtMinimoEx.KeyPress
+        If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) Then
+            e.Handled = True
+        End If
     End Sub
 End Class
