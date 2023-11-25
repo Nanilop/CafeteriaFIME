@@ -8,7 +8,7 @@ Public Class BOComida
     Private _HoraInicio As TimeSpan
     Private _HoraFin As TimeSpan
     Private _VistaC As Integer
-    Private conexion As String = "Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True"
+    Private conexion As String = "Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True"
     Public Sub New()
         _id_Comida = ""
         _NombreC = ""

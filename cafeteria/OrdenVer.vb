@@ -13,7 +13,7 @@ Public Class OrdenVer
         Dim dt As New DataTable
         Try
 
-            Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
+            Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
 
                 sql.Open()
 
@@ -46,7 +46,7 @@ Public Class OrdenVer
         Dim dtalle As New DataTable
         Try
 
-            Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
+            Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
 
                 sql.Open()
 
@@ -83,7 +83,7 @@ Public Class OrdenVer
     Private Sub btnEntrega_Click(sender As Object, e As EventArgs) Handles btnEntrega.Click
         Dim response As Integer = 0
         Try
-            Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
+            Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
                 sql.Open()
                 Using cmd As New SqlCommand
                     With cmd
@@ -108,7 +108,7 @@ Public Class OrdenVer
     Private Sub btnCancela_Click(sender As Object, e As EventArgs) Handles btnCancela.Click
         Dim response As Integer = 0
         Try
-            Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
+            Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
                 sql.Open()
                 Using cmd As New SqlCommand
                     With cmd

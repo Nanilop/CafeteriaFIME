@@ -58,7 +58,7 @@ Public Class Informes
                 a += 1
             Next
             Try
-                Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
                     sql.Open()
                     Using cmd As New SqlCommand
                         With cmd
@@ -95,7 +95,7 @@ Public Class Informes
                 a += 1
             Next
             Try
-                Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
                     sql.Open()
                     Using cmd As New SqlCommand
                         With cmd
@@ -134,7 +134,7 @@ Public Class Informes
                 a += 1
             Next
             Try
-                Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
                     sql.Open()
                     Using cmd As New SqlCommand
                         With cmd
@@ -178,7 +178,7 @@ Public Class Informes
 
             Try
 
-                Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
                     sql.Open()
                     Using cmd As New SqlCommand
                         With cmd
@@ -201,7 +201,7 @@ Public Class Informes
             dgvInformes.DataSource = dt
             dgvInformes.Columns("Fecha").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
             Try
-                Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
                     sql.Open()
                     Using cmd As New SqlCommand
                         With cmd
@@ -238,7 +238,7 @@ Public Class Informes
 
             Try
 
-                Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
                     sql.Open()
                     Using cmd As New SqlCommand
                         With cmd
@@ -261,7 +261,7 @@ Public Class Informes
             dgvInformes.DataSource = dt
             dgvInformes.Columns("Fecha").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
             Try
-                Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
                     sql.Open()
                     Using cmd As New SqlCommand
                         With cmd
@@ -297,7 +297,7 @@ Public Class Informes
 
             Try
 
-                Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
                     sql.Open()
                     Using cmd As New SqlCommand
                         With cmd
@@ -321,7 +321,7 @@ Public Class Informes
             dgvInformes.Columns("Fecha").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
 
             Try
-                Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
                     sql.Open()
                     Using cmd As New SqlCommand
                         With cmd

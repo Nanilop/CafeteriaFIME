@@ -6,7 +6,7 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports BOCafeteria
 
 Public Class Inventario
-    Dim cnn As SqlConnection = New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
+    Dim cnn As SqlConnection = New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
     Private usuario As New BOUsuario
     Private bcomida As Boolean = False
     Private bproducto As Boolean = False

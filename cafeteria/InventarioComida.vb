@@ -61,7 +61,7 @@ Public Class InventarioComida
                     MsgBox("La informacion se ha registrado con Exito")
                     LimpiarTxt()
                     Try
-                        Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
+                        Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
                             sql.Open()
                             Using cmd As New SqlCommand
                                 With cmd
@@ -81,7 +81,7 @@ Public Class InventarioComida
                         MessageBox.Show(ex.Message)
                     End Try
                     Try
-                        Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
+                        Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
                             sql.Open()
                             Using cmd As New SqlCommand
                                 With cmd
@@ -101,7 +101,7 @@ Public Class InventarioComida
                         MessageBox.Show(ex.Message)
                     End Try
                     Try
-                        Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
+                        Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
                             sql.Open()
                             Using cmd As New SqlCommand
                                 With cmd
@@ -165,7 +165,7 @@ Public Class InventarioComida
                 MsgBox("La informacion se ha Modificado con Exito")
                 LimpiarTxt()
                 Try
-                    Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
+                    Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
                         sql.Open()
                         Using cmd As New SqlCommand
                             With cmd
@@ -185,7 +185,7 @@ Public Class InventarioComida
                     MessageBox.Show(ex.Message)
                 End Try
                 Try
-                    Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
+                    Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
                         sql.Open()
                         Using cmd As New SqlCommand
                             With cmd
@@ -224,7 +224,7 @@ Public Class InventarioComida
             MsgBox("La informacion se ha eliminado con Exito")
             LimpiarTxt()
             Try
-                Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
                     sql.Open()
                     Using cmd As New SqlCommand
                         With cmd
@@ -244,7 +244,7 @@ Public Class InventarioComida
                 MessageBox.Show(ex.Message)
             End Try
             Try
-                Using sql As New SqlConnection("Data Source=LAPTOP-9KA9VTM6\SQLEXPRESS01;Initial Catalog=Proyecto;Integrated Security=True")
+                Using sql As New SqlConnection("Data Source=DESKTOP-CUOAPA9\SQLEXPRESS;Initial Catalog=Proyecto;Integrated Security=True")
                     sql.Open()
                     Using cmd As New SqlCommand
                         With cmd

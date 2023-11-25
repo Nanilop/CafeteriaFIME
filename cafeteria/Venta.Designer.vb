@@ -40,6 +40,12 @@ Partial Class Venta
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnImprimir = New System.Windows.Forms.Button()
         Me.ListadoP = New System.Windows.Forms.DataGridView()
+        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cop = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.idpc = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NombrePC = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrecioTot = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtbCambio = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -51,12 +57,6 @@ Partial Class Venta
         Me.txtCliente = New System.Windows.Forms.TextBox()
         Me.pbEliminar = New System.Windows.Forms.PictureBox()
         Me.pbAgregar = New System.Windows.Forms.PictureBox()
-        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cop = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.idpc = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NombrePC = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PrecioTot = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         CType(Me.ResultadosP, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -77,10 +77,10 @@ Partial Class Venta
         '
         'btnBuscar
         '
-        Me.btnBuscar.Location = New System.Drawing.Point(468, 56)
-        Me.btnBuscar.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btnBuscar.Location = New System.Drawing.Point(351, 46)
+        Me.btnBuscar.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnBuscar.Name = "btnBuscar"
-        Me.btnBuscar.Size = New System.Drawing.Size(100, 34)
+        Me.btnBuscar.Size = New System.Drawing.Size(75, 28)
         Me.btnBuscar.TabIndex = 32
         Me.btnBuscar.Text = "BUSCAR"
         Me.btnBuscar.UseVisualStyleBackColor = True
@@ -88,20 +88,20 @@ Partial Class Venta
         'txtBusqueda
         '
         Me.txtBusqueda.BackColor = System.Drawing.SystemColors.HighlightText
-        Me.txtBusqueda.Location = New System.Drawing.Point(574, 61)
-        Me.txtBusqueda.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.txtBusqueda.Location = New System.Drawing.Point(430, 50)
+        Me.txtBusqueda.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtBusqueda.Name = "txtBusqueda"
-        Me.txtBusqueda.Size = New System.Drawing.Size(359, 22)
+        Me.txtBusqueda.Size = New System.Drawing.Size(270, 20)
         Me.txtBusqueda.TabIndex = 0
         '
         'PictureBox5
         '
         Me.PictureBox5.BackgroundImage = Global.cafeteria.My.Resources.Resources.Logotipo_cafe
         Me.PictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox5.Location = New System.Drawing.Point(137, 50)
-        Me.PictureBox5.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.PictureBox5.Location = New System.Drawing.Point(103, 41)
+        Me.PictureBox5.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.PictureBox5.Name = "PictureBox5"
-        Me.PictureBox5.Size = New System.Drawing.Size(220, 186)
+        Me.PictureBox5.Size = New System.Drawing.Size(165, 151)
         Me.PictureBox5.TabIndex = 30
         Me.PictureBox5.TabStop = False
         '
@@ -110,10 +110,10 @@ Partial Class Venta
         Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.Panel3.Controls.Add(Me.ResultadosP)
         Me.Panel3.Controls.Add(Me.Panel7)
-        Me.Panel3.Location = New System.Drawing.Point(413, 106)
-        Me.Panel3.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Panel3.Location = New System.Drawing.Point(310, 86)
+        Me.Panel3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(605, 145)
+        Me.Panel3.Size = New System.Drawing.Size(454, 118)
         Me.Panel3.TabIndex = 29
         '
         'ResultadosP
@@ -137,12 +137,12 @@ Partial Class Venta
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.ResultadosP.DefaultCellStyle = DataGridViewCellStyle2
-        Me.ResultadosP.Location = New System.Drawing.Point(3, 30)
-        Me.ResultadosP.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.ResultadosP.Location = New System.Drawing.Point(2, 24)
+        Me.ResultadosP.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.ResultadosP.Name = "ResultadosP"
         Me.ResultadosP.RowHeadersWidth = 51
         Me.ResultadosP.RowTemplate.Height = 24
-        Me.ResultadosP.Size = New System.Drawing.Size(596, 112)
+        Me.ResultadosP.Size = New System.Drawing.Size(447, 91)
         Me.ResultadosP.TabIndex = 0
         Me.ResultadosP.TabStop = False
         '
@@ -151,18 +151,19 @@ Partial Class Venta
         Me.Panel7.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.Panel7.Controls.Add(Me.Label10)
         Me.Panel7.Location = New System.Drawing.Point(0, 0)
-        Me.Panel7.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Panel7.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(603, 25)
+        Me.Panel7.Size = New System.Drawing.Size(452, 20)
         Me.Panel7.TabIndex = 0
         '
         'Label10
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(249, 5)
+        Me.Label10.Location = New System.Drawing.Point(187, 4)
+        Me.Label10.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(109, 16)
+        Me.Label10.Size = New System.Drawing.Size(90, 13)
         Me.Label10.TabIndex = 10
         Me.Label10.Text = "RESULTADOS"
         '
@@ -179,10 +180,10 @@ Partial Class Venta
         Me.Panel1.Controls.Add(Me.Label5)
         Me.Panel1.Controls.Add(Me.txtbTotal)
         Me.Panel1.Controls.Add(Me.GroupBox1)
-        Me.Panel1.Location = New System.Drawing.Point(137, 257)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Panel1.Location = New System.Drawing.Point(103, 209)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(881, 295)
+        Me.Panel1.Size = New System.Drawing.Size(661, 240)
         Me.Panel1.TabIndex = 28
         '
         'btnImprimir
@@ -190,10 +191,10 @@ Partial Class Venta
         Me.btnImprimir.BackgroundImage = Global.cafeteria.My.Resources.Resources.imprimir
         Me.btnImprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnImprimir.Location = New System.Drawing.Point(708, 191)
-        Me.btnImprimir.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btnImprimir.Location = New System.Drawing.Point(531, 155)
+        Me.btnImprimir.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnImprimir.Name = "btnImprimir"
-        Me.btnImprimir.Size = New System.Drawing.Size(77, 66)
+        Me.btnImprimir.Size = New System.Drawing.Size(58, 54)
         Me.btnImprimir.TabIndex = 3
         Me.btnImprimir.UseVisualStyleBackColor = True
         '
@@ -221,8 +222,8 @@ Partial Class Venta
         DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.ListadoP.DefaultCellStyle = DataGridViewCellStyle4
-        Me.ListadoP.Location = New System.Drawing.Point(130, 38)
-        Me.ListadoP.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.ListadoP.Location = New System.Drawing.Point(98, 31)
+        Me.ListadoP.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.ListadoP.Name = "ListadoP"
         Me.ListadoP.ReadOnly = True
         DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -235,118 +236,9 @@ Partial Class Venta
         Me.ListadoP.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.ListadoP.RowHeadersWidth = 51
         Me.ListadoP.RowTemplate.Height = 24
-        Me.ListadoP.Size = New System.Drawing.Size(481, 254)
+        Me.ListadoP.Size = New System.Drawing.Size(361, 206)
         Me.ListadoP.TabIndex = 0
         Me.ListadoP.TabStop = False
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft YaHei", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(242, 5)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(279, 31)
-        Me.Label1.TabIndex = 10
-        Me.Label1.Text = "PRODUCTOS EN NOTA"
-        '
-        'txtbCambio
-        '
-        Me.txtbCambio.Enabled = False
-        Me.txtbCambio.Location = New System.Drawing.Point(749, 154)
-        Me.txtbCambio.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.txtbCambio.Name = "txtbCambio"
-        Me.txtbCambio.Size = New System.Drawing.Size(100, 22)
-        Me.txtbCambio.TabIndex = 6
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(655, 103)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(51, 16)
-        Me.Label3.TabIndex = 1
-        Me.Label3.Text = "TOTAL"
-        '
-        'txtbPago
-        '
-        Me.txtbPago.Location = New System.Drawing.Point(749, 127)
-        Me.txtbPago.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.txtbPago.Name = "txtbPago"
-        Me.txtbPago.Size = New System.Drawing.Size(100, 22)
-        Me.txtbPago.TabIndex = 2
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(655, 130)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(45, 16)
-        Me.Label4.TabIndex = 2
-        Me.Label4.Text = "PAGO"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(655, 158)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(58, 16)
-        Me.Label5.TabIndex = 3
-        Me.Label5.Text = "CAMBIO"
-        '
-        'txtbTotal
-        '
-        Me.txtbTotal.Enabled = False
-        Me.txtbTotal.Location = New System.Drawing.Point(749, 101)
-        Me.txtbTotal.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.txtbTotal.Name = "txtbTotal"
-        Me.txtbTotal.Size = New System.Drawing.Size(100, 22)
-        Me.txtbTotal.TabIndex = 4
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.txtCliente)
-        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(658, 17)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(213, 63)
-        Me.GroupBox1.TabIndex = 39
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Cliente:"
-        '
-        'txtCliente
-        '
-        Me.txtCliente.Location = New System.Drawing.Point(14, 21)
-        Me.txtCliente.Name = "txtCliente"
-        Me.txtCliente.Size = New System.Drawing.Size(191, 22)
-        Me.txtCliente.TabIndex = 1
-        '
-        'pbEliminar
-        '
-        Me.pbEliminar.BackColor = System.Drawing.Color.Transparent
-        Me.pbEliminar.BackgroundImage = CType(resources.GetObject("pbEliminar.BackgroundImage"), System.Drawing.Image)
-        Me.pbEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.pbEliminar.Cursor = System.Windows.Forms.Cursors.No
-        Me.pbEliminar.ErrorImage = Nothing
-        Me.pbEliminar.Location = New System.Drawing.Point(362, 196)
-        Me.pbEliminar.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.pbEliminar.Name = "pbEliminar"
-        Me.pbEliminar.Size = New System.Drawing.Size(44, 41)
-        Me.pbEliminar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.pbEliminar.TabIndex = 27
-        Me.pbEliminar.TabStop = False
-        '
-        'pbAgregar
-        '
-        Me.pbAgregar.BackColor = System.Drawing.Color.Transparent
-        Me.pbAgregar.BackgroundImage = CType(resources.GetObject("pbAgregar.BackgroundImage"), System.Drawing.Image)
-        Me.pbAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.pbAgregar.Cursor = System.Windows.Forms.Cursors.Default
-        Me.pbAgregar.Location = New System.Drawing.Point(362, 145)
-        Me.pbAgregar.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.pbAgregar.Name = "pbAgregar"
-        Me.pbAgregar.Size = New System.Drawing.Size(44, 41)
-        Me.pbAgregar.TabIndex = 26
-        Me.pbAgregar.TabStop = False
         '
         'Cantidad
         '
@@ -356,7 +248,7 @@ Partial Class Venta
         Me.Cantidad.MinimumWidth = 6
         Me.Cantidad.Name = "Cantidad"
         Me.Cantidad.ReadOnly = True
-        Me.Cantidad.Width = 90
+        Me.Cantidad.Width = 74
         '
         'cop
         '
@@ -386,7 +278,7 @@ Partial Class Venta
         Me.NombrePC.MinimumWidth = 6
         Me.NombrePC.Name = "NombrePC"
         Me.NombrePC.ReadOnly = True
-        Me.NombrePC.Width = 151
+        Me.NombrePC.Width = 126
         '
         'Precio
         '
@@ -396,7 +288,7 @@ Partial Class Venta
         Me.Precio.MinimumWidth = 6
         Me.Precio.Name = "Precio"
         Me.Precio.ReadOnly = True
-        Me.Precio.Width = 75
+        Me.Precio.Width = 62
         '
         'PrecioTot
         '
@@ -406,15 +298,131 @@ Partial Class Venta
         Me.PrecioTot.MinimumWidth = 6
         Me.PrecioTot.Name = "PrecioTot"
         Me.PrecioTot.ReadOnly = True
-        Me.PrecioTot.Width = 109
+        Me.PrecioTot.Width = 89
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft YaHei", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(182, 4)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(232, 26)
+        Me.Label1.TabIndex = 10
+        Me.Label1.Text = "PRODUCTOS EN NOTA"
+        '
+        'txtbCambio
+        '
+        Me.txtbCambio.Enabled = False
+        Me.txtbCambio.Location = New System.Drawing.Point(562, 125)
+        Me.txtbCambio.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtbCambio.Name = "txtbCambio"
+        Me.txtbCambio.Size = New System.Drawing.Size(76, 20)
+        Me.txtbCambio.TabIndex = 6
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(491, 84)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(42, 13)
+        Me.Label3.TabIndex = 1
+        Me.Label3.Text = "TOTAL"
+        '
+        'txtbPago
+        '
+        Me.txtbPago.Location = New System.Drawing.Point(562, 103)
+        Me.txtbPago.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtbPago.Name = "txtbPago"
+        Me.txtbPago.Size = New System.Drawing.Size(76, 20)
+        Me.txtbPago.TabIndex = 2
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(491, 106)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(37, 13)
+        Me.Label4.TabIndex = 2
+        Me.Label4.Text = "PAGO"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(491, 128)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(48, 13)
+        Me.Label5.TabIndex = 3
+        Me.Label5.Text = "CAMBIO"
+        '
+        'txtbTotal
+        '
+        Me.txtbTotal.Enabled = False
+        Me.txtbTotal.Location = New System.Drawing.Point(562, 82)
+        Me.txtbTotal.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtbTotal.Name = "txtbTotal"
+        Me.txtbTotal.Size = New System.Drawing.Size(76, 20)
+        Me.txtbTotal.TabIndex = 4
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.txtCliente)
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Location = New System.Drawing.Point(494, 14)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Size = New System.Drawing.Size(160, 51)
+        Me.GroupBox1.TabIndex = 39
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Cliente:"
+        '
+        'txtCliente
+        '
+        Me.txtCliente.Location = New System.Drawing.Point(10, 17)
+        Me.txtCliente.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtCliente.Name = "txtCliente"
+        Me.txtCliente.Size = New System.Drawing.Size(144, 19)
+        Me.txtCliente.TabIndex = 1
+        '
+        'pbEliminar
+        '
+        Me.pbEliminar.BackColor = System.Drawing.Color.Transparent
+        Me.pbEliminar.BackgroundImage = CType(resources.GetObject("pbEliminar.BackgroundImage"), System.Drawing.Image)
+        Me.pbEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.pbEliminar.Cursor = System.Windows.Forms.Cursors.No
+        Me.pbEliminar.ErrorImage = Nothing
+        Me.pbEliminar.Location = New System.Drawing.Point(272, 159)
+        Me.pbEliminar.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.pbEliminar.Name = "pbEliminar"
+        Me.pbEliminar.Size = New System.Drawing.Size(33, 33)
+        Me.pbEliminar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbEliminar.TabIndex = 27
+        Me.pbEliminar.TabStop = False
+        '
+        'pbAgregar
+        '
+        Me.pbAgregar.BackColor = System.Drawing.Color.Transparent
+        Me.pbAgregar.BackgroundImage = CType(resources.GetObject("pbAgregar.BackgroundImage"), System.Drawing.Image)
+        Me.pbAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.pbAgregar.Cursor = System.Windows.Forms.Cursors.Default
+        Me.pbAgregar.Location = New System.Drawing.Point(272, 118)
+        Me.pbAgregar.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.pbAgregar.Name = "pbAgregar"
+        Me.pbAgregar.Size = New System.Drawing.Size(33, 33)
+        Me.pbAgregar.TabIndex = 26
+        Me.pbAgregar.TabStop = False
         '
         'Venta
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.BackgroundImage = Global.cafeteria.My.Resources.Resources.Diapositiva1
-        Me.ClientSize = New System.Drawing.Size(1112, 566)
+        Me.ClientSize = New System.Drawing.Size(834, 460)
         Me.Controls.Add(Me.btnBuscar)
         Me.Controls.Add(Me.txtBusqueda)
         Me.Controls.Add(Me.PictureBox5)
@@ -423,7 +431,7 @@ Partial Class Venta
         Me.Controls.Add(Me.pbEliminar)
         Me.Controls.Add(Me.pbAgregar)
         Me.Location = New System.Drawing.Point(0, 35)
-        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "Venta"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Venta"
