@@ -586,12 +586,33 @@ Public Class Venta
         ListadoP.AllowUserToAddRows = False
 
         For row As Integer = 0 To ListadoP.RowCount - 1
+            Dim largo As Integer = ListadoP.Rows(row).Cells(3).Value.ToString().Count()
+            Dim largofin = largo
             height += 15
-            e.Graphics.DrawString(ListadoP.Rows(row).Cells(3).Value.ToString, f8, Brushes.Black, 0, 110 + height)
+            If largo < 26 Then
+                e.Graphics.DrawString(ListadoP.Rows(row).Cells(3).Value.ToString().Substring(0, largo), f8, Brushes.Black, 0, 110 + height)
+            Else
+                e.Graphics.DrawString(ListadoP.Rows(row).Cells(3).Value.ToString().Substring(0, 26), f8, Brushes.Black, 0, 110 + height)
+            End If
+
             e.Graphics.DrawString(ListadoP.Rows(row).Cells(4).Value.ToString, f8, Brushes.Black, 120, 110 + height)
             i = ListadoP.Rows(row).Cells(4).Value
             ListadoP.Rows(row).Cells(4).Value = Format(i, "##,##0")
             e.Graphics.DrawString(ListadoP.Rows(row).Cells(0).Value.ToString, f8, Brushes.Black, 165, 110 + height, right)
+            If largo > 26 Then
+                Dim inicio As Integer = 26
+                largo -= 26
+                While largo > 0
+                    height += 15
+                    If largo < 26 Then
+                        e.Graphics.DrawString(ListadoP.Rows(row).Cells(3).Value.ToString().Substring(inicio, largo), f8, Brushes.Black, 0, 110 + height)
+                    Else
+                        e.Graphics.DrawString(ListadoP.Rows(row).Cells(3).Value.ToString().Substring(inicio, 26), f8, Brushes.Black, 0, 110 + height)
+                    End If
+                    inicio += 26
+                    largo -= 26
+                End While
+            End If
         Next
 
         Dim height2 As Integer
